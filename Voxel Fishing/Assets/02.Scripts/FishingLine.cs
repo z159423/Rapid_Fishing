@@ -12,7 +12,7 @@ public class FishingLine : MonoBehaviour
     
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         line.SetPosition(0, startPoint.position);
         line.SetPosition(1, endPoint.position);

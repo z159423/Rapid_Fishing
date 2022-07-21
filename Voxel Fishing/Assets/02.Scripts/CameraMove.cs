@@ -8,9 +8,11 @@ public class CameraMove : MonoBehaviour
     [SerializeField] private Transform target;
 
     public Vector3 offset;
-    
 
-    private void LateUpdate() {
-        //Vector3.Slerp(camera.transform.position, target.transform.position, 1 * Time.deltaTime);
+    private void FixedUpdate() {
+
+        camera.transform.position = new Vector3(target.transform.position.x, Vector3.Slerp(camera.transform.position, target.transform.position, 1 * Time.deltaTime).y, camera.transform.position.z);
+        
+    
     }
 }

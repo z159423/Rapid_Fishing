@@ -8,6 +8,10 @@ public class FishingRod : MonoBehaviour
 
     [SerializeField] private Transform pivot = null;
 
+    public int hookThrowForce = 400;
+
+    public float lineForce = 1f;
+
     private void Awake()
     {
         // pivot = transform.GetChild(1);
@@ -15,21 +19,24 @@ public class FishingRod : MonoBehaviour
     public void ReleaseHook()
     {
         hookRigid.isKinematic = false;
-        hookRigid.AddForce((Vector2.right + Vector2.up) * 200);
+        hookRigid.AddForce((Vector2.right + Vector2.up) * 400);
         isStart = true;
     }
 
     bool isStart = false;
     private void LateUpdate()
     {
-        if (isStart)
+        if (!isStart)
         {
             float dis = Vector3.Distance(pivot.position, hookRigid.position);
-            if (dis > 3)
+            if (dis > 1.5f)
             {
-                Vector3 dir = (hookRigid.transform.localPosition - pivot.localPosition).normalized;
-                hookRigid.transform.localPosition = pivot.localPosition + (3 * dir);
+                Vector3 dir = (hookRigid.transform.position - pivot.position).normalized;
+                //hookRigid.transform.position = pivot.position + (1.5f * dir);
+                hookRigid.velocity = (-dir * lineForce);
+                //hookRigid.velocity = Vector3.zero;
             }
+            
         }
     }
 
