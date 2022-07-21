@@ -26,8 +26,8 @@ public class Fish : MonoBehaviour
 
     private void Start() {
         
-        StartCoroutine(ChangeDir());
-        StartCoroutine(FindTarget());
+        //StartCoroutine(ChangeDir());
+        //StartCoroutine(FindTarget());
     }
 
     void Update()

@@ -11,6 +11,7 @@ public class FishingRod : MonoBehaviour
     public int hookThrowForce = 400;
 
     public float lineForce = 1f;
+    public float pullingForce = 2.5f;
 
     private void Awake()
     {
@@ -29,12 +30,19 @@ public class FishingRod : MonoBehaviour
         if (!isStart)
         {
             float dis = Vector3.Distance(pivot.position, hookRigid.position);
+            if(FishingLogic.instance.pulling)
+            {
+                Vector3 dir = (hookRigid.transform.position - pivot.position).normalized;
+                hookRigid.velocity = (-dir * pullingForce);
+            }
+            else{
             if (dis > 1.5f)
             {
                 Vector3 dir = (hookRigid.transform.position - pivot.position).normalized;
                 //hookRigid.transform.position = pivot.position + (1.5f * dir);
                 hookRigid.velocity = (-dir * lineForce);
                 //hookRigid.velocity = Vector3.zero;
+            }
             }
             
         }

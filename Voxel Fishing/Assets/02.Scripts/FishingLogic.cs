@@ -17,6 +17,8 @@ public class FishingLogic : MonoBehaviour
     private float catchBarMoveSpeed = 1f;
 
     public bool biteBate = false;
+    public bool pulling = false;
+    public bool enablePulling = false;
 
     public static FishingLogic instance;
 
@@ -49,9 +51,17 @@ public class FishingLogic : MonoBehaviour
 
     public void StartPull()
     {
-        catchSlider.gameObject.SetActive(true);
-        catchButton.SetActive(true);
-        catching = true;
+        if(!enablePulling)
+            return;
+
+        pulling = true;
+        enablePulling = false;
+
+        catchButton.SetActive(false);
+
+        //catchSlider.gameObject.SetActive(true);
+        //catchButton.SetActive(true);
+        //catching = true;
     }
 
     public void Catch()
