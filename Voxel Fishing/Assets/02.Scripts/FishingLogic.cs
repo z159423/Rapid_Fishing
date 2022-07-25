@@ -11,6 +11,7 @@ public class FishingLogic : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Slider catchSlider;
     [SerializeField] private GameObject catchButton;
+    [SerializeField] private FishingRod fishingRod;
 
     private FishingState fishingState;
     private bool catching = false;
@@ -47,6 +48,7 @@ public class FishingLogic : MonoBehaviour
     {
         rodAnimator.SetTrigger("StartFishing");
         startButton.gameObject.SetActive(false);
+        StartCoroutine(fishingRod.ReleaseHook());
     }
 
     public void StartPull()
@@ -58,6 +60,8 @@ public class FishingLogic : MonoBehaviour
         enablePulling = false;
 
         catchButton.SetActive(false);
+
+        fishingRod.currentPullingForece = 0;
 
         //catchSlider.gameObject.SetActive(true);
         //catchButton.SetActive(true);

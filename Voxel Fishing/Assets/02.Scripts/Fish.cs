@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
+    public FishType fishType;
+
 
     public float sensingRadius = 2f;
 
@@ -22,16 +24,22 @@ public class Fish : MonoBehaviour
     [SerializeField] private Vector3 dirToHook;
     [SerializeField] private Transform head;
 
+    public bool hooked = false;
+
     // Update is called once per frame
 
     private void Start() {
+
+        if(rigid == null)
+            rigid = GetComponent<Rigidbody>();
         
-        //StartCoroutine(ChangeDir());
+        StartCoroutine(ChangeDir());
         //StartCoroutine(FindTarget());
     }
 
     void Update()
     {
+        /*
         if(biteBait)
         {
             dirToHook = (target.position - head.transform.position).normalized;
@@ -67,8 +75,13 @@ public class Fish : MonoBehaviour
         {
             if(Vector3.Distance(target.position, head.position) < 0.2f)
                 BiteBait();
-        }
+        }*/
 
+        if(!hooked)
+        {
+            transform.Rotate(new Vector3(0,0, rotationSpeed * Time.deltaTime));
+            rigid.transform.Translate(Vector3.right * (moveSpeed * followTargetSpeed) * Time.deltaTime);
+        }
     }
 
     private IEnumerator FindTarget()
@@ -107,6 +120,7 @@ public class Fish : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(1,5));
 
             rotationSpeed = Random.Range(-100, 100);
+
         }
     }
 
@@ -116,4 +130,22 @@ public class Fish : MonoBehaviour
 
         FishingLogic.instance.biteBate = true;
     }
+
+    public void Hooked(Transform hook)
+    {
+        hooked = true;
+
+        transform.SetParent(hook);
+
+        GetComponent<Rigidbody>().isKinematic = true;
+        transform.localPosition = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0);
+
+        GetComponent<Collider>().isTrigger = true;
+    }
+}
+
+[System.Serializable]
+public class FishType
+{
+    public int cost;
 }
