@@ -148,4 +148,5 @@ public class Fish : MonoBehaviour
 public class FishType
 {
     public int cost;
+    public int tier = 1;
 }

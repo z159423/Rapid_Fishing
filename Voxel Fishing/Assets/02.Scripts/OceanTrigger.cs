@@ -8,9 +8,11 @@ public class OceanTrigger : MonoBehaviour
 
     [SerializeField] private GameObject waterSplashParticle;
 
+    [SerializeField] private GameObject arrow;
+    
+
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("FishingHook"))
-        {
+        if(other.CompareTag("FishingHook"))        {
             //other.GetComponent<Rigidbody>().drag = 6.5f;
             FishingLogic.instance.enablePulling = true;
             touchToPullButton.SetActive(true);
@@ -25,6 +27,8 @@ public class OceanTrigger : MonoBehaviour
             fish.GetComponent<Rigidbody>().useGravity = false;
             fish.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+
+        
     }
 
     private void OnTriggerExit(Collider other) {
@@ -37,11 +41,16 @@ public class OceanTrigger : MonoBehaviour
             var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90,0,0));
 
             Destroy(particle, 5f);
+
+            arrow.SetActive(false);
+            
         }
 
         if(other.TryGetComponent<Fish>(out Fish fish))
         {
             fish.GetComponent<Rigidbody>().useGravity = true;
         }
+
+        
     }
 }

@@ -12,6 +12,9 @@ public class FishingLogic : MonoBehaviour
     [SerializeField] private Slider catchSlider;
     [SerializeField] private GameObject catchButton;
     [SerializeField] private FishingRod fishingRod;
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private SkinnedMeshRenderer fishingRodSkinned;
+    
 
     private FishingState fishingState;
     private bool catching = false;
@@ -63,9 +66,13 @@ public class FishingLogic : MonoBehaviour
 
         fishingRod.currentPullingForece = 0;
 
+        arrow.SetActive(true);
+
         //catchSlider.gameObject.SetActive(true);
         //catchButton.SetActive(true);
         //catching = true;
+
+        fishingRodSkinned.SetBlendShapeWeight(1, 100);
     }
 
     public void Catch()

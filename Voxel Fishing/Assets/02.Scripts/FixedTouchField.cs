@@ -21,13 +21,19 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (Pressed)
         {
+            print(PointerId + " " + Input.touches.Length);
             if (PointerId >= 0 && PointerId < Input.touches.Length)
             {
                 TouchDist = Input.touches[PointerId].position - PointerOld;
                 PointerOld = Input.touches[PointerId].position;
+                
 
-                if(FishingLogic.instance.pulling)
-                    hook.Translate(new Vector3(TouchDist.x, TouchDist.y  * 0.5f , 0) * hookMoveSpeed * Time.deltaTime);
+                if (FishingLogic.instance.pulling)
+                {
+                    hook.Translate(new Vector3(TouchDist.x, TouchDist.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime);
+
+                }
+
             }
             else
             {
@@ -46,12 +52,21 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         Pressed = true;
         PointerId = eventData.pointerId;
         PointerOld = eventData.position;
+
+
     }
 
 
     public void OnPointerUp(PointerEventData eventData)
     {
         Pressed = false;
+
+        //print("2222");
+    }
+
+    public void UpgradeHookMoveSpeed(float value)
+    {
+        hookMoveSpeed += value;
     }
 
 }
