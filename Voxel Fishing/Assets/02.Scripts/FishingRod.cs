@@ -11,6 +11,7 @@ public class FishingRod : MonoBehaviour
     [SerializeField] private GameObject startButton;
     [SerializeField] private Animator rodAnimator;
     [SerializeField] private FishingHook fishingHook;
+    [SerializeField] private FixedTouchField touchField;
 
     public int hookThrowForce = 400;
 
@@ -55,7 +56,7 @@ public class FishingRod : MonoBehaviour
             }
         }
 
-        if (FishingLogic.instance.pulling)
+        if (FishingLogic.instance.pulling && touchField.Pressed)
         {
             //float dis = Vector3.Distance(pivot.position, hookRigid.position);
 

@@ -10,52 +10,69 @@ public class OceanTrigger : MonoBehaviour
     [SerializeField] private ParticleSystem bubbleParticle;
 
     [SerializeField] private GameObject arrow;
-    
+    [SerializeField] private Rigidbody rigid;
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("FishingHook"))        {
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FishingHook"))
+        {
             //other.GetComponent<Rigidbody>().drag = 6.5f;
-            FishingLogic.instance.enablePulling = true;
-            touchToPullButton.SetActive(true);
+            
+            if(FishingLogic.instance.pulling == false)
+                touchToPullButton.SetActive(true);
 
-            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90,0,0));
+            FishingLogic.instance.enablePulling = true;
+
+            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90, 0, 0));
 
             bubbleParticle.Play();
 
             Destroy(particle, 5f);
         }
 
-        if(other.TryGetComponent<Fish>(out Fish fish))
+        if (other.TryGetComponent<Fish>(out Fish fish))
         {
             fish.GetComponent<Rigidbody>().useGravity = false;
             fish.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
-        
+        if (FishingLogic.instance.pulling)
+        {
+            rigid.useGravity = false;
+        }
+
+
     }
 
-    private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("FishingHook"))
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("FishingHook"))
         {
-            other.GetComponent<Rigidbody>().drag= 1f;
+            other.GetComponent<Rigidbody>().drag = 1f;
             FishingLogic.instance.enablePulling = false;
             touchToPullButton.SetActive(false);
 
-            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90,0,0));
+            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90, 0, 0));
 
             bubbleParticle.Stop();
 
             Destroy(particle, 5f);
 
             arrow.SetActive(false);
-            
+
+            if (FishingLogic.instance.pulling)
+            {
+                rigid.useGravity = true;
+            }
+
         }
 
-        if(other.TryGetComponent<Fish>(out Fish fish))
+        if (other.TryGetComponent<Fish>(out Fish fish))
         {
             fish.GetComponent<Rigidbody>().useGravity = true;
         }
 
-        
+
     }
 }

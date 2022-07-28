@@ -15,6 +15,7 @@ public class FishingLogic : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private SkinnedMeshRenderer fishingRodSkinned;
     [SerializeField] private ParticleSystem bubbleParticle;
+    [SerializeField] private Rigidbody hookRigid;
     
 
     private FishingState fishingState;
@@ -76,6 +77,8 @@ public class FishingLogic : MonoBehaviour
         fishingRodSkinned.SetBlendShapeWeight(1, 100);
 
         bubbleParticle.Stop();
+
+        hookRigid.useGravity = false;
     }
 
     public void Catch()
