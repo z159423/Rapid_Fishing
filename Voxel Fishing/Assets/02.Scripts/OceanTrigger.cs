@@ -7,6 +7,7 @@ public class OceanTrigger : MonoBehaviour
     [SerializeField] private GameObject touchToPullButton;
 
     [SerializeField] private GameObject waterSplashParticle;
+    [SerializeField] private ParticleSystem bubbleParticle;
 
     [SerializeField] private GameObject arrow;
     
@@ -18,6 +19,8 @@ public class OceanTrigger : MonoBehaviour
             touchToPullButton.SetActive(true);
 
             var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90,0,0));
+
+            bubbleParticle.Play();
 
             Destroy(particle, 5f);
         }
@@ -39,6 +42,8 @@ public class OceanTrigger : MonoBehaviour
             touchToPullButton.SetActive(false);
 
             var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90,0,0));
+
+            bubbleParticle.Stop();
 
             Destroy(particle, 5f);
 

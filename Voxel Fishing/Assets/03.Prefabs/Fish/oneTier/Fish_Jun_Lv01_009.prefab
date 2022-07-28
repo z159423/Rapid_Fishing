@@ -325,6 +325,9 @@ GameObject:
   - component: {fileID: 2762879030865063534}
   - component: {fileID: 5454531317041201491}
   - component: {fileID: 1698745289384380741}
+  - component: {fileID: 453540742930109596}
+  - component: {fileID: 62479240697449879}
+  - component: {fileID: 2710656071297901337}
   m_Layer: 6
   m_Name: Fish_Jun_Lv01_009
   m_TagString: Untagged
@@ -358,7 +361,7 @@ BoxCollider:
   m_GameObject: {fileID: 9084224413584158400}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -375,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishType:
-    cost: 10
+    cost: 25
     tier: 1
   sensingRadius: 2
   moveSpeed: 1
@@ -403,3 +406,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!135 &453540742930109596
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084224413584158400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.42798358
+  m_Center: {x: -0.07201638, y: 0, z: 0}
+--- !u!135 &62479240697449879
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084224413584158400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.298352
+  m_Center: {x: -0.7987328, y: 0, z: 0}
+--- !u!135 &2710656071297901337
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084224413584158400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26504844
+  m_Center: {x: 0.62394786, y: 0, z: 0}

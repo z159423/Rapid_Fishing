@@ -23,11 +23,15 @@ public class FishingHook : MonoBehaviour
 
     [SerializeField] private SkinnedMeshRenderer fishingRodSkinned;
 
-    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera cinemachineCamera;
 
-    float hookspeed;
+    [SerializeField] private Transform startPoint;
+    [SerializeField] private Transform hook;
+    [SerializeField] private FishingRod rod;
+    [SerializeField] private Transform playerModel;
 
-
+    float currentHookZoomSpeed = 0;
+    public float targetHookZoomOffset = 0;
 
     public float minDrag = 1f;
     public float maxDrag = 6.5f;
@@ -50,14 +54,18 @@ public class FishingHook : MonoBehaviour
 
         if (FishingLogic.instance.enablePulling)
         {
-            rigid.drag = Mathf.Lerp(rigid.drag, maxDrag, dragSpeed * Time.deltaTime);
+            float dis = Vector3.Distance(startPoint.position, hook.position);
+            if(rod.maxLine - 20 < dis)
+                rigid.drag = Mathf.Lerp(rigid.drag, maxDrag, dragSpeed * Time.deltaTime);
         }
         else
         {
 
         }
 
-        hookspeed = Mathf.Abs(rigid.velocity.x) + Mathf.Abs(rigid.velocity.y);
+        currentHookZoomSpeed = Mathf.Lerp(currentHookZoomSpeed, targetHookZoomOffset, .5f * Time.deltaTime);
+
+        cinemachineCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = -10 - (currentHookZoomSpeed);
         //virtualCamera.
     }
 
@@ -131,6 +139,8 @@ public class FishingHook : MonoBehaviour
         }
 
         fishingRodSkinned.SetBlendShapeWeight(1, 0);
+
+        playerModel.rotation = Quaternion.Euler(0,90,0);
 
         //money TMP Display
 

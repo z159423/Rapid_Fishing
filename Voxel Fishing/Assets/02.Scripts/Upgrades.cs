@@ -29,6 +29,10 @@ public class Upgrades : MonoBehaviour
 
     //public float upgradeHookMoveSpeedValue = 0.05f;
 
+    private void Awake() {
+        Application.targetFrameRate = 60;
+    }
+
     private void Start()
     {
 

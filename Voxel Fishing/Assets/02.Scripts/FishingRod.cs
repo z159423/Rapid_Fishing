@@ -66,7 +66,7 @@ public class FishingRod : MonoBehaviour
             else
             {
                 //Vector3 dir = (hookRigid.transform.position - pivot.position).normalized;
-                currentPullingForece = Mathf.Lerp(currentPullingForece, maxPullingForce, pullingSpeed * Time.deltaTime);
+                currentPullingForece = Mathf.Lerp(currentPullingForece , maxPullingForce, pullingSpeed * Time.deltaTime);
 
                 currentPullingForece = Mathf.Clamp(currentPullingForece, minPullingForce, maxPullingForce);
                 hookRigid.velocity = (-dir * currentPullingForece);
@@ -77,6 +77,8 @@ public class FishingRod : MonoBehaviour
 
     public IEnumerator ReleaseHook()
     {
+        fishingHook.targetHookZoomOffset = 4.5f;
+
         yield return new WaitForSeconds(0.3f);
         hookRigid.isKinematic = false;
         hookRigid.AddForce((Vector2.up + Vector2.left) * 250);
@@ -86,6 +88,9 @@ public class FishingRod : MonoBehaviour
         hookRigid.isKinematic = false;
         hookRigid.AddForce((Vector2.right + Vector2.up) * 700);
         isStart = true;
+
+        yield return new WaitForSeconds(1);
+        fishingHook.targetHookZoomOffset = 0;
     }
 
     public void ReloadHook()

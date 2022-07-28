@@ -21,17 +21,15 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (Pressed)
         {
-            print(PointerId + " " + Input.touches.Length);
+            //print(PointerId + " " + Input.touches.Length + " " + Input.touches.Length);
             if (PointerId >= 0 && PointerId < Input.touches.Length)
             {
                 TouchDist = Input.touches[PointerId].position - PointerOld;
                 PointerOld = Input.touches[PointerId].position;
                 
-
                 if (FishingLogic.instance.pulling)
                 {
                     hook.Translate(new Vector3(TouchDist.x, TouchDist.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime);
-
                 }
 
             }
@@ -53,6 +51,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         PointerId = eventData.pointerId;
         PointerOld = eventData.position;
 
+        print(PointerId);
 
     }
 

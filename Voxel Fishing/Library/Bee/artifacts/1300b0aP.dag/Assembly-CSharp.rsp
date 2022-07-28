@@ -299,6 +299,9 @@
 -r:"/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
 -r:"/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/Cinemachine.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aP.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aP.dag/Unity.RenderPipelines.Core.ShaderLibrary.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aP.dag/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/Unity.Services.Core.Analytics.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/Unity.Services.Core.Environments.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/Unity.Services.Core.ref.dll"
@@ -315,8 +318,10 @@
 "Assets/02.Scripts/FishingLine.cs"
 "Assets/02.Scripts/FishingLogic.cs"
 "Assets/02.Scripts/FishingRod.cs"
+"Assets/02.Scripts/FishPool.cs"
 "Assets/02.Scripts/FixedTouchField.cs"
 "Assets/02.Scripts/OceanTrigger.cs"
+"Assets/02.Scripts/Setting.cs"
 "Assets/02.Scripts/Upgrades.cs"
 -langversion:9.0
 

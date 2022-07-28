@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 4724109693204481110}
   - component: {fileID: 1864867562371968052}
   - component: {fileID: 7440703995148140587}
+  - component: {fileID: 399288542828659874}
+  - component: {fileID: 6808894039099358528}
+  - component: {fileID: 6315459418193778978}
   m_Layer: 6
   m_Name: Fish_Jun_Lv01_014
   m_TagString: Untagged
@@ -45,7 +48,7 @@ BoxCollider:
   m_GameObject: {fileID: 177700950405211925}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -62,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishType:
-    cost: 20
+    cost: 45
     tier: 2
   sensingRadius: 2
   moveSpeed: 1
@@ -90,6 +93,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!135 &399288542828659874
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177700950405211925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.348587
+  m_Center: {x: -0.15141311, y: 0, z: 0}
+--- !u!135 &6808894039099358528
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177700950405211925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.29667655
+  m_Center: {x: 0.4909545, y: 0, z: 0}
+--- !u!135 &6315459418193778978
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177700950405211925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2945169
+  m_Center: {x: -0.6162787, y: 0, z: 0}
 --- !u!1 &376710616383612960
 GameObject:
   m_ObjectHideFlags: 0
