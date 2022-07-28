@@ -29,6 +29,7 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private Transform hook;
     [SerializeField] private FishingRod rod;
     [SerializeField] private Transform playerModel;
+    [SerializeField] private TextMeshProUGUI depthText;
 
     float currentHookZoomSpeed = 0;
     public float targetHookZoomOffset = 0;
@@ -55,7 +56,7 @@ public class FishingHook : MonoBehaviour
         if (FishingLogic.instance.enablePulling)
         {
             float dis = Vector3.Distance(startPoint.position, hook.position);
-            if(rod.maxLine - 20 < dis)
+            if (rod.maxLine - 20 < dis)
                 rigid.drag = Mathf.Lerp(rigid.drag, maxDrag, dragSpeed * Time.deltaTime);
         }
         else
@@ -67,6 +68,17 @@ public class FishingHook : MonoBehaviour
 
         cinemachineCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = -10 - (currentHookZoomSpeed);
         //virtualCamera.
+
+        if (hook.position.y < 0)
+        {
+            depthText.text = Mathf.Abs((int)(hook.position.y / 2)).ToString() + " M";
+        }
+        else
+        {
+
+            depthText.text = "0 M";
+
+        }
     }
 
     private void LateUpdate()
@@ -140,7 +152,7 @@ public class FishingHook : MonoBehaviour
 
         fishingRodSkinned.SetBlendShapeWeight(1, 0);
 
-        playerModel.rotation = Quaternion.Euler(0,90,0);
+        playerModel.rotation = Quaternion.Euler(0, 90, 0);
 
         //money TMP Display
 

@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 1455561251177373393}
   - component: {fileID: 3732766118465159700}
   - component: {fileID: 3307879875550720899}
+  - component: {fileID: 9012052343920232300}
   m_Layer: 6
   m_Name: Fish_Jun_Lv01_008
   m_TagString: Untagged
@@ -227,6 +228,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.18206026
   m_Center: {x: 0.68962806, y: 0, z: 0}
+--- !u!95 &9012052343920232300
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364014132884672701}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c677502691a74394a834fb648f5f49e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4230579922499679670
 GameObject:
   m_ObjectHideFlags: 0
