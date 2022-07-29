@@ -104,7 +104,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2393185319194774437}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishType:
     cost: 2000
-    tier: 6
+    tier: 5
   sensingRadius: 2
   moveSpeed: 1
   followTargetSpeed: 1.5

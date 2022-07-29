@@ -78,7 +78,9 @@ public class FishingRod : MonoBehaviour
 
     public IEnumerator ReleaseHook()
     {
-        fishingHook.targetHookZoomOffset = 4.5f;
+        hookRigid.useGravity = true;
+
+        fishingHook.targetHookZoomOffset = 7f;
 
         yield return new WaitForSeconds(0.3f);
         hookRigid.isKinematic = false;
@@ -90,8 +92,8 @@ public class FishingRod : MonoBehaviour
         hookRigid.AddForce((Vector2.right + Vector2.up) * 700);
         isStart = true;
 
-        yield return new WaitForSeconds(1);
-        fishingHook.targetHookZoomOffset = 0;
+        //yield return new WaitForSeconds(1);
+        //fishingHook.targetHookZoomOffset = 0;
     }
 
     public void ReloadHook()

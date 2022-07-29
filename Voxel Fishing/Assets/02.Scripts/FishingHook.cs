@@ -31,6 +31,13 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private Transform playerModel;
     [SerializeField] private TextMeshProUGUI depthText;
 
+    [Space]
+
+    [SerializeField] private SpriteRenderer[] Oceans;
+    [SerializeField] private Light lights;
+    public float oceanSpriteValueMultifly = 1f;
+    
+
     float currentHookZoomSpeed = 0;
     public float targetHookZoomOffset = 0;
 
@@ -48,6 +55,8 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI HookedCount;
 
+//    private LightingSettings lightingSettings = new LightingSettings();
+
     public int money = 0;
 
     private void Update()
@@ -64,6 +73,15 @@ public class FishingHook : MonoBehaviour
 
         }
 
+        if(FishingLogic.instance.enablePulling)
+        {
+            targetHookZoomOffset = 5f;
+        }
+        {
+
+        }
+
+
         currentHookZoomSpeed = Mathf.Lerp(currentHookZoomSpeed, targetHookZoomOffset, .5f * Time.deltaTime);
 
         cinemachineCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = -10 - (currentHookZoomSpeed);
@@ -71,7 +89,22 @@ public class FishingHook : MonoBehaviour
 
         if (hook.position.y < 0)
         {
-            depthText.text = Mathf.Abs((int)(hook.position.y / 2)).ToString() + " M";
+            depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
+
+            for(int i = 0; i < Oceans.Length; i++)
+            {
+                float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
+                float value2 = (200 + (hook.position.y * 2.5f)) / 255f;
+                float value3 = hook.position.y * 0.01f;
+
+                Oceans[i].color = new Color(value, value,value, Oceans[i].color.a);
+
+                RenderSettings.ambientLight = new Color(value2,value2,value2);
+
+                lights.intensity = 1 + value3;
+                lights.intensity = Mathf.Clamp(lights.intensity, 0, 1);
+                
+            }
         }
         else
         {
@@ -127,7 +160,7 @@ public class FishingHook : MonoBehaviour
             moneyText.text = money.ToString();
 
         }
-        
+
         currentHookedCount = 0;
         hookedFish.Clear();
 
