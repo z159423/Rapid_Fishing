@@ -109,6 +109,8 @@ public class FishingHook : MonoBehaviour
 
     public void SellFish()
     {
+        rigid.useGravity = true;
+
         for (int i = 0; i < hookedFish.Count; i++)
         {
             moneyQueue.Enqueue(hookedFish[i].fishType.cost);
@@ -125,6 +127,7 @@ public class FishingHook : MonoBehaviour
             moneyText.text = money.ToString();
 
         }
+        
         currentHookedCount = 0;
         hookedFish.Clear();
 

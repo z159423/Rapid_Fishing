@@ -51,7 +51,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         PointerId = eventData.pointerId;
         PointerOld = eventData.position;
 
-        print(PointerId);
+        //print(PointerId);
 
     }
 

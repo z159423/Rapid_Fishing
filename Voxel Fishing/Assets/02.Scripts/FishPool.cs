@@ -8,6 +8,8 @@ public class FishPool : MonoBehaviour
     public FishList oneTierFishList = new FishList();
     public FishList twoTierFishList = new FishList();
     public FishList threeTierFishList = new FishList();
+    public FishList fourTierFishList = new FishList();
+    public FishList fiveTierFishList = new FishList();
 
     [Space]
 
@@ -37,6 +39,14 @@ public class FishPool : MonoBehaviour
             case 3:
                 threeTierFishList.EnqueueFish(fish.gameObject);
                 break;
+
+            case 4:
+                fourTierFishList.EnqueueFish(fish.gameObject);
+                break;
+
+            case 5:
+                fiveTierFishList.EnqueueFish(fish.gameObject);
+                break;
         }
 
         DequeueFish(fish.fishType.tier, poolParent);
@@ -58,6 +68,14 @@ public class FishPool : MonoBehaviour
 
             case 3:
                 threeTierFishList.DequeueFish(poolParent);
+                break;
+
+            case 4:
+                fourTierFishList.DequeueFish(poolParent);
+                break;
+
+            case 5:
+                fiveTierFishList.DequeueFish(poolParent);
                 break;
         }
     }
