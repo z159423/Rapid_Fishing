@@ -24,17 +24,33 @@ public class Fish : MonoBehaviour
     [SerializeField] private Vector3 dirToHook;
     [SerializeField] private Transform head;
 
+    //=================================================
+
+    [Space]
+    private Vector3 targetPosition;
+    private float changePositionTime = 5;
+    private Vector3 dirToTarget;
+    private Vector3 targetAngle;
+
+    [Space]
     public bool hooked = false;
 
     // Update is called once per frame
 
-    private void Start() {
+    private void Start()
+    {
 
-        if(rigid == null)
+        if (rigid == null)
             rigid = GetComponent<Rigidbody>();
-        
-        StartCoroutine(ChangeDir());
+
+        //StartCoroutine(ChangeDir());
         //StartCoroutine(FindTarget());
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(ChangeTargetPosition());
+
     }
 
     void Update()
@@ -43,6 +59,7 @@ public class Fish : MonoBehaviour
         if(biteBait)
         {
             dirToHook = (target.position - head.transform.position).normalized;
+
 
                 var rotateAmount = Vector3.Cross(dirToHook, transform.up);
                 rigid.angularVelocity = -rotateAmount * 5f;
@@ -77,10 +94,14 @@ public class Fish : MonoBehaviour
                 BiteBait();
         }*/
 
-        if(!hooked)
+        if (!hooked)
         {
-            transform.Rotate(new Vector3(0,0, rotationSpeed * Time.deltaTime));
-            rigid.transform.Translate(Vector3.right * (moveSpeed * followTargetSpeed) * Time.deltaTime);
+            //transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
+
+            //transform.Translate(dirToTarget * (moveSpeed * followTargetSpeed) * Time.deltaTime);
+            rigid.velocity = dirToTarget * moveSpeed;
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,targetAngle.y,targetAngle.z), rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -88,17 +109,17 @@ public class Fish : MonoBehaviour
     {
         float searchingTime = Random.Range(.4f, .6f);
 
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(searchingTime);
 
             Collider[] colls = Physics.OverlapSphere(transform.position, sensingRadius);
 
-            for(int i = 0; i < colls.Length; i++)
+            for (int i = 0; i < colls.Length; i++)
             {
-                if(colls[i].CompareTag("FishingHook"))
+                if (colls[i].CompareTag("FishingHook"))
                 {
-                    if(!FishingLogic.instance.biteBate)
+                    if (!FishingLogic.instance.biteBate)
                     {
                         target = colls[i].transform;
                         targetSearching = false;
@@ -115,9 +136,9 @@ public class Fish : MonoBehaviour
 
     private IEnumerator ChangeDir()
     {
-        while(targetSearching)
+        while (targetSearching)
         {
-            yield return new WaitForSeconds(Random.Range(1,5));
+            yield return new WaitForSeconds(Random.Range(1, 5));
 
             rotationSpeed = Random.Range(-100, 100);
 
@@ -141,6 +162,37 @@ public class Fish : MonoBehaviour
         transform.localPosition = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0);
 
         GetComponent<Collider>().isTrigger = true;
+    }
+
+    public IEnumerator ChangeTargetPosition()
+    {
+        while (gameObject.activeSelf)
+        {
+            targetPosition = new Vector3(Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.x, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.x),
+            Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.y, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.y), 0);
+
+            dirToTarget = (targetPosition - transform.position).normalized;
+
+            //transform.rotation = Quaternion.LookRotation(dirToTarget);
+
+            Quaternion tempDir = Quaternion.LookRotation(dirToTarget);
+
+            float y = 0, z = 0;
+
+            z = -tempDir.eulerAngles.x;
+
+            if ((int)tempDir.eulerAngles.y == 90)
+                y = 0;
+            else
+                y = -180;
+
+                //print(transform.rotation.eulerAngles);
+
+                targetAngle = new Vector3(0,y,z);
+
+
+            yield return new WaitForSeconds(Random.Range(1, changePositionTime));
+        }
     }
 }
 

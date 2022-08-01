@@ -165,7 +165,7 @@ MonoBehaviour:
   sensingRadius: 2
   moveSpeed: 1
   followTargetSpeed: 1.5
-  rotationSpeed: 1
+  rotationSpeed: 2
   target: {fileID: 0}
   rigid: {fileID: 0}
   biteBait: 0

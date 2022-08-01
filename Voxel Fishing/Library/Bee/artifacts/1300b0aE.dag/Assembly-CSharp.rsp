@@ -383,6 +383,7 @@
 "Assets/02.Scripts/FishPool.cs"
 "Assets/02.Scripts/FixedTouchField.cs"
 "Assets/02.Scripts/FrictionJoint3D.cs"
+"Assets/02.Scripts/Map.cs"
 "Assets/02.Scripts/OceanTrigger.cs"
 "Assets/02.Scripts/RopeRoot.cs"
 "Assets/02.Scripts/Setting.cs"
