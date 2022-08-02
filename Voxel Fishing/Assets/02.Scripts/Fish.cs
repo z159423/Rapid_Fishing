@@ -133,6 +133,7 @@ public class Fish : MonoBehaviour
             }
         }
     }
+    
 
     private IEnumerator ChangeDir()
     {
@@ -168,7 +169,8 @@ public class Fish : MonoBehaviour
     {
         while (gameObject.activeSelf)
         {
-            targetPosition = new Vector3(Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.x, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.x),
+            targetPosition = new Vector3
+            (Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.x, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.x),
             Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.y, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.y), 0);
 
             dirToTarget = (targetPosition - transform.position).normalized;

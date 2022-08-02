@@ -348,9 +348,9 @@ MonoBehaviour:
     cost: 15
     tier: 1
   sensingRadius: 2
-  moveSpeed: 1
+  moveSpeed: 1.5
   followTargetSpeed: 1.5
-  rotationSpeed: 2
+  rotationSpeed: 2.5
   target: {fileID: 0}
   rigid: {fileID: 0}
   biteBait: 0
