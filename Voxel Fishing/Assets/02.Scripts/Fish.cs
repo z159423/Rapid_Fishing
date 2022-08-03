@@ -183,12 +183,12 @@ public class Fish : MonoBehaviour
 
             z = -tempDir.eulerAngles.x;
 
-            if ((int)tempDir.eulerAngles.y == 90)
+            if ((int)tempDir.eulerAngles.y > 80 && (int)tempDir.eulerAngles.y < 100)
                 y = 0;
             else
                 y = -180;
 
-                //print(transform.rotation.eulerAngles);
+                //print(tempDir.eulerAngles);
 
                 targetAngle = new Vector3(0,y,z);
 
