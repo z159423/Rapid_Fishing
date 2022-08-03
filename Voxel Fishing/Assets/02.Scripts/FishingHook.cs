@@ -20,6 +20,7 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private Transform moneyTextSpawnTransform;
     [SerializeField] private Vector2 moneyTextSpawnMinOffset;
     [SerializeField] private Vector2 moneyTextSpawnMaxOffset;
+    [SerializeField] private Transform[] hookedTransforms;
 
     [SerializeField] private SkinnedMeshRenderer fishingRodSkinned;
 
@@ -29,14 +30,16 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private Transform hook;
     [SerializeField] private FishingRod rod;
     [SerializeField] private Transform playerModel;
+    [SerializeField] private GameObject upgradeButton;
     [SerializeField] private TextMeshProUGUI depthText;
+    [SerializeField] private FixedTouchField touchField;
 
     [Space]
 
     [SerializeField] private SpriteRenderer[] Oceans;
     [SerializeField] private Light lights;
     public float oceanSpriteValueMultifly = 1f;
-    
+
 
     float currentHookZoomSpeed = 0;
     public float targetHookZoomOffset = 0;
@@ -55,7 +58,7 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI HookedCount;
 
-//    private LightingSettings lightingSettings = new LightingSettings();
+    //    private LightingSettings lightingSettings = new LightingSettings();
 
     public int money = 0;
 
@@ -73,14 +76,10 @@ public class FishingHook : MonoBehaviour
 
         }
 
-        if(FishingLogic.instance.enablePulling)
+        if (FishingLogic.instance.enablePulling)
         {
-            targetHookZoomOffset = 5f;
+            //targetHookZoomOffset = 5f;
         }
-        {
-
-        }
-
 
         currentHookZoomSpeed = Mathf.Lerp(currentHookZoomSpeed, targetHookZoomOffset, .5f * Time.deltaTime);
 
@@ -91,19 +90,19 @@ public class FishingHook : MonoBehaviour
         {
             depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
 
-            for(int i = 0; i < Oceans.Length; i++)
+            for (int i = 0; i < Oceans.Length; i++)
             {
                 float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
                 float value2 = (200 + (hook.position.y * 2.5f)) / 255f;
                 float value3 = hook.position.y * 0.01f;
 
-                Oceans[i].color = new Color(value, value,value, Oceans[i].color.a);
+                Oceans[i].color = new Color(value, value, value, Oceans[i].color.a);
 
-                RenderSettings.ambientLight = new Color(value2,value2,value2);
+                RenderSettings.ambientLight = new Color(value2, value2, value2);
 
                 lights.intensity = 1 + value3;
                 lights.intensity = Mathf.Clamp(lights.intensity, 0, 1);
-                
+
             }
         }
         else
@@ -122,26 +121,49 @@ public class FishingHook : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.TryGetComponent<Fish>(out Fish fish) && currentHookedCount < maxHookableCount)
+        if (other.TryGetComponent<Fish>(out Fish fish) && currentHookedCount < maxHookableCount && touchField.Pressed)
         {
             if (fish.hooked || !FishingLogic.instance.pulling)
                 return;
 
+            if (fish.fishType.tier > maxHookableCount)
+            {
+                //바늘을 업그레이드 하라는 메시지 출력
+                print("이 물고기는 잡을 수 없습니다, 바늘을 업그레이드 하세요");
+                return;
+            }
+
+            if (currentHookedCount + fish.fishType.tier > maxHookableCount)
+            {
+                //바늘을 업그레이드 하라는 메시지 출력
+                print("바늘이 가득찼습니다.");
+                return;
+            }
+
             hookedFish.Add(fish);
 
-            fish.Hooked(transform);
+            Transform tempTrans = hookedTransforms[Random.Range(0, hookedTransforms.Length)];
 
-            currentHookedCount++;
+            fish.Hooked(tempTrans);
+
+            currentHookedCount += fish.fishType.tier;
 
             if (currentHookedCount == maxHookableCount)
-                HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
+                //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
+                HookedCount.text = "MAX!";
             else
-                HookedCount.text = "X" + currentHookedCount.ToString();
+                //HookedCount.text = "X" + currentHookedCount.ToString();
+                HookedCount.text = "(" + currentHookedCount.ToString() + " / " + maxHookableCount + ")";
         }
     }
 
     public void SellFish()
     {
+        upgradeButton.SetActive(true);
+        depthText.gameObject.SetActive(false);
+
+        targetHookZoomOffset = 0;
+
         rigid.useGravity = true;
 
         for (int i = 0; i < hookedFish.Count; i++)
@@ -197,5 +219,6 @@ public class FishingHook : MonoBehaviour
     public void UpgradeHookMaxCount(float value)
     {
         maxHookableCount += (int)value;
+        transform.localScale = new Vector3(transform.localScale.x + 0.02f, transform.localScale.y + 0.02f, transform.localScale.z + 0.02f);
     }
 }

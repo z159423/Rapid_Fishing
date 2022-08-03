@@ -24,6 +24,8 @@ public class Fish : MonoBehaviour
     [SerializeField] private Vector3 dirToHook;
     [SerializeField] private Transform head;
 
+    [SerializeField] private MapData mapData;
+
     //=================================================
 
     [Space]
@@ -160,9 +162,13 @@ public class Fish : MonoBehaviour
         transform.SetParent(hook);
 
         GetComponent<Rigidbody>().isKinematic = true;
-        transform.localPosition = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0);
+        //transform.localPosition = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0);
+
+        //transform.position = transform.position - head.position;
 
         GetComponent<Collider>().isTrigger = true;
+
+        
     }
 
     public IEnumerator ChangeTargetPosition()
@@ -170,8 +176,8 @@ public class Fish : MonoBehaviour
         while (gameObject.activeSelf)
         {
             targetPosition = new Vector3
-            (Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.x, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.x),
-            Random.Range(Map.instance.mapDataList[fishType.tier - 1].minMapSize.y, Map.instance.mapDataList[fishType.tier - 1].maxMapSize.y), 0);
+            (Random.Range(mapData.mapDataList[fishType.tier - 1].minMapSize.x, mapData.mapDataList[fishType.tier - 1].maxMapSize.x),
+            Random.Range(mapData.mapDataList[fishType.tier - 1].minMapSize.y, mapData.mapDataList[fishType.tier - 1].maxMapSize.y), 0);
 
             dirToTarget = (targetPosition - transform.position).normalized;
 
@@ -203,4 +209,6 @@ public class FishType
 {
     public int cost;
     public int tier = 1;
+
+    public int fishNumber = 1;
 }

@@ -171,7 +171,8 @@ MonoBehaviour:
   rigid: {fileID: 0}
   biteBait: 0
   dirToHook: {x: 0, y: 0, z: 0}
-  head: {fileID: 0}
+  head: {fileID: 7418737705277092853}
+  mapData: {fileID: 11400000, guid: ab99f680a090f4344a8a7188f9a6ca21, type: 2}
   hooked: 0
 --- !u!54 &7036379446394172233
 Rigidbody:
@@ -309,6 +310,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8732504123360066037}
+  - {fileID: 7418737705277092853}
   m_Father: {fileID: 2730502623354178055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,6 +404,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00048041088, y: 0.010236492, z: 0.0000000011641532}
     m_Extent: {x: 0.004656356, y: 0.010382919, z: 0.0008432011}
   m_DirtyAABB: 0
+--- !u!1 &6498513268877052226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7418737705277092853}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7418737705277092853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6498513268877052226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00735, y: 0, z: -0.00001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6436880791214987929}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6957655861995234918
 GameObject:
   m_ObjectHideFlags: 0

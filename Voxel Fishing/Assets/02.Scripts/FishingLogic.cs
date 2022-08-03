@@ -81,7 +81,7 @@ public class FishingLogic : MonoBehaviour
 
         hookRigid.useGravity = false;
 
-        hook.targetHookZoomOffset = 0;
+        //hook.targetHookZoomOffset = 0;
     }
 
     public void Catch()

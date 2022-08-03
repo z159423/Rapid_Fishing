@@ -29,7 +29,8 @@ public class Upgrades : MonoBehaviour
 
     //public float upgradeHookMoveSpeedValue = 0.05f;
 
-    private void Awake() {
+    private void Awake()
+    {
         Application.targetFrameRate = 60;
     }
 
@@ -122,6 +123,12 @@ public class Upgrades : MonoBehaviour
             levelText.text = "LV. " + currentLevel.ToString();
 
             needyCostText.text = upgradeNeedyCost.ToString();
+
+            if (currentLevel == maxLevel)
+            {
+                levelText.text = "LV.MAX";
+                needyCostText.gameObject.SetActive(false);
+            }
 
         }
 

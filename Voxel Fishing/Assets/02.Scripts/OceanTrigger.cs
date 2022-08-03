@@ -12,6 +12,8 @@ public class OceanTrigger : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private Rigidbody rigid;
 
+    [SerializeField] private FishingHook hook;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +31,8 @@ public class OceanTrigger : MonoBehaviour
             bubbleParticle.Play();
 
             Destroy(particle, 5f);
+
+            hook.targetHookZoomOffset = 7f;
         }
 
         if (other.TryGetComponent<Fish>(out Fish fish))
