@@ -6,6 +6,7 @@ public class Fish : MonoBehaviour
 {
     public FishType fishType;
 
+    public FishData fishData;
 
     public float sensingRadius = 2f;
 

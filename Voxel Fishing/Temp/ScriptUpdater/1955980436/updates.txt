@@ -1,0 +1,3 @@
+Temp/ScriptUpdater/1955980436/1646725017_ObiTerrainShapeTracker.cs => Assets/Obi/Scripts/Common/Collisions/ColliderTrackers/Trackers3D/ObiTerrainShapeTracker.cs
+Temp/ScriptUpdater/1955980436/176396247_ObiDistanceFieldRenderer.cs => Assets/Obi/Scripts/Common/Rendering/ObiDistanceFieldRenderer.cs
+Temp/ScriptUpdater/1955980436/1624261818_ObiActor.cs => Assets/Obi/Scripts/Common/Actors/ObiActor.cs

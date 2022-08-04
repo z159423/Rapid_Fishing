@@ -6,6 +6,8 @@ using TMPro;
 public class Upgrades : MonoBehaviour
 {
 
+    public static Upgrades instance;
+
     [SerializeField] private FishingHook hook;
     [SerializeField] private FishingRod rod;
     [SerializeField] private FixedTouchField touchField;
@@ -31,6 +33,8 @@ public class Upgrades : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         Application.targetFrameRate = 60;
     }
 

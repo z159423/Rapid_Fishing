@@ -120,7 +120,6 @@ public class FishingHook : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.TryGetComponent<Fish>(out Fish fish) && currentHookedCount < maxHookableCount && touchField.Pressed)
         {
             if (fish.hooked || !FishingLogic.instance.pulling)
@@ -168,6 +167,8 @@ public class FishingHook : MonoBehaviour
 
         for (int i = 0; i < hookedFish.Count; i++)
         {
+            ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType.fishNumber);
+
             moneyQueue.Enqueue(hookedFish[i].fishType.cost);
 
             FishPool.instance.EnequeueFish(hookedFish[i]);
@@ -194,9 +195,10 @@ public class FishingHook : MonoBehaviour
         {
             while (moneyQueue.Count > 0)
             {
-                var text = Instantiate(moneyTextPrefab,
-                moneyTextSpawnTransform.position + new Vector3(Random.Range(moneyTextSpawnMinOffset.x, moneyTextSpawnMaxOffset.x), Random.Range(moneyTextSpawnMinOffset.y, moneyTextSpawnMaxOffset.y))
-                , Quaternion.identity, canvas);
+                var text = Instantiate(moneyTextPrefab, moneyTextSpawnTransform);
+
+                text.transform.localPosition = new Vector3(Random.Range(moneyTextSpawnMinOffset.x, moneyTextSpawnMaxOffset.x), Random.Range(moneyTextSpawnMinOffset.y, moneyTextSpawnMaxOffset.y), 0);
+                //var text.position = text.position + moneyTextSpawnTransform.position + new Vector3(Random.Range(moneyTextSpawnMinOffset.x, moneyTextSpawnMaxOffset.x), Random.Range(moneyTextSpawnMinOffset.y, moneyTextSpawnMaxOffset.y)
 
                 text.GetComponent<TextMeshProUGUI>().text = "+" + moneyQueue.Dequeue().ToString();
 

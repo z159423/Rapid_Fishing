@@ -107,6 +107,7 @@ MonoBehaviour:
   fishType:
     cost: 80
     tier: 3
+    fishNumber: 19
   sensingRadius: 2
   moveSpeed: 1.5
   followTargetSpeed: 1.5

@@ -101,7 +101,7 @@ public class FishingRod : MonoBehaviour
         isStart = true;
         fishingHook.targetHookZoomOffset = 15f;
 
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.8f);
         hookRigid.isKinematic = false;
         hookRigid.drag = 0.5f;
         hookRigid.AddForce((Vector2.right + Vector2.up) * 700);

@@ -14,7 +14,17 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [SerializeField] private Transform hook;
 
+    [Space]
+
+    [SerializeField] private GameObject joystick_Background;
+    [SerializeField] private GameObject joystick_Handle;
+
     public float hookMoveSpeed = 1f;
+
+    private void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void LateUpdate()
@@ -26,7 +36,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             {
                 TouchDist = Input.touches[PointerId].position - PointerOld;
                 PointerOld = Input.touches[PointerId].position;
-                
+
                 if (FishingLogic.instance.pulling)
                 {
                     hook.Translate(new Vector3(TouchDist.x, TouchDist.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime);
@@ -53,6 +63,18 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         //print(PointerId);
 
+
+
+        if (PointerId >= 0 && PointerId < Input.touches.Length)
+        {
+            if (FishingLogic.instance.pulling)
+            {
+                joystick_Background.transform.localPosition = new Vector3(eventData.position.x - (eventData.position.x * 2), eventData.position.y - (eventData.position.y * 2));
+                joystick_Handle.transform.localPosition = new Vector3(eventData.position.x - (eventData.position.x * 2), eventData.position.y - (eventData.position.y * 2));
+
+                print(eventData.position);
+            }
+        }
     }
 
 
