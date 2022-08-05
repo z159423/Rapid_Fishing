@@ -161,6 +161,8 @@ public class FishingHook : MonoBehaviour
         upgradeButton.SetActive(true);
         depthText.gameObject.SetActive(false);
 
+        touchField.HideJoystick();
+
         targetHookZoomOffset = 0;
 
         rigid.useGravity = true;

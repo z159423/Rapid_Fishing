@@ -21,10 +21,12 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public float hookMoveSpeed = 1f;
 
-    private void Start()
-    {
+    [SerializeField] private RectTransform canvas;
+    [SerializeField] private Camera camera;
 
-    }
+    private Vector2 touchStartPoint;
+    private Vector2 currentTouchPoint;
+    private Vector2 joystickDir;
 
     // Update is called once per frame
     void LateUpdate()
@@ -37,10 +39,26 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 TouchDist = Input.touches[PointerId].position - PointerOld;
                 PointerOld = Input.touches[PointerId].position;
 
+                Vector2 pos;
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                            canvas, new Vector2(Input.mousePosition.x, Input.mousePosition.y),
+                            camera, out pos))
+
+                    currentTouchPoint = pos;
+                
+
+                joystickDir = (currentTouchPoint - touchStartPoint);
+
+                Vector2 clampJoystickDir = new Vector2(Mathf.Clamp(joystickDir.x, -100, 100), Mathf.Clamp(joystickDir.y, -100, 100));
+
+                joystick_Handle.transform.localPosition = touchStartPoint + clampJoystickDir;
+
                 if (FishingLogic.instance.pulling)
                 {
-                    hook.Translate(new Vector3(TouchDist.x, TouchDist.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime);
+                    hook.Translate(new Vector3(joystickDir.normalized.x, joystickDir.normalized.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime * 100);
                 }
+
+                //print(joystickDir);
 
             }
             else
@@ -63,16 +81,26 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         //print(PointerId);
 
-
-
         if (PointerId >= 0 && PointerId < Input.touches.Length)
         {
             if (FishingLogic.instance.pulling)
             {
-                joystick_Background.transform.localPosition = new Vector3(eventData.position.x - (eventData.position.x * 2), eventData.position.y - (eventData.position.y * 2));
-                joystick_Handle.transform.localPosition = new Vector3(eventData.position.x - (eventData.position.x * 2), eventData.position.y - (eventData.position.y * 2));
 
-                print(eventData.position);
+                Vector2 pos;
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+
+                            canvas, new Vector2(Input.mousePosition.x, Input.mousePosition.y),
+
+                            camera, out pos))
+
+                    joystick_Background.transform.localPosition = pos;
+                joystick_Handle.transform.localPosition = pos;
+
+                joystick_Background.gameObject.SetActive(true);
+                joystick_Handle.gameObject.SetActive(true);
+
+                
+                touchStartPoint = pos;
             }
         }
     }
@@ -82,12 +110,19 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         Pressed = false;
 
+        HideJoystick();
         //print("2222");
     }
 
     public void UpgradeHookMoveSpeed(float value)
     {
         hookMoveSpeed += value;
+    }
+
+    public void HideJoystick()
+    {
+        joystick_Background.gameObject.SetActive(false);
+        joystick_Handle.gameObject.SetActive(false);
     }
 
 }
