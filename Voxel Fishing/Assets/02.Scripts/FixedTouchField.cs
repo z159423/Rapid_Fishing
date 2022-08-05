@@ -22,14 +22,14 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public float hookMoveSpeed = 1f;
 
     [SerializeField] private RectTransform canvas;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera newCamera;
 
     private Vector2 touchStartPoint;
     private Vector2 currentTouchPoint;
     private Vector2 joystickDir;
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (Pressed)
         {
@@ -42,7 +42,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 Vector2 pos;
                 if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
                             canvas, new Vector2(Input.mousePosition.x, Input.mousePosition.y),
-                            camera, out pos))
+                            newCamera, out pos))
 
                     currentTouchPoint = pos;
                 
@@ -55,7 +55,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 if (FishingLogic.instance.pulling)
                 {
-                    hook.Translate(new Vector3(joystickDir.normalized.x, joystickDir.normalized.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime * 100);
+                    hook.Translate(new Vector3(joystickDir.normalized.x, joystickDir.normalized.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime * 50);
                 }
 
                 //print(joystickDir);
@@ -91,7 +91,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                             canvas, new Vector2(Input.mousePosition.x, Input.mousePosition.y),
 
-                            camera, out pos))
+                            newCamera, out pos))
 
                     joystick_Background.transform.localPosition = pos;
                 joystick_Handle.transform.localPosition = pos;
@@ -101,6 +101,8 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 
                 touchStartPoint = pos;
+
+                print(pos);
             }
         }
     }

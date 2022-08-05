@@ -104,6 +104,8 @@ public class FishList
 
             fish.transform.SetParent(Parent);
             fish.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
+            fish.GetComponent<Fish>().hooked = false;
+            fish.GetComponent<Rigidbody>().isKinematic = false;
             fish.SetActive(true);
 
             return fish;

@@ -14,11 +14,11 @@ public class RopeBridge : MonoBehaviour
     public float lineWidth = 0.1f;
 
     [SerializeField] private float distOfStartToEnd = 0;
-    [SerializeField] private float lengthOfSegment = 0;
+    //[SerializeField] private float lengthOfSegment = 0;
 
     [SerializeField] private float lineLengthMultifly = 0.8f;
 
-    
+
 
     // Use this for initialization
     void Start()
@@ -39,6 +39,19 @@ public class RopeBridge : MonoBehaviour
         distOfStartToEnd = Vector3.Distance(StartPoint.position, EndPoint.position);
 
         distOfStartToEnd = (distOfStartToEnd / segmentLength) * lineLengthMultifly;
+
+        if (distOfStartToEnd < 1)
+        {
+            lineLengthMultifly = 0.8f;
+        }
+        else if (distOfStartToEnd > 1 && distOfStartToEnd < 2)
+        {
+            lineLengthMultifly = 0.9f;
+        }
+        else if (distOfStartToEnd > 2)
+        {
+            lineLengthMultifly = 1f;
+        }
 
         ropeSegLen = distOfStartToEnd;
         //print(distOfStartToEnd);

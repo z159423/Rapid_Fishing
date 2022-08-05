@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera newCamera;
     [SerializeField] private Transform target;
 
     public Vector3 offset;
 
     private void FixedUpdate() {
 
-        camera.transform.position = new Vector3(target.transform.position.x, Vector3.Slerp(camera.transform.position, target.transform.position, 1 * Time.deltaTime).y, camera.transform.position.z);
+        newCamera.transform.position = new Vector3(target.transform.position.x, Vector3.Slerp(newCamera.transform.position, target.transform.position, 1 * Time.deltaTime).y, newCamera.transform.position.z);
         
     
     }

@@ -5,6 +5,8 @@ using TMPro;
 
 public class FishingHook : MonoBehaviour
 {
+    public static FishingHook instance;
+
 
     public List<Fish> hookedFish = new List<Fish>();
     public Queue<int> moneyQueue = new Queue<int>();
@@ -53,14 +55,16 @@ public class FishingHook : MonoBehaviour
     private int maxHookableCount = 2;
     private int currentHookedCount = 0;
 
-
-
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI HookedCount;
 
     //    private LightingSettings lightingSettings = new LightingSettings();
 
     public int money = 0;
+
+    private void Awake() {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -129,6 +133,10 @@ public class FishingHook : MonoBehaviour
             {
                 //바늘을 업그레이드 하라는 메시지 출력
                 print("이 물고기는 잡을 수 없습니다, 바늘을 업그레이드 하세요");
+
+                Vector2 dir = (transform.position - other.bounds.center).normalized;
+
+                rigid.AddForce(dir * 1000f);
                 return;
             }
 
@@ -169,22 +177,17 @@ public class FishingHook : MonoBehaviour
 
         for (int i = 0; i < hookedFish.Count; i++)
         {
-            ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType.fishNumber);
+            ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType);
 
             moneyQueue.Enqueue(hookedFish[i].fishType.cost);
 
             FishPool.instance.EnequeueFish(hookedFish[i]);
             //Destroy(hookedFish[i].gameObject);
 
-            var particle = Instantiate(sellParticle, sellParticleParent.position, Quaternion.identity);
-
-            Destroy(particle, 5f);
-
-            money += hookedFish[i].fishType.cost;
-
-            moneyText.text = money.ToString();
-
+            GetMoney(hookedFish[i].fishType.cost);
         }
+
+        ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
 
         currentHookedCount = 0;
         hookedFish.Clear();
@@ -224,5 +227,16 @@ public class FishingHook : MonoBehaviour
     {
         maxHookableCount += (int)value;
         transform.localScale = new Vector3(transform.localScale.x + 0.02f, transform.localScale.y + 0.02f, transform.localScale.z + 0.02f);
+    }
+
+    public void GetMoney(int money)
+    {
+        var particle = Instantiate(sellParticle, sellParticleParent.position, Quaternion.identity);
+
+        Destroy(particle, 5f);
+
+        this.money += money;
+
+        moneyText.text = this.money.ToString();
     }
 }

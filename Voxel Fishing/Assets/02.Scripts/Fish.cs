@@ -21,7 +21,7 @@ public class Fish : MonoBehaviour
 
     [SerializeField] private Rigidbody rigid;
 
-    [SerializeField] private bool biteBait = false;
+    //[SerializeField] private bool biteBait = false;
     [SerializeField] private Vector3 dirToHook;
     [SerializeField] private Transform head;
 
@@ -151,7 +151,7 @@ public class Fish : MonoBehaviour
 
     private void BiteBait()
     {
-        biteBait = true;
+        //biteBait = true;
 
         FishingLogic.instance.biteBate = true;
     }

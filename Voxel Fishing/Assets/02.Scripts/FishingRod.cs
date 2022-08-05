@@ -16,6 +16,11 @@ public class FishingRod : MonoBehaviour
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private GameObject depthText;
 
+    [Space]
+
+    [SerializeField] private Transform throwTarget1;
+    [SerializeField] private Transform throwTarget2;
+
 
     public int hookThrowForce = 400;
 
@@ -79,6 +84,7 @@ public class FishingRod : MonoBehaviour
 
                 currentPullingForece = Mathf.Clamp(currentPullingForece, minPullingForce, maxPullingForce);
                 hookRigid.velocity = (-dir * currentPullingForece);
+                //hookRigid.AddForce(-dir * currentPullingForece * Time.deltaTime * 300);
             }
         }
 
@@ -90,18 +96,22 @@ public class FishingRod : MonoBehaviour
         upgradePanel.SetActive(false);
         upgradeButton.SetActive(false);
         depthText.SetActive(true);
-
         hookRigid.useGravity = true;
 
         yield return new WaitForSeconds(0.3f);
+        Vector2 dir1 = (throwTarget1.position - hookRigid.transform.position).normalized;
+
         hookRigid.isKinematic = false;
         hookRigid.velocity = Vector3.zero;
         hookRigid.drag = 0.05f;
-        hookRigid.AddForce((Vector2.up + Vector2.left) * 250);
+        hookRigid.AddForce(dir1 * 300);
         isStart = true;
         fishingHook.targetHookZoomOffset = 15f;
 
         yield return new WaitForSeconds(0.8f);
+
+        Vector2 dir2 = (throwTarget2.position - hookRigid.transform.position).normalized;
+
         hookRigid.isKinematic = false;
         hookRigid.drag = 0.5f;
         hookRigid.AddForce((Vector2.right + Vector2.up) * 700);

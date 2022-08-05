@@ -14,7 +14,12 @@ public class ChallengeManager : MonoBehaviour
     public IChallenge currentChallenge = null;
     public Transform fishObjectParent;
 
-    private void Awake() 
+    [SerializeField] private FishingHook hook;
+    [SerializeField] private Transform fishObectParent;
+    [SerializeField] private GameObject catchAnyTargetImage;
+    
+
+    private void Awake()
     {
         instance = this;
     }
@@ -22,9 +27,9 @@ public class ChallengeManager : MonoBehaviour
     [System.Serializable]
     public class fishClass
     {
-    public int tier = 1;
+        public int tier = 1;
 
-    public List<targetFish> fishList = new List<targetFish>();
+        public List<targetFish> fishList = new List<targetFish>();
     }
 
     [System.Serializable]
@@ -46,27 +51,41 @@ public class ChallengeManager : MonoBehaviour
 
     public void GenerateNewChallenge()
     {
-        currentChallenge = challengeList[0 /*Random.Range(0, challengeList.Count)*/];
+        if(fishObectParent.GetComponentInChildren<Fish>() != null)
+        {
+            Destroy(fishObectParent.GetComponentInChildren<Fish>().gameObject);
+        }
+        
+        catchAnyTargetImage.SetActive(false);
+        
+        currentChallenge = challengeList[Random.Range(0, challengeList.Count)];
 
         currentChallenge.SetChallengeInit();
 
-        print(currentChallenge.GetChallengeType());
+
+
+        //print(currentChallenge.GetChallengeType());
     }
 
     public abstract class Challenge
     {
         public challengeType ChallengeType;
-
-
-        public abstract bool CheckingChallengeClear();
     }
 
     public interface IChallenge
     {
         public challengeType GetChallengeType();
         public void SetChallengeInit();
-        public void ChangeChallengeProgress(int fishNumber);
+        public void ChangeChallengeProgress(FishType fish);
+        public bool CheckingChallengeClear();
     }
+
+    public void ChallengeChange()
+    {
+        currentChallenge.SetChallengeInit();
+    }
+
+
 
     public class CatchTarget : Challenge, IChallenge
     {
@@ -79,10 +98,12 @@ public class ChallengeManager : MonoBehaviour
 
         public GameObject fishObject;
 
-        public override bool CheckingChallengeClear()
+        public bool CheckingChallengeClear()
         {
             if (catchAmount <= currentCatchCount)
             {
+                FishingHook.instance.GetMoney(reward);
+                SetChallengeInit();
                 return true;
             }
             else
@@ -93,32 +114,36 @@ public class ChallengeManager : MonoBehaviour
 
         public void SetChallengeInit()
         {
+
+            catchAmount = 0;
+            currentCatchCount = 0;
+
             var currentLineLengthUpgrade = Upgrades.instance.lineLengthUpgrade.currentLevel;
 
             int tier = 1;
 
-            if(currentLineLengthUpgrade >= 0 && currentLineLengthUpgrade < 6)
+            if (currentLineLengthUpgrade >= 0 && currentLineLengthUpgrade < 6)
             {
                 tier = 1;
-                catchAmount = Random.Range(2, 11);
+                catchAmount = Random.Range(2, 7);
             }
-            else if(currentLineLengthUpgrade >= 6 && currentLineLengthUpgrade < 11)
+            else if (currentLineLengthUpgrade >= 6 && currentLineLengthUpgrade < 11)
             {
-                tier = Random.Range(1,3);
-                catchAmount = Random.Range(1, 6);
+                tier = Random.Range(1, 3);
+                catchAmount = Random.Range(1, 5);
             }
-            else if(currentLineLengthUpgrade >= 11 && currentLineLengthUpgrade < 16)
+            else if (currentLineLengthUpgrade >= 11 && currentLineLengthUpgrade < 16)
             {
-                tier = Random.Range(2,4);
+                tier = Random.Range(2, 4);
                 catchAmount = Random.Range(1, 4);
             }
-            else if(currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
+            else if (currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
             {
-                tier = Random.Range(3,6);
-                catchAmount = Random.Range(1, 3);
+                tier = Random.Range(3, 6);
+                catchAmount = 1;
             }
 
-            var targetFish = ChallengeManager.instance.fishList[tier-1].fishList[Random.Range(0, ChallengeManager.instance.fishList[tier].fishList.Count)].prefab;
+            var targetFish = ChallengeManager.instance.fishList[tier - 1].fishList[Random.Range(0, ChallengeManager.instance.fishList[tier - 1].fishList.Count)].prefab;
 
             targetFishNumber = targetFish.GetComponent<Fish>().fishType.fishNumber;
 
@@ -126,7 +151,22 @@ public class ChallengeManager : MonoBehaviour
 
             UIManager.instance.challengeText.text = "(" + 0 + " / " + catchAmount + ")";
 
+            Destroy(fishObject);
+
             fishObject = Instantiate(targetFish, ChallengeManager.instance.fishObjectParent);
+
+            fishObject.transform.localPosition = Vector3.zero;
+
+            Vector3 size = fishObject.GetComponentInChildren<SkinnedMeshRenderer>().bounds.size;
+
+            if (size.x > 0.8f)
+            {
+                float value = (size.x - 0.8f) + 1;
+
+                fishObject.transform.localScale = fishObject.transform.localScale / value;
+            }
+
+            //if(size.y > 0.8)
 
             fishObject.GetComponent<Rigidbody>().useGravity = false;
             fishObject.GetComponent<Fish>().enabled = false;
@@ -138,33 +178,66 @@ public class ChallengeManager : MonoBehaviour
             return this.type;
         }
 
-        public void ChangeChallengeProgress(int fishNumber)
+        public void ChangeChallengeProgress(FishType fish)
         {
-            if(fishNumber == this.targetFishNumber)
+            if (fish.fishNumber == this.targetFishNumber)
                 currentCatchCount++;
 
-            if (fishNumber == targetFishNumber)
+            if (fish.fishNumber == targetFishNumber)
             {
                 UIManager.instance.challengeText.text = "(" + currentCatchCount + " / " + catchAmount + ")";
             }
-
-            CheckingChallengeClear();
         }
     }
 
     public class CatchAnyTarget : Challenge, IChallenge
     {
         public challengeType type = challengeType.catchAnyTarget;
-        public int catchAmount;
+        public int catchGoalAmount;
+        public int currentCatchAmount = 0;
+        public int reward;
 
-        public override bool CheckingChallengeClear()
+        public bool CheckingChallengeClear()
         {
-            return false;
+
+            if (currentCatchAmount >= catchGoalAmount)
+            {
+                FishingHook.instance.GetMoney(reward);
+                ChallengeManager.instance.GenerateNewChallenge();
+
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void SetChallengeInit()
         {
-            UIManager.instance.challengeText.text = "(" + 0 + " / " + catchAmount + ")";
+            ChallengeManager.instance.catchAnyTargetImage.SetActive(true);
+
+            var currentLineLengthUpgrade = Upgrades.instance.lineLengthUpgrade.currentLevel;
+
+            if (currentLineLengthUpgrade >= 0 && currentLineLengthUpgrade < 6)
+            {
+                catchGoalAmount = Random.Range(5, 11);
+            }
+            else if (currentLineLengthUpgrade >= 6 && currentLineLengthUpgrade < 11)
+            {
+                catchGoalAmount = Random.Range(10, 16);
+            }
+            else if (currentLineLengthUpgrade >= 11 && currentLineLengthUpgrade < 16)
+            {
+                catchGoalAmount = Random.Range(15, 21);
+            }
+            else if (currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
+            {
+                catchGoalAmount = Random.Range(20, 26);
+            }
+
+            UIManager.instance.challengeText.text = "(" + 0 + " / " + catchGoalAmount + ")";
         }
 
         public challengeType GetChallengeType()
@@ -172,9 +245,12 @@ public class ChallengeManager : MonoBehaviour
             return this.type;
         }
 
-        public void ChangeChallengeProgress(int fishNumber)
+        public void ChangeChallengeProgress(FishType fish)
         {
-            
+            currentCatchAmount += fish.tier;
+            UIManager.instance.challengeText.text = "(" + currentCatchAmount + " / " + catchGoalAmount + ")";
+
+            CheckingChallengeClear();
         }
     }
 }
