@@ -28,6 +28,8 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private Vector2 currentTouchPoint;
     private Vector2 joystickDir;
 
+    [SerializeField] private int clampDist = 130;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -51,7 +53,24 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 Vector2 clampJoystickDir = new Vector2(Mathf.Clamp(joystickDir.x, -100, 100), Mathf.Clamp(joystickDir.y, -100, 100));
 
-                joystick_Handle.transform.localPosition = touchStartPoint + clampJoystickDir;
+                float joystickDist = Vector3.Distance(touchStartPoint, currentTouchPoint);
+
+                if (joystickDist > clampDist)
+                {
+                    float fixPercent = (joystickDist - clampDist) / clampDist;
+
+                    joystick_Handle.transform.localPosition = currentTouchPoint;
+
+                    joystick_Handle.transform.localPosition = touchStartPoint + (joystickDir / (fixPercent + 1));
+
+                    //print(fixPercent);
+                }
+                else
+                {
+                    joystick_Handle.transform.localPosition = currentTouchPoint;
+                }
+
+                //joystick_Handle.transform.localPosition = touchStartPoint + clampJoystickDir;
 
                 if (FishingLogic.instance.pulling)
                 {
