@@ -10,6 +10,8 @@ ScriptsOnlyBuild:
     - FishingLogic
     - FishingRod
     - FixedTouchField
+    - Flock
+    - FlockUnit
     - MapData
     - OceanTrigger
     - RopeBridge
@@ -53,9 +55,7 @@ ScriptsOnlyBuild:
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.ShaderGraph.Editor.dll:
-    - UnityEditor.Graphing.GraphObject
     - UnityEditor.ShaderGraph.Drawing.MaterialGraphEditWindow
-    - UnityEditor.ShaderGraph.ShaderGraphProjectSettings
     - UnityEditor.ShaderGraph.SubGraphAsset
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
@@ -128,6 +128,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.Events.UnityEvent
     - UnityEngine.RectOffset
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
@@ -171,6 +172,9 @@ ScriptsOnlyBuild:
     fullTypeName: Setting
     methodName: OnSoundChangeValue
   - assembly: Assembly-CSharp
+    fullTypeName: Upgrades
+    methodName: OnMoneyChange
+  - assembly: Assembly-CSharp
     fullTypeName: FishingLogic
     methodName: FishingStart
   - assembly: Assembly-CSharp
@@ -179,6 +183,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: ChallengeManager
     methodName: GenerateNewChallenge
+  - assembly: Assembly-CSharp
+    fullTypeName: ChallengeManager
+    methodName: CloseChallengeSuccessPanel
   - assembly: Assembly-CSharp
     fullTypeName: Upgrades
     methodName: UpgradeHookMoveSpeed
@@ -350,55 +357,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7694}
     - Class: 114
-      Script: {instanceID: 8082}
+      Script: {instanceID: 8000}
     - Class: 114
-      Script: {instanceID: 8208}
+      Script: {instanceID: 8084}
     - Class: 114
-      Script: {instanceID: 8270}
+      Script: {instanceID: 8106}
     - Class: 114
-      Script: {instanceID: 8498}
+      Script: {instanceID: 8212}
     - Class: 114
-      Script: {instanceID: 8514}
+      Script: {instanceID: 8274}
     - Class: 114
-      Script: {instanceID: 8644}
+      Script: {instanceID: 8502}
     - Class: 114
-      Script: {instanceID: 8650}
+      Script: {instanceID: 8518}
     - Class: 114
-      Script: {instanceID: 8814}
+      Script: {instanceID: 8648}
     - Class: 114
-      Script: {instanceID: 8866}
+      Script: {instanceID: 8654}
     - Class: 114
-      Script: {instanceID: 8930}
+      Script: {instanceID: 8818}
     - Class: 114
-      Script: {instanceID: 8936}
+      Script: {instanceID: 8870}
     - Class: 114
-      Script: {instanceID: 9042}
+      Script: {instanceID: 8934}
     - Class: 114
-      Script: {instanceID: 9060}
+      Script: {instanceID: 8940}
     - Class: 114
-      Script: {instanceID: 9212}
+      Script: {instanceID: 9046}
     - Class: 114
-      Script: {instanceID: 9280}
+      Script: {instanceID: 9064}
     - Class: 114
-      Script: {instanceID: 9416}
+      Script: {instanceID: 9216}
     - Class: 114
-      Script: {instanceID: 9592}
+      Script: {instanceID: 9284}
     - Class: 114
-      Script: {instanceID: 10072}
+      Script: {instanceID: 9420}
     - Class: 114
-      Script: {instanceID: 10126}
+      Script: {instanceID: 9596}
     - Class: 114
-      Script: {instanceID: 10252}
+      Script: {instanceID: 10076}
     - Class: 114
-      Script: {instanceID: 10634}
+      Script: {instanceID: 10130}
     - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 10256}
     - Class: 114
-      Script: {instanceID: 11154}
+      Script: {instanceID: 10638}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11076}
     - Class: 114
-      Script: {instanceID: 11448}
+      Script: {instanceID: 11158}
+    - Class: 114
+      Script: {instanceID: 11350}
+    - Class: 114
+      Script: {instanceID: 11452}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -846,7 +857,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 425962fb86189f47b5b3a579af7384bd
+      Hash: 393ad66bedea10f1c2da8d3c7d5f9787
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FishingHook
@@ -882,7 +893,7 @@ ScriptsOnlyBuild:
     className: CinemachineSmoothPath
   - hash:
       serializedVersion: 2
-      Hash: 9bf1644f255ee89f61649452ce1abffc
+      Hash: c6acef428f55d1220cb4f3868fe353f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FixedTouchField
@@ -1428,6 +1439,12 @@ ScriptsOnlyBuild:
     className: VolumeComponent
   - hash:
       serializedVersion: 2
+      Hash: 66035a02f9e63a9e48aa1c4d215f6464
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FlockUnit
+  - hash:
+      serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
     assemblyName: Unity.VisualScripting.State.dll
     namespaceName: Unity.VisualScripting
@@ -1456,6 +1473,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering.UI
     className: UIFoldout
+  - hash:
+      serializedVersion: 2
+      Hash: 4bbe644c5ac6346182e4accc1acbe33b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Flock
   - hash:
       serializedVersion: 2
       Hash: 62824bb9557c7e987502f2fbd2a26819
@@ -1560,7 +1583,7 @@ ScriptsOnlyBuild:
     className: JoystickSetterExample
   - hash:
       serializedVersion: 2
-      Hash: 5a0923308cdb5822b367ccddfb87f79f
+      Hash: 73ebb28d459a28b3a4609c832f3bfed2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Fish
@@ -1788,7 +1811,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: d935580e304e566eb1a150278a8e6bf7
+      Hash: fa673ced974089dd46ae0624d5d897fb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChallengeManager

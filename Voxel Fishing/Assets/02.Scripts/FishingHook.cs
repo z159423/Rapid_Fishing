@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class FishingHook : MonoBehaviour
 {
     public static FishingHook instance;
+
+    public UnityEvent OnMoneyChangeEvent;
 
 
     public List<Fish> hookedFish = new List<Fish>();
@@ -35,6 +38,7 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private TextMeshProUGUI depthText;
     [SerializeField] private FixedTouchField touchField;
+    [SerializeField] private Animator upgradeNeedleTextAnimator;
 
     [Space]
 
@@ -62,7 +66,8 @@ public class FishingHook : MonoBehaviour
 
     public int money = 0;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
     }
 
@@ -137,6 +142,8 @@ public class FishingHook : MonoBehaviour
                 Vector2 dir = (transform.position - other.bounds.center).normalized;
 
                 rigid.AddForce(dir * 1000f);
+
+                upgradeNeedleTextAnimator.SetTrigger("Fadein");
                 return;
             }
 
@@ -238,5 +245,24 @@ public class FishingHook : MonoBehaviour
         this.money += money;
 
         moneyText.text = this.money.ToString();
+
+        OnMoneyChangeEvent.Invoke();
+    }
+
+    public bool UseMoney(int money)
+    {
+        if (this.money >= money)
+        {
+            this.money -= money;
+            OnMoneyChangeEvent.Invoke();
+
+            moneyText.text = this.money.ToString();
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

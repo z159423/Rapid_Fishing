@@ -44,6 +44,8 @@ public class Upgrades : MonoBehaviour
         lineLengthUpgrade.SetText();
         hookMaxUpgrade.SetText();
         hookMoveSpeedUpgrade.SetText();
+
+        OnMoneyChange();
     }
 
     public void OnClickUpgradeButton()
@@ -62,16 +64,29 @@ public class Upgrades : MonoBehaviour
         }
     }
 
+    public void OnMoneyChange()
+    {
+        lineLengthUpgrade.CheckingCover();
+        hookMaxUpgrade.CheckingCover();
+        hookMoveSpeedUpgrade.CheckingCover();
+    }
+
     //최대 후킹수 업그레이드
     public void UpgradeHookMaxCount()
     {
-        if (hookMaxUpgrade.currentLevel == hookMaxUpgrade.maxLevel)
+        if (hookMaxUpgrade.currentLevel == hookMaxUpgrade.maxLevel || !FishingHook.instance.UseMoney(hookMaxUpgrade.upgradeNeedyCost))
             return;
 
         hookMaxUpgrade.currentLevel++;
         hook.UpgradeHookMaxCount(hookMaxUpgrade.upgradeValue);
 
+        //FishingHook.instance.UseMoney(hookMaxUpgrade.upgradeNeedyCost);
+
+        hookMaxUpgrade.ChangeUpgradeCost();
+
         hookMaxUpgrade.SetText();
+
+        
 
         //hookMaxUpgrade.levelText.text = hookMaxUpgrade.currentLevel.ToString();
     }
@@ -80,12 +95,16 @@ public class Upgrades : MonoBehaviour
     //줄 길이 업그레이드
     public void UpgradeLineLength()
     {
-        if (lineLengthUpgrade.currentLevel == lineLengthUpgrade.maxLevel)
+        if (lineLengthUpgrade.currentLevel == lineLengthUpgrade.maxLevel || !FishingHook.instance.UseMoney(lineLengthUpgrade.upgradeNeedyCost))
             return;
 
         lineLengthUpgrade.currentLevel++;
 
         rod.UpgradeLineLength(lineLengthUpgrade.upgradeValue);
+
+        //FishingHook.instance.UseMoney(lineLengthUpgrade.upgradeNeedyCost);
+
+        lineLengthUpgrade.ChangeUpgradeCost();
 
         lineLengthUpgrade.SetText();
     }
@@ -93,21 +112,20 @@ public class Upgrades : MonoBehaviour
     //찌 움직이는 속도 업그레이드
     public void UpgradeHookMoveSpeed()
     {
-        if (hookMoveSpeedUpgrade.currentLevel == hookMoveSpeedUpgrade.maxLevel)
+        if (hookMoveSpeedUpgrade.currentLevel == hookMoveSpeedUpgrade.maxLevel || !FishingHook.instance.UseMoney(hookMoveSpeedUpgrade.upgradeNeedyCost))
             return;
 
         hookMoveSpeedUpgrade.currentLevel++;
 
         touchField.UpgradeHookMoveSpeed(hookMoveSpeedUpgrade.upgradeValue);
 
+        //FishingHook.instance.UseMoney(hookMoveSpeedUpgrade.upgradeNeedyCost);
+
+        hookMoveSpeedUpgrade.ChangeUpgradeCost();
+
         hookMoveSpeedUpgrade.SetText();
     }
 
-    //자석 업그레이드
-    public void UpgradeMagnetic()
-    {
-
-    }
 
     [System.Serializable]
     public class Upgrade
@@ -134,6 +152,22 @@ public class Upgrades : MonoBehaviour
                 needyCostText.gameObject.SetActive(false);
             }
 
+        }
+
+        public void ChangeUpgradeCost()
+        {
+            upgradeNeedyCost += upgradeCostIncreaseValue;
+        }
+
+        public void CheckingCover()
+        {
+            if(upgradeNeedyCost > FishingHook.instance.money)
+            {
+                cover.SetActive(true);
+            }
+            else{
+                cover.SetActive(false);
+            }
         }
 
     }

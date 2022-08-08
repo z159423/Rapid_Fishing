@@ -121,7 +121,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 
                 touchStartPoint = pos;
 
-                print(pos);
+                //print(pos);
             }
         }
     }

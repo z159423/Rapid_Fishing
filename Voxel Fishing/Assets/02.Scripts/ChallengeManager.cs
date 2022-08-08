@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ChallengeManager : MonoBehaviour
 {
@@ -17,11 +18,48 @@ public class ChallengeManager : MonoBehaviour
     [SerializeField] private FishingHook hook;
     [SerializeField] private Transform fishObectParent;
     [SerializeField] private GameObject catchAnyTargetImage;
+
+    [Space]
+
+    [SerializeField] private GameObject challengeSuccessPanel;
+    [SerializeField] private TextMeshProUGUI rewardText;
+    [SerializeField] private GameObject challengeSuccess_CatchAnyTargetImage;
+    [SerializeField] private Transform challengeSuccess_TargetTransform;
+    [SerializeField] private GameObject fishObject;
+
+    private int currentReward = 0;
+
+    [Space]
+
+    [SerializeField] private GameObject currentChallengeImage;
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject tapToStartText;
+    [SerializeField] private GameObject tapToContinueText;
+    
     
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Update() {
+        
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            GenerateNewChallenge();
+        }
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            currentChallenge.ChallengeSuccess();
+        }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            FishingHook.instance.GetMoney(1000);
+        }
+
     }
 
     [System.Serializable]
@@ -47,6 +85,48 @@ public class ChallengeManager : MonoBehaviour
         //print(challengeList.Count);
 
         GenerateNewChallenge();
+    }
+
+    public void ShowChallengeSuccessPanel(int reward, GameObject fishObject = null)
+    {
+        currentReward = reward;
+        tapToStartText.SetActive(false);
+        currentChallengeImage.SetActive(false);
+        upgradeButton.SetActive(false);
+
+        rewardText.text = "+" + reward;
+
+        if(fishObject != null)
+        {
+            Destroy(this.fishObject);
+            challengeSuccess_CatchAnyTargetImage.SetActive(false);
+            this.fishObject = Instantiate(fishObject, challengeSuccess_TargetTransform);
+        }
+        else
+        {
+            challengeSuccess_CatchAnyTargetImage.SetActive(true);
+        }
+
+        challengeSuccessPanel.SetActive(true);
+
+        //Time.timeScale = 0.5f;
+    }
+
+    public void CloseChallengeSuccessPanel()
+    {
+        FishingHook.instance.GetMoney(currentReward);
+
+        Destroy(fishObject);
+        
+        tapToStartText.SetActive(true);
+        currentChallengeImage.SetActive(true);
+        upgradeButton.SetActive(true);
+
+        challengeSuccessPanel.SetActive(false);
+
+        GenerateNewChallenge();
+
+        //Time.timeScale = 1;
     }
 
     public void GenerateNewChallenge()
@@ -78,6 +158,8 @@ public class ChallengeManager : MonoBehaviour
         public void SetChallengeInit();
         public void ChangeChallengeProgress(FishType fish);
         public bool CheckingChallengeClear();
+
+        public void ChallengeSuccess();
     }
 
     public void ChallengeChange()
@@ -102,8 +184,9 @@ public class ChallengeManager : MonoBehaviour
         {
             if (catchAmount <= currentCatchCount)
             {
-                FishingHook.instance.GetMoney(reward);
-                SetChallengeInit();
+                //FishingHook.instance.GetMoney(reward);
+                ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
+                //SetChallengeInit();
                 return true;
             }
             else
@@ -111,6 +194,13 @@ public class ChallengeManager : MonoBehaviour
                 return false;
             }
         }
+
+        public void ChallengeSuccess()
+        {
+            ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
+        }
+
+
 
         public void SetChallengeInit()
         {
@@ -202,8 +292,8 @@ public class ChallengeManager : MonoBehaviour
 
             if (currentCatchAmount >= catchGoalAmount)
             {
-                FishingHook.instance.GetMoney(reward);
-                ChallengeManager.instance.GenerateNewChallenge();
+                //FishingHook.instance.GetMoney(reward);
+                ChallengeManager.instance.ShowChallengeSuccessPanel(reward);
 
                 return true;
 
@@ -212,6 +302,11 @@ public class ChallengeManager : MonoBehaviour
             {
                 return false;
             }
+        }
+
+        public void ChallengeSuccess()
+        {
+            ChallengeManager.instance.ShowChallengeSuccessPanel(reward);
         }
 
         public void SetChallengeInit()
@@ -234,8 +329,10 @@ public class ChallengeManager : MonoBehaviour
             }
             else if (currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
             {
-                catchGoalAmount = Random.Range(20, 26);
+                catchGoalAmount = Random.Range(20, 25);
             }
+
+            reward = catchGoalAmount * 45;
 
             UIManager.instance.challengeText.text = "(" + 0 + " / " + catchGoalAmount + ")";
         }
@@ -247,7 +344,7 @@ public class ChallengeManager : MonoBehaviour
 
         public void ChangeChallengeProgress(FishType fish)
         {
-            currentCatchAmount += fish.tier;
+            currentCatchAmount++;
             UIManager.instance.challengeText.text = "(" + currentCatchAmount + " / " + catchGoalAmount + ")";
 
             CheckingChallengeClear();

@@ -67,16 +67,17 @@ MonoBehaviour:
     cost: 30
     tier: 2
     fishNumber: 8
+  fishData: {fileID: 0}
   sensingRadius: 2
   moveSpeed: 1.5
   followTargetSpeed: 1.5
   rotationSpeed: 2.5
   target: {fileID: 0}
   rigid: {fileID: 0}
-  biteBait: 0
   dirToHook: {x: 0, y: 0, z: 0}
   head: {fileID: 0}
   mapData: {fileID: 11400000, guid: ab99f680a090f4344a8a7188f9a6ca21, type: 2}
+  usingMapDataNumber: 1
   hooked: 0
 --- !u!54 &1255985588015319858
 Rigidbody:
