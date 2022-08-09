@@ -86,7 +86,7 @@ public class Upgrades : MonoBehaviour
 
         hookMaxUpgrade.SetText();
 
-        
+        OnMoneyChange();
 
         //hookMaxUpgrade.levelText.text = hookMaxUpgrade.currentLevel.ToString();
     }
@@ -107,6 +107,8 @@ public class Upgrades : MonoBehaviour
         lineLengthUpgrade.ChangeUpgradeCost();
 
         lineLengthUpgrade.SetText();
+
+        OnMoneyChange();
     }
 
     //찌 움직이는 속도 업그레이드
@@ -124,6 +126,8 @@ public class Upgrades : MonoBehaviour
         hookMoveSpeedUpgrade.ChangeUpgradeCost();
 
         hookMoveSpeedUpgrade.SetText();
+
+        OnMoneyChange();
     }
 
 
@@ -168,6 +172,15 @@ public class Upgrades : MonoBehaviour
             else{
                 cover.SetActive(false);
             }
+        }
+
+        public void ChangeCurrentLevel(int level)
+        {
+            currentLevel = level;
+            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+
+            SetText();
+            CheckingCover();
         }
 
     }

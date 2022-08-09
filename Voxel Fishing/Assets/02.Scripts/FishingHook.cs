@@ -254,9 +254,10 @@ public class FishingHook : MonoBehaviour
         if (this.money >= money)
         {
             this.money -= money;
-            OnMoneyChangeEvent.Invoke();
-
+            
             moneyText.text = this.money.ToString();
+
+            OnMoneyChangeEvent.Invoke();
 
             return true;
         }
@@ -264,5 +265,14 @@ public class FishingHook : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void ChangeMoney(int value)
+    {
+        money = value;
+
+        moneyText.text = this.money.ToString();
+
+        OnMoneyChangeEvent.Invoke();
     }
 }
