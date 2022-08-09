@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         LoadGameData();
-        SaveGameData();
+        //SaveGameData();
     }
 
     private void Update() {
@@ -109,8 +109,13 @@ public class DataManager : MonoBehaviour
         print("세이브 리셋됨");
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveGameData();
+    private void OnApplicationPause(bool pauseStatus) {
+
+        if(pauseStatus)
+        {
+            SaveGameData();
+        }
+        
     }
+
 }

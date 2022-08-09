@@ -13,11 +13,13 @@ public class OceanTrigger : MonoBehaviour
     [SerializeField] private Rigidbody rigid;
 
     [SerializeField] private FishingHook hook;
+    [SerializeField] private FishingRod rod;
+    
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FishingHook"))
+        if (other.CompareTag("FishingHook") && rod.isStart)
         {
             //other.GetComponent<Rigidbody>().drag = 6.5f;
             

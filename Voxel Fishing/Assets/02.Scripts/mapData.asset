@@ -33,10 +33,10 @@ MonoBehaviour:
     maxMapSize: {x: 57, y: -20, z: 0}
   - tier: 7
     minMapSize: {x: -17, y: -10, z: 0}
-    maxMapSize: {x: 57, y: -25, z: 0}
+    maxMapSize: {x: 57, y: -20, z: 0}
   - tier: 8
-    minMapSize: {x: -17, y: -20, z: 0}
-    maxMapSize: {x: 57, y: -40, z: 0}
+    minMapSize: {x: -17, y: -10, z: 0}
+    maxMapSize: {x: 57, y: -30, z: 0}
   - tier: 9
     minMapSize: {x: -17, y: -50, z: 0}
     maxMapSize: {x: 57, y: -70, z: 0}

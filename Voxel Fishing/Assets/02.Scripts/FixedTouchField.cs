@@ -13,6 +13,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public bool Pressed;
 
     [SerializeField] private Transform hook;
+    [SerializeField] private FishingLogic logic;
 
     [Space]
 
@@ -47,7 +48,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                             newCamera, out pos))
 
                     currentTouchPoint = pos;
-                
+
 
                 joystickDir = (currentTouchPoint - touchStartPoint);
 
@@ -102,6 +103,11 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         if (PointerId >= 0 && PointerId < Input.touches.Length)
         {
+            if(logic.enablePulling)
+            {
+                logic.StartPull();
+            }
+
             if (FishingLogic.instance.pulling)
             {
 
@@ -118,7 +124,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 joystick_Background.gameObject.SetActive(true);
                 joystick_Handle.gameObject.SetActive(true);
 
-                
+
                 touchStartPoint = pos;
 
                 //print(pos);

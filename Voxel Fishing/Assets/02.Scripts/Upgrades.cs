@@ -69,6 +69,7 @@ public class Upgrades : MonoBehaviour
         lineLengthUpgrade.CheckingCover();
         hookMaxUpgrade.CheckingCover();
         hookMoveSpeedUpgrade.CheckingCover();
+
     }
 
     //최대 후킹수 업그레이드

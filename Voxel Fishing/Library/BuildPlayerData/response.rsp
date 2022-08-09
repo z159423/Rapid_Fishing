@@ -25,6 +25,7 @@
 -a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PlayerScriptAssemblies/Unity.ScriptableBuildPipeline.dll"
 -a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PlayerScriptAssemblies/Unity.VisualScripting.State.dll"
 -a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PlayerScriptAssemblies/Unity.Services.Core.Device.dll"
+-a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PlayerScriptAssemblies/IngameDebugConsole.Runtime.dll"
 -a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
 -a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -a="/Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Library/PackageCache/com.unity.cinemachine@2.8.6/Runtime/ThirdParty/clipper_library.dll"

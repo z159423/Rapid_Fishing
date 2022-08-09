@@ -44,6 +44,7 @@ public class FishingHook : MonoBehaviour
 
     [SerializeField] private SpriteRenderer[] Oceans;
     [SerializeField] private Light lights;
+    [SerializeField] private ParticleSystem catchRingParticle;
     public float oceanSpriteValueMultifly = 1f;
 
 
@@ -162,6 +163,8 @@ public class FishingHook : MonoBehaviour
 
             currentHookedCount += fish.fishType.tier;
 
+            catchRingParticle.Play();
+
             if (currentHookedCount == maxHookableCount)
                 //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
                 HookedCount.text = "MAX!";
@@ -233,7 +236,7 @@ public class FishingHook : MonoBehaviour
     public void UpgradeHookMaxCount(float value)
     {
         maxHookableCount += (int)value;
-        transform.localScale = new Vector3(transform.localScale.x + 0.02f, transform.localScale.y + 0.02f, transform.localScale.z + 0.02f);
+        transform.localScale = new Vector3(transform.localScale.x + 0.007f, transform.localScale.y + 0.007f, transform.localScale.z + 0.007f);
     }
 
     public void GetMoney(int money)
@@ -274,5 +277,7 @@ public class FishingHook : MonoBehaviour
         moneyText.text = this.money.ToString();
 
         OnMoneyChangeEvent.Invoke();
+
+        //DataManager.instance.SaveGameData();
     }
 }
