@@ -35,27 +35,30 @@ public class ChallengeManager : MonoBehaviour
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private GameObject tapToStartText;
     [SerializeField] private GameObject tapToContinueText;
-    
-    
+
+    [SerializeField] private GameObject targetMarkerPrefab;
+
+
 
     private void Awake()
     {
         instance = this;
     }
 
-    private void Update() {
-        
-        if(Input.GetKeyDown(KeyCode.Z))
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             GenerateNewChallenge();
         }
 
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             currentChallenge.ChallengeSuccess();
         }
 
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             FishingHook.instance.GetMoney(1000);
         }
@@ -96,7 +99,7 @@ public class ChallengeManager : MonoBehaviour
 
         rewardText.text = "+" + reward;
 
-        if(fishObject != null)
+        if (fishObject != null)
         {
             Destroy(this.fishObject);
             challengeSuccess_CatchAnyTargetImage.SetActive(false);
@@ -117,7 +120,7 @@ public class ChallengeManager : MonoBehaviour
         FishingHook.instance.GetMoney(currentReward);
 
         Destroy(fishObject);
-        
+
         tapToStartText.SetActive(true);
         currentChallengeImage.SetActive(true);
         upgradeButton.SetActive(true);
@@ -131,13 +134,13 @@ public class ChallengeManager : MonoBehaviour
 
     public void GenerateNewChallenge()
     {
-        if(fishObectParent.GetComponentInChildren<Fish>() != null)
+        if (fishObectParent.GetComponentInChildren<Fish>() != null)
         {
             Destroy(fishObectParent.GetComponentInChildren<Fish>().gameObject);
         }
-        
+
         catchAnyTargetImage.SetActive(false);
-        
+
         currentChallenge = challengeList[Random.Range(0, challengeList.Count)];
 
         currentChallenge.SetChallengeInit();
@@ -168,17 +171,19 @@ public class ChallengeManager : MonoBehaviour
     }
 
 
-
+    [System.Serializable]
     public class CatchTarget : Challenge, IChallenge
     {
         public challengeType type = challengeType.catchTarget;
 
         public int catchAmount;
-        public int currentCatchCount;
+        public int currentCatchCount = 0;
         public int targetFishNumber;
         public int reward;
 
         public GameObject fishObject;
+
+        public List<GameObject> targetMarkerList = new List<GameObject>();
 
         public bool CheckingChallengeClear()
         {
@@ -197,7 +202,15 @@ public class ChallengeManager : MonoBehaviour
 
         public void ChallengeSuccess()
         {
+            currentCatchCount = 0;
             ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
+
+            for(int i = 0; i < targetMarkerList.Count; i++)
+            {
+                Destroy(targetMarkerList[i]);
+            }
+
+            targetMarkerList.Clear();
         }
 
 
@@ -261,6 +274,8 @@ public class ChallengeManager : MonoBehaviour
             fishObject.GetComponent<Rigidbody>().useGravity = false;
             fishObject.GetComponent<Fish>().enabled = false;
             fishObject.GetComponent<Animator>().enabled = false;
+
+            GenerateTargetMarker();
         }
 
         public challengeType GetChallengeType()
@@ -278,8 +293,20 @@ public class ChallengeManager : MonoBehaviour
                 UIManager.instance.challengeText.text = "(" + currentCatchCount + " / " + catchAmount + ")";
             }
         }
+
+        public void GenerateTargetMarker()
+        {
+            for(int i = 0; i < FishPool.instance.generatedFishList.Count; i++)
+            {
+                if(FishPool.instance.generatedFishList[i].fishType.fishNumber == targetFishNumber)
+                {
+                    targetMarkerList.Add(Instantiate(ChallengeManager.instance.targetMarkerPrefab, FishPool.instance.generatedFishList[i].transform));
+                }
+            }
+        }
     }
 
+    [System.Serializable]
     public class CatchAnyTarget : Challenge, IChallenge
     {
         public challengeType type = challengeType.catchAnyTarget;
@@ -293,7 +320,10 @@ public class ChallengeManager : MonoBehaviour
             if (currentCatchAmount >= catchGoalAmount)
             {
                 //FishingHook.instance.GetMoney(reward);
+                currentCatchAmount = 0;
                 ChallengeManager.instance.ShowChallengeSuccessPanel(reward);
+
+                print(currentCatchAmount + " " + catchGoalAmount);
 
                 return true;
 

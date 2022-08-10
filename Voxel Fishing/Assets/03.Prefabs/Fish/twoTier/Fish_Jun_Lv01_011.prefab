@@ -392,7 +392,7 @@ MonoBehaviour:
   dirToHook: {x: 0, y: 0, z: 0}
   head: {fileID: 0}
   mapData: {fileID: 11400000, guid: ab99f680a090f4344a8a7188f9a6ca21, type: 2}
-  usingMapDataNumber: 1
+  usingMapDataNumber: 12
   hooked: 0
 --- !u!54 &4691408444407357910
 Rigidbody:

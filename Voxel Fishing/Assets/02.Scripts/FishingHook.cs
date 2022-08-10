@@ -63,6 +63,9 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI HookedCount;
 
+    public bool fullHooked = false;
+    public bool inTheOcean = false;
+
     //    private LightingSettings lightingSettings = new LightingSettings();
 
     public int money = 0;
@@ -78,7 +81,7 @@ public class FishingHook : MonoBehaviour
         if (FishingLogic.instance.enablePulling)
         {
             float dis = Vector3.Distance(startPoint.position, hook.position);
-            if (rod.maxLine - 20 < dis)
+            if (rod.maxLine * 0.8f < dis)
                 rigid.drag = Mathf.Lerp(rigid.drag, maxDrag, dragSpeed * Time.deltaTime);
         }
         else
@@ -135,6 +138,7 @@ public class FishingHook : MonoBehaviour
             if (fish.hooked || !FishingLogic.instance.pulling)
                 return;
 
+            /*
             if (fish.fishType.tier > maxHookableCount)
             {
                 //바늘을 업그레이드 하라는 메시지 출력
@@ -146,9 +150,9 @@ public class FishingHook : MonoBehaviour
 
                 upgradeNeedleTextAnimator.SetTrigger("Fadein");
                 return;
-            }
+            } */
 
-            if (currentHookedCount + fish.fishType.tier > maxHookableCount)
+            if (currentHookedCount >= maxHookableCount)
             {
                 //바늘을 업그레이드 하라는 메시지 출력
                 print("바늘이 가득찼습니다.");
@@ -161,13 +165,17 @@ public class FishingHook : MonoBehaviour
 
             fish.Hooked(tempTrans);
 
-            currentHookedCount += fish.fishType.tier;
+            //currentHookedCount += fish.fishType.tier;
+            currentHookedCount++;
 
             catchRingParticle.Play();
 
-            if (currentHookedCount == maxHookableCount)
-                //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
+            if (currentHookedCount >= maxHookableCount)
+            {
+                fullHooked = true;
                 HookedCount.text = "MAX!";
+            }
+                //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
             else
                 //HookedCount.text = "X" + currentHookedCount.ToString();
                 HookedCount.text = "(" + currentHookedCount.ToString() + " / " + maxHookableCount + ")";
@@ -184,6 +192,7 @@ public class FishingHook : MonoBehaviour
         targetHookZoomOffset = 0;
 
         rigid.useGravity = true;
+        fullHooked = false;
 
         for (int i = 0; i < hookedFish.Count; i++)
         {
@@ -221,13 +230,15 @@ public class FishingHook : MonoBehaviour
 
                 yield return new WaitForSeconds(.3f);
             }
-
-
         }
 
         fishingRodSkinned.SetBlendShapeWeight(1, 0);
 
         playerModel.rotation = Quaternion.Euler(0, 90, 0);
+
+        //CinemachineController.instance.ChangeFollow(CinemachineController.instance.playerTrans);
+        //CinemachineController.instance.ChnageOffset(CinemachineController.instance.playerOffset);
+        CinemachineController.instance.FollowPlayer();
 
         //money TMP Display
 

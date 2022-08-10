@@ -17,6 +17,10 @@ public class FishPool : MonoBehaviour
 
     public static FishPool instance;
 
+    [Space]
+
+    public List<Fish> generatedFishList = new List<Fish>();
+
     private void Awake()
     {
         instance = this;

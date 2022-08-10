@@ -14,6 +14,7 @@ public class Upgrades : MonoBehaviour
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private GameObject upgradeTap;
     [SerializeField] private GameObject closeTap;
+    [SerializeField] private GameObject tapToStartText;
 
 
     [Space]
@@ -56,11 +57,17 @@ public class Upgrades : MonoBehaviour
         {
             upgradeTap.SetActive(false);
             closeTap.SetActive(true);
+
+            if(tapToStartText.activeSelf)
+            {
+                tapToStartText.SetActive(false);
+            }
         }
         else
         {
             upgradeTap.SetActive(true);
             closeTap.SetActive(false);
+            tapToStartText.SetActive(true);
         }
     }
 

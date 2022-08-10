@@ -73,7 +73,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 //joystick_Handle.transform.localPosition = touchStartPoint + clampJoystickDir;
 
-                if (FishingLogic.instance.pulling)
+                if (FishingLogic.instance.pulling && FishingHook.instance.inTheOcean)
                 {
                     hook.Translate(new Vector3(joystickDir.normalized.x, joystickDir.normalized.y * 0.5f, 0) * hookMoveSpeed * Time.deltaTime * 50);
                 }

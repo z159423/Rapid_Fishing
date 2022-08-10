@@ -53,8 +53,13 @@ public class Fish : MonoBehaviour
 
     private void OnEnable()
     {
+        FishPool.instance.generatedFishList.Add(this);
         StartCoroutine(ChangeTargetPosition());
 
+    }
+
+    private void OnDisable() {
+        FishPool.instance.generatedFishList.Remove(this);
     }
 
     void Update()

@@ -37,6 +37,11 @@ public class OceanTrigger : MonoBehaviour
             hook.targetHookZoomOffset = 7f;
         }
 
+        if (other.CompareTag("FishingHook"))
+        {
+            hook.inTheOcean = true;
+        }
+
         if (other.TryGetComponent<Fish>(out Fish fish))
         {
             fish.GetComponent<Rigidbody>().useGravity = false;
@@ -47,8 +52,6 @@ public class OceanTrigger : MonoBehaviour
         {
             rigid.useGravity = false;
         }
-
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -72,6 +75,8 @@ public class OceanTrigger : MonoBehaviour
                 rigid.useGravity = true;
             }
 
+            hook.inTheOcean = false;
+
         }
 
         if (other.TryGetComponent<Fish>(out Fish fish))
@@ -79,6 +84,6 @@ public class OceanTrigger : MonoBehaviour
             fish.GetComponent<Rigidbody>().useGravity = true;
         }
 
-
+        
     }
 }
