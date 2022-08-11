@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637956894670000000
+      ticks: 637957993380000000
     m_Hash: 1695709316
   m_LockFileStatus:
     m_FilePath: /Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637956894690000000
+      ticks: 637957993390000000
     m_Hash: 1668328906
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StylizedWater
-  m_Shader: {fileID: -6465566751694194690, guid: 756d6c61bce2f4a95a5eb8adc7cc1450, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1673052a546464ad799de334fe41f5d0, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -56,6 +56,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
@@ -64,6 +76,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Foam_Amount: 0.17
+    - _Foam_Scale: 30
+    - _Foam_Speed: 0.3
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -71,20 +86,33 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
+    - _QueueOffset: 0
     - _RefractinSpeed: 1
     - _RefractionScale: 1
+    - _Refraction_Scale: 0.43
+    - _Refraction_Speed: 0.04
+    - _Refraction_Strenght: 0.6
     - _RefreactionStrength: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _Use_Waves: 0
     - _WaterDepth: 10
+    - _Water_Depth_Fade_Distance: 0.66
+    - _Wave_Height: 1
+    - _Wave_Scale: 0.1
+    - _Wave_Speed: 0.05
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DeepWater: {r: 0.3066038, g: 0.3522952, b: 1, a: 0.59607846}
+    - _Deep_Water_Color: {r: 0, g: 0.1565759, b: 0.7924528, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Foam_Color: {r: 0.9575472, g: 1, b: 0.9953023, a: 1}
     - _ShallowWater: {r: 0.4198113, g: 0.9710195, b: 1, a: 0.22745098}
+    - _Shallow_Water_Color: {r: 0.1084906, g: 0.9138659, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1481203426117413910
 MonoBehaviour:
