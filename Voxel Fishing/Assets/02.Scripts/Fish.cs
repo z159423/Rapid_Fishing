@@ -219,4 +219,5 @@ public class FishType
     public int tier = 1;
 
     public int fishNumber = 1;
+    public Vector3 boundSize = new Vector3(1,1,1);
 }

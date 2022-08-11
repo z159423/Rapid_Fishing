@@ -190,6 +190,7 @@ public class ChallengeManager : MonoBehaviour
             if (catchAmount <= currentCatchCount)
             {
                 //FishingHook.instance.GetMoney(reward);
+                ChallengeSuccess();
                 ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
                 //SetChallengeInit();
                 return true;
@@ -203,14 +204,16 @@ public class ChallengeManager : MonoBehaviour
         public void ChallengeSuccess()
         {
             currentCatchCount = 0;
-            ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
 
-            for(int i = 0; i < targetMarkerList.Count; i++)
+            for (int i = 0; i < targetMarkerList.Count; i++)
             {
                 Destroy(targetMarkerList[i]);
             }
 
             targetMarkerList.Clear();
+
+            ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
+
         }
 
 
@@ -230,17 +233,17 @@ public class ChallengeManager : MonoBehaviour
                 tier = 1;
                 catchAmount = Random.Range(2, 7);
             }
-            else if (currentLineLengthUpgrade >= 6 && currentLineLengthUpgrade < 11)
+            else if (currentLineLengthUpgrade >= 5 && currentLineLengthUpgrade < 11)
             {
                 tier = Random.Range(1, 3);
                 catchAmount = Random.Range(1, 5);
             }
-            else if (currentLineLengthUpgrade >= 11 && currentLineLengthUpgrade < 16)
+            else if (currentLineLengthUpgrade >= 10 && currentLineLengthUpgrade < 16)
             {
                 tier = Random.Range(2, 4);
                 catchAmount = Random.Range(1, 4);
             }
-            else if (currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
+            else if (currentLineLengthUpgrade >= 15 && currentLineLengthUpgrade < 21)
             {
                 tier = Random.Range(3, 6);
                 catchAmount = 1;
@@ -296,11 +299,19 @@ public class ChallengeManager : MonoBehaviour
 
         public void GenerateTargetMarker()
         {
-            for(int i = 0; i < FishPool.instance.generatedFishList.Count; i++)
+            for (int i = 0; i < FishPool.instance.generatedFishList.Count; i++)
             {
-                if(FishPool.instance.generatedFishList[i].fishType.fishNumber == targetFishNumber)
+                if (FishPool.instance.generatedFishList[i].fishType.fishNumber == targetFishNumber)
                 {
-                    targetMarkerList.Add(Instantiate(ChallengeManager.instance.targetMarkerPrefab, FishPool.instance.generatedFishList[i].transform));
+
+                    var marker = Instantiate(ChallengeManager.instance.targetMarkerPrefab,
+                    FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>().bounds.center
+                    , Quaternion.identity
+                    , FishPool.instance.generatedFishList[i].transform);
+
+                    marker.transform.localScale = FishPool.instance.generatedFishList[i].fishType.boundSize;
+
+                    targetMarkerList.Add(marker);
                 }
             }
         }
@@ -321,9 +332,8 @@ public class ChallengeManager : MonoBehaviour
             {
                 //FishingHook.instance.GetMoney(reward);
                 currentCatchAmount = 0;
+                ChallengeSuccess();
                 ChallengeManager.instance.ShowChallengeSuccessPanel(reward);
-
-                print(currentCatchAmount + " " + catchGoalAmount);
 
                 return true;
 
@@ -374,6 +384,7 @@ public class ChallengeManager : MonoBehaviour
 
         public void ChangeChallengeProgress(FishType fish)
         {
+            
             currentCatchAmount++;
             UIManager.instance.challengeText.text = "(" + currentCatchAmount + " / " + catchGoalAmount + ")";
 

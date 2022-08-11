@@ -173,7 +173,7 @@ public class Upgrades : MonoBehaviour
 
         public void CheckingCover()
         {
-            if(upgradeNeedyCost > FishingHook.instance.money)
+            if(upgradeNeedyCost > FishingHook.instance.money && !(currentLevel >= maxLevel))
             {
                 cover.SetActive(true);
             }

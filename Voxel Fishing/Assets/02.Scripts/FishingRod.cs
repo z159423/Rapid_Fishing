@@ -90,7 +90,7 @@ public class FishingRod : MonoBehaviour
 
                 if (fishingHook.fullHooked || !fishingHook.inTheOcean)
                 {
-                    hookRigid.velocity = (-dir * (currentPullingForece * 2));
+                    hookRigid.velocity = (-dir * (currentPullingForece * 2.5f));
                 }
                 else
                 {

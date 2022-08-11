@@ -201,6 +201,7 @@ MonoBehaviour:
     cost: 600
     tier: 5
     fishNumber: 29
+    boundSize: {x: 2.5, y: 2.5, z: 1}
   fishData: {fileID: 0}
   sensingRadius: 2
   moveSpeed: 2
