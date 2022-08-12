@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
+using TMPro;
 
 public class DataManager : MonoBehaviour
 {
 
     public static DataManager instance;
+
+    public GameObject setting;
+
+    [SerializeField] public Slider soundSlider;
+    [SerializeField] private TextMeshProUGUI soundSliderHandleText;
+
+    [SerializeField] public Slider hapticSlider;
+    [SerializeField] private TextMeshProUGUI hapticSliderHandleText;
 
     private void Awake()
     {
@@ -49,7 +59,7 @@ public class DataManager : MonoBehaviour
 
         if (File.Exists(filePath))
         {
-            print("세이브 파일 불러오기 성공");
+            print("세이브 파일 불러오기 성공" + filePath);
             string FromJsonData = File.ReadAllText(filePath);
             _gameData = JsonUtility.FromJson<GameData>(FromJsonData);
 
@@ -64,6 +74,13 @@ public class DataManager : MonoBehaviour
             Upgrades.instance.hookMaxUpgrade.ChangeCurrentLevel(_gameData.needleUpgrade);
             Upgrades.instance.lineLengthUpgrade.ChangeCurrentLevel(_gameData.lineUpgrade);
             Upgrades.instance.hookMoveSpeedUpgrade.ChangeCurrentLevel(_gameData.reelUpgrade);
+
+            soundSlider.value = _gameData.sound;
+            soundSlider.onValueChanged.Invoke(0);
+
+            hapticSlider.value = _gameData.haptic;
+            hapticSlider.onValueChanged.Invoke(0);
+            
         }
         else
         {
@@ -78,6 +95,9 @@ public class DataManager : MonoBehaviour
         gameData.needleUpgrade = Upgrades.instance.hookMaxUpgrade.currentLevel;
         gameData.lineUpgrade = Upgrades.instance.lineLengthUpgrade.currentLevel;
         gameData.reelUpgrade = Upgrades.instance.hookMoveSpeedUpgrade.currentLevel;
+        gameData.sound = soundSlider.value;
+        gameData.haptic = hapticSlider.value;
+
 
         string ToJsonData = JsonUtility.ToJson(gameData);
         string filePath = Application.persistentDataPath + gameDataFileName;
@@ -118,4 +138,46 @@ public class DataManager : MonoBehaviour
         
     }
 
+    public void SettingOnOff()
+    {
+        setting.SetActive(!setting.activeSelf);
+    }
+
+    public void OnSoundChangeValue()
+    {
+        if (soundSlider.value == 0f)
+        {
+            soundSliderHandleText.text = "OFF";
+        }
+        else
+        {
+            soundSliderHandleText.text = "ON";
+        }
+    }
+
+    public void OnHapticChangeValue()
+    {
+        if (hapticSlider.value == 0f)
+        {
+            hapticSliderHandleText.text = "OFF";
+        }
+        else
+        {
+            hapticSliderHandleText.text = "ON";
+        }
+    }
+
+}
+
+[System.Serializable]
+public class GameData
+{
+    public int money;
+    
+    public int needleUpgrade;
+    public int lineUpgrade;
+    public int reelUpgrade;
+
+    public float sound = 1;
+    public float haptic = 1;
 }

@@ -43,6 +43,8 @@ public class FishingHook : MonoBehaviour
     [Space]
 
     [SerializeField] private SpriteRenderer[] Oceans;
+    [SerializeField] private SpriteRenderer OceanSurface;
+    
     [SerializeField] private Light lights;
     [SerializeField] private ParticleSystem catchRingParticle;
     public float oceanSpriteValueMultifly = 1f;
@@ -117,6 +119,8 @@ public class FishingHook : MonoBehaviour
                 lights.intensity = Mathf.Clamp(lights.intensity, 0, 1);
 
             }
+
+            OceanSurface.color = new Color(OceanSurface.color.r,OceanSurface.color.g,OceanSurface.color.b,(210 + Mathf.Abs((int)(hook.position.y))) / 255f);
         }
         else
         {

@@ -10,6 +10,9 @@ public static class Vibration
 #endif
     public static void Vibrate()
     {
+        if(DataManager.instance.hapticSlider.value == 0)
+            return;
+
 #if UNITY_ANDROID && !UNITY_EDITOR
         AndroidVibrator.Call("vibrate");
 #else
@@ -19,6 +22,9 @@ public static class Vibration
  
     public static void Vibrate(long milliseconds)
     {
+        if(DataManager.instance.hapticSlider.value == 0)
+            return;
+
 #if UNITY_ANDROID && !UNITY_EDITOR
         AndroidVibrator.Call("vibrate", milliseconds);
 #else

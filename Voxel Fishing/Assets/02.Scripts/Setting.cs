@@ -8,13 +8,13 @@ using TMPro;
 public class Setting : MonoBehaviour
 {
 
+
     [SerializeField] private GameObject setting;
-    [SerializeField] private Slider soundSlider;
+    [SerializeField] public Slider soundSlider {get {return soundSlider;}}
     [SerializeField] private TextMeshProUGUI soundSliderHandleText;
 
-    [SerializeField] private Slider hapticSlider;
+    [SerializeField] public Slider hapticSlider {get {return hapticSlider;}}
     [SerializeField] private TextMeshProUGUI hapticSliderHandleText;
-
 
     public void SettingOnOff()
     {

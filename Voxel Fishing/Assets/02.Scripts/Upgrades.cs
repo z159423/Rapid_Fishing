@@ -18,19 +18,28 @@ public class Upgrades : MonoBehaviour
 
 
     [Space]
-    public Upgrade lineLengthUpgrade = new Upgrade();
+    public RangeUpgrade lineLengthUpgrade = new RangeUpgrade();
     //public float upgradeLineLengthValue = 10f;
     //public int upgradeLineLength_needMoney = 10;
 
     [Space]
-    public Upgrade hookMaxUpgrade = new Upgrade();
+    public CountUpgrade hookMaxUpgrade = new CountUpgrade();
     //public int upgradeHookMaxCountValue = 1;
     //public int upgradeHookMaxCount_needMoney = 10;
 
     [Space]
-    public Upgrade hookMoveSpeedUpgrade = new Upgrade();
+    public MovementUpgrade hookMoveSpeedUpgrade = new MovementUpgrade();
 
     //public float upgradeHookMoveSpeedValue = 0.05f;
+
+    public interface IUpgrade
+    {
+        public void SetText();
+        public void ChangeUpgradeCost();
+        public void CheckingCover();
+        public void ChangeCurrentLevel(int level);
+        public void UpgradeStat();
+    }
 
     private void Awake()
     {
@@ -138,6 +147,11 @@ public class Upgrades : MonoBehaviour
         OnMoneyChange();
     }
 
+    public void UpgradeValue()
+    {
+
+    }
+
 
     [System.Serializable]
     public class Upgrade
@@ -189,6 +203,204 @@ public class Upgrades : MonoBehaviour
 
             SetText();
             CheckingCover();
+        }
+
+    }
+
+    [System.Serializable]
+    public class CountUpgrade : IUpgrade
+    {
+        public int currentLevel = 0;
+        public int maxLevel = 10;
+        public float upgradeValue = 1;
+        public int upgradeNeedyCost = 50;
+        public int upgradeCostIncreaseValue = 80;
+
+        public TextMeshProUGUI levelText;
+        public TextMeshProUGUI needyCostText;
+        public GameObject cover;
+
+        public FishingHook hook;
+
+        public void SetText()
+        {
+            levelText.text = "LV. " + currentLevel.ToString();
+
+            needyCostText.text = upgradeNeedyCost.ToString();
+
+            if (currentLevel == maxLevel)
+            {
+                levelText.text = "LV.MAX";
+                needyCostText.gameObject.SetActive(false);
+            }
+
+        }
+
+        public void ChangeUpgradeCost()
+        {
+            upgradeNeedyCost += upgradeCostIncreaseValue;
+        }
+
+        public void CheckingCover()
+        {
+            if(upgradeNeedyCost > FishingHook.instance.money && !(currentLevel >= maxLevel))
+            {
+                cover.SetActive(true);
+            }
+            else{
+                cover.SetActive(false);
+            }
+        }
+
+        public void ChangeCurrentLevel(int level)
+        {
+            currentLevel = level;
+            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+
+            for(int i = 0; i < level; i++)
+            {
+                UpgradeStat();
+            }
+
+            SetText();
+            CheckingCover();
+        }
+
+        public void UpgradeStat()
+        {
+            hook.UpgradeHookMaxCount(upgradeValue);
+        }
+
+    }
+
+    [System.Serializable]
+    public class RangeUpgrade : IUpgrade
+    {
+        public int currentLevel = 0;
+        public int maxLevel = 20;
+        public float upgradeValue = 4.3f;
+        public int upgradeNeedyCost = 20;
+        public int upgradeCostIncreaseValue = 40;
+
+        public TextMeshProUGUI levelText;
+        public TextMeshProUGUI needyCostText;
+        public GameObject cover;
+
+        public FishingRod rod;
+
+        public void SetText()
+        {
+            levelText.text = "LV. " + currentLevel.ToString();
+
+            needyCostText.text = upgradeNeedyCost.ToString();
+
+            if (currentLevel == maxLevel)
+            {
+                levelText.text = "LV.MAX";
+                needyCostText.gameObject.SetActive(false);
+            }
+
+        }
+
+        public void ChangeUpgradeCost()
+        {
+            upgradeNeedyCost += upgradeCostIncreaseValue;
+        }
+
+        public void CheckingCover()
+        {
+            if(upgradeNeedyCost > FishingHook.instance.money && !(currentLevel >= maxLevel))
+            {
+                cover.SetActive(true);
+            }
+            else{
+                cover.SetActive(false);
+            }
+        }
+
+        public void ChangeCurrentLevel(int level)
+        {
+            currentLevel = level;
+            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+
+            for(int i = 0; i < level; i++)
+            {
+                UpgradeStat();
+            }
+
+            SetText();
+            CheckingCover();
+        }
+
+        public void UpgradeStat()
+        {
+            rod.UpgradeLineLength(upgradeValue);
+        }
+
+    }
+
+    [System.Serializable]
+    public class MovementUpgrade : IUpgrade
+    {
+        public int currentLevel = 0;
+        public int maxLevel = 10;
+        public float upgradeValue = 0.007f;
+        public int upgradeNeedyCost = 30;
+        public int upgradeCostIncreaseValue = 60;
+
+        public TextMeshProUGUI levelText;
+        public TextMeshProUGUI needyCostText;
+        public GameObject cover;
+
+        public FixedTouchField touchField;
+
+        public void SetText()
+        {
+            levelText.text = "LV. " + currentLevel.ToString();
+
+            needyCostText.text = upgradeNeedyCost.ToString();
+
+            if (currentLevel == maxLevel)
+            {
+                levelText.text = "LV.MAX";
+                needyCostText.gameObject.SetActive(false);
+            }
+
+        }
+
+        public void ChangeUpgradeCost()
+        {
+            upgradeNeedyCost += upgradeCostIncreaseValue;
+        }
+
+        public void CheckingCover()
+        {
+            if(upgradeNeedyCost > FishingHook.instance.money && !(currentLevel >= maxLevel))
+            {
+                cover.SetActive(true);
+            }
+            else{
+                cover.SetActive(false);
+            }
+        }
+
+        public void ChangeCurrentLevel(int level)
+        {
+            currentLevel = level;
+            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+
+            for(int i = 0; i < level; i++)
+            {
+                UpgradeStat();
+            }
+
+            SetText();
+            CheckingCover();
+        }
+
+        public void UpgradeStat()
+        {
+            touchField.UpgradeHookMoveSpeed(upgradeValue);
         }
 
     }
