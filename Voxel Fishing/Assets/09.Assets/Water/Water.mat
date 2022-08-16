@@ -66,7 +66,7 @@ Material:
     - Vector1_393C1011: 6.12
     - Vector1_4DF019E7: 10
     - Vector1_57C935A: 0.1
-    - Vector1_70E47BCA: 10000
+    - Vector1_70E47BCA: 1000
     - Vector1_7179A232: 0
     - Vector1_724A07BA: 1000
     - Vector1_88EB4C74: 1
@@ -100,7 +100,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - Color_175D2B09: {r: 0.073291205, g: 0.14778934, b: 0.254717, a: 1}
-    - Color_1E67838A: {r: 0.20790316, g: 0.4196479, b: 0.6037736, a: 1}
+    - Color_1E67838A: {r: 0.24866499, g: 0.34862655, b: 0.41509432, a: 1}
     - Color_275A1945: {r: 0, g: 1016.40967, b: 1109.1731, a: 1}
     - Color_3F827E2D: {r: 0, g: 0.23345047, b: 0.3773585, a: 1}
     - Color_43A9F3D4: {r: 1, g: 1, b: 1, a: 0}
