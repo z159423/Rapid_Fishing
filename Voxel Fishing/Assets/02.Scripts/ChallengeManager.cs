@@ -38,8 +38,6 @@ public class ChallengeManager : MonoBehaviour
 
     [SerializeField] private GameObject targetMarkerPrefab;
 
-
-
     private void Awake()
     {
         instance = this;
@@ -62,7 +60,6 @@ public class ChallengeManager : MonoBehaviour
         {
             FishingHook.instance.GetMoney(1000);
         }
-
     }
 
     [System.Serializable]
@@ -88,6 +85,8 @@ public class ChallengeManager : MonoBehaviour
         //print(challengeList.Count);
 
         GenerateNewChallenge();
+
+        FishingHook.instance.GetMoney(100000);
     }
 
     public void ShowChallengeSuccessPanel(int reward, GameObject fishObject = null)
