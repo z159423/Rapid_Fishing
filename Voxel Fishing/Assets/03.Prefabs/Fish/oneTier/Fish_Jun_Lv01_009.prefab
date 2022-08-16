@@ -276,7 +276,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 10672adcaf0f04dc6a2009de1bb7285c, type: 2}
+  - {fileID: 2100000, guid: f674bb9d3bc787a44851add241a66fd0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -414,6 +414,7 @@ MonoBehaviour:
     cost: 25
     tier: 1
     fishNumber: 7
+    boundSize: {x: 1, y: 1, z: 1}
   fishData: {fileID: 0}
   sensingRadius: 2
   moveSpeed: 1.5
