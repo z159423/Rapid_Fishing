@@ -44,8 +44,11 @@ public class FishingHook : MonoBehaviour
 
     [SerializeField] private SpriteRenderer[] Oceans;
     [SerializeField] private SpriteRenderer OceanSurface;
-    
-    [SerializeField] private Light lights;
+    [SerializeField] private Material depthMask;
+
+    [SerializeField] private Light sunLights;
+    [SerializeField] private Light hookLight;
+    [SerializeField] private Light challengeLight;
     [SerializeField] private ParticleSystem catchRingParticle;
     public float oceanSpriteValueMultifly = 1f;
 
@@ -105,22 +108,27 @@ public class FishingHook : MonoBehaviour
         {
             depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
 
+            float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
+            value = Mathf.Clamp(value, 30f / 255f, 1);
+
+            float value2 = (200 + (hook.position.y * 2.5f)) / 255f;
+            float value3 = hook.position.y * 0.01f;
+
             for (int i = 0; i < Oceans.Length; i++)
             {
-                float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
-                float value2 = (200 + (hook.position.y * 2.5f)) / 255f;
-                float value3 = hook.position.y * 0.01f;
-
                 Oceans[i].color = new Color(value, value, value, Oceans[i].color.a);
-
                 RenderSettings.ambientLight = new Color(value2, value2, value2);
-
-                lights.intensity = 1 + value3;
-                lights.intensity = Mathf.Clamp(lights.intensity, 0, 1);
-
             }
 
-            OceanSurface.color = new Color(OceanSurface.color.r,OceanSurface.color.g,OceanSurface.color.b,(210 + Mathf.Abs((int)(hook.position.y))) / 255f);
+            depthMask.color = new Color(depthMask.color.r, depthMask.color.g, depthMask.color.b, (Mathf.Abs(hook.position.y) * 4f) / 255f);
+
+            sunLights.intensity = 1 + value3;
+            sunLights.intensity = Mathf.Clamp(sunLights.intensity, 0.1f, 1);
+
+            hookLight.intensity = Mathf.Abs(value3);
+            challengeLight.intensity = Mathf.Abs(value3) * 4.5f;
+
+            OceanSurface.color = new Color(OceanSurface.color.r, OceanSurface.color.g, OceanSurface.color.b, (210 + Mathf.Abs((int)(hook.position.y))) / 255f);
         }
         else
         {
@@ -179,7 +187,7 @@ public class FishingHook : MonoBehaviour
                 fullHooked = true;
                 HookedCount.text = "MAX!";
             }
-                //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
+            //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
             else
                 //HookedCount.text = "X" + currentHookedCount.ToString();
                 HookedCount.text = "(" + currentHookedCount.ToString() + " / " + maxHookableCount + ")";
@@ -272,7 +280,7 @@ public class FishingHook : MonoBehaviour
         if (this.money >= money)
         {
             this.money -= money;
-            
+
             moneyText.text = this.money.ToString();
 
             OnMoneyChangeEvent.Invoke();
