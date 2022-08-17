@@ -503,7 +503,7 @@ MonoBehaviour:
     boundSize: {x: 2.5, y: 2.5, z: 1}
   fishData: {fileID: 0}
   sensingRadius: 2
-  moveSpeed: 2
+  moveSpeed: 4
   followTargetSpeed: 1.5
   rotationSpeed: 2
   target: {fileID: 0}
