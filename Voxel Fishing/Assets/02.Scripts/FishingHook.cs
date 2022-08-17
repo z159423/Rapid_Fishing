@@ -205,6 +205,8 @@ public class FishingHook : MonoBehaviour
 
     public void SellFish()
     {
+        rigid.velocity = rigid.velocity * 0.5f;
+
         upgradeButton.SetActive(true);
         depthText.gameObject.SetActive(false);
 
