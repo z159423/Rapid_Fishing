@@ -44,7 +44,9 @@ public class FishingHook : MonoBehaviour
 
     [SerializeField] private SpriteRenderer[] Oceans;
     [SerializeField] private SpriteRenderer OceanSurface;
-    [SerializeField] private Material depthMask;
+    [SerializeField] private MeshRenderer depthMask;
+    [SerializeField] private Material depthMaskMat;
+    
 
     [SerializeField] private Light sunLights;
     [SerializeField] private Light hookLight;
@@ -80,6 +82,10 @@ public class FishingHook : MonoBehaviour
         instance = this;
     }
 
+    private void Start() {
+        //depthMask.materials[0] = Instantiate(depthMaskMat);
+    }
+
     private void Update()
     {
 
@@ -108,6 +114,8 @@ public class FishingHook : MonoBehaviour
         {
             depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
 
+            /*
+
             float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
             value = Mathf.Clamp(value, 30f / 255f, 1);
 
@@ -120,15 +128,16 @@ public class FishingHook : MonoBehaviour
                 RenderSettings.ambientLight = new Color(value2, value2, value2);
             }
 
-            depthMask.color = new Color(depthMask.color.r, depthMask.color.g, depthMask.color.b, (Mathf.Abs(hook.position.y) * 4f) / 255f);
+            depthMask.materials[0].color = new Color(depthMask.materials[0].color.r, depthMask.materials[0].color.g, depthMask.materials[0].color.b, (Mathf.Abs(hook.position.y) * 4.5f) / 255f);
 
             sunLights.intensity = 1 + value3;
-            sunLights.intensity = Mathf.Clamp(sunLights.intensity, 0.1f, 1);
+            sunLights.intensity = Mathf.Clamp(sunLights.intensity, 0.25f, 1);
 
             hookLight.intensity = Mathf.Abs(value3);
             challengeLight.intensity = Mathf.Abs(value3) * 4.5f;
 
             OceanSurface.color = new Color(OceanSurface.color.r, OceanSurface.color.g, OceanSurface.color.b, (210 + Mathf.Abs((int)(hook.position.y))) / 255f);
+        */
         }
         else
         {
