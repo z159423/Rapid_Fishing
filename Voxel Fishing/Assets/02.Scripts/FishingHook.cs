@@ -95,20 +95,10 @@ public class FishingHook : MonoBehaviour
             if (rod.maxLine * 0.8f < dis)
                 rigid.drag = Mathf.Lerp(rigid.drag, maxDrag, dragSpeed * Time.deltaTime);
         }
-        else
-        {
-
-        }
-
-        if (FishingLogic.instance.enablePulling)
-        {
-            //targetHookZoomOffset = 5f;
-        }
 
         currentHookZoomSpeed = Mathf.Lerp(currentHookZoomSpeed, targetHookZoomOffset, .5f * Time.deltaTime);
 
         cinemachineCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = -10 - (currentHookZoomSpeed);
-        //virtualCamera.
 
         if (hook.position.y < 0)
         {

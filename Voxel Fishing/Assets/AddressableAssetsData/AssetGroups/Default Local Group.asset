@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 532b6f36c5d1c4e04b8b142e6ce92c03
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 196463ee650074654a51db561c0e43ef
+    m_Address: Assets/05.Materials/Outline.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36248b3e502e2488fa6ec8a79baeda7d, type: 2}
   m_SchemaSet:

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class ChallengeManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class ChallengeManager : MonoBehaviour
     [SerializeField] private GameObject tapToContinueText;
 
     [SerializeField] private GameObject targetMarkerPrefab;
+    [SerializeField] private Material outlineMat;
 
     private void Awake()
     {
@@ -86,7 +88,7 @@ public class ChallengeManager : MonoBehaviour
 
         GenerateNewChallenge();
 
-        FishingHook.instance.GetMoney(100000);
+        ChallengeManager.instance.outlineMat.DOBlendableColor(new Color32(255, 178, 6, 0),"_Outline_Color", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void ShowChallengeSuccessPanel(int reward, GameObject fishObject = null)
@@ -302,7 +304,7 @@ public class ChallengeManager : MonoBehaviour
             {
                 if (FishPool.instance.generatedFishList[i].fishType.fishNumber == targetFishNumber)
                 {
-
+                    /*
                     var marker = Instantiate(ChallengeManager.instance.targetMarkerPrefab,
                     FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>().bounds.center
                     , Quaternion.identity
@@ -311,6 +313,32 @@ public class ChallengeManager : MonoBehaviour
                     marker.transform.localScale = FishPool.instance.generatedFishList[i].fishType.boundSize;
 
                     targetMarkerList.Add(marker);
+                    */
+
+                    /*
+                    GameObject obj = new GameObject("outline");
+                    obj.transform.SetParent(FishPool.instance.generatedFishList[i].transform);
+                    obj.transform.localPosition = Vector3.zero;
+                    obj.transform.localRotation = Quaternion.identity;
+                    obj.transform.localScale = new Vector3(0,0,0);
+                    
+                    var skinned = obj.AddComponent<SkinnedMeshRenderer>();
+                    skinned.material = ChallengeManager.instance.outlineMat;
+
+                    var originSkinned = FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>();
+
+                    skinned.bounds = originSkinned.bounds;
+                    skinned.sharedMesh = originSkinned.sharedMesh;
+                    skinned.rootBone = originSkinned.rootBone; */
+
+                    var copy = Instantiate(FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>().gameObject, FishPool.instance.generatedFishList[i].transform);
+                    copy.GetComponent<SkinnedMeshRenderer>().material = ChallengeManager.instance.outlineMat;
+
+                    //Utils.ComponentUtil.CopyComponent<SkinnedMeshRenderer>(FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>(), obj);
+                    //CopyComponent(FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>(), obj);
+                    //obj.GetComponent<SkinnedMeshRenderer>().materials[0] = ChallengeManager.instance.outlineMat;
+
+                    targetMarkerList.Add(copy);
                 }
             }
         }
@@ -383,7 +411,7 @@ public class ChallengeManager : MonoBehaviour
 
         public void ChangeChallengeProgress(FishType fish)
         {
-            
+
             currentCatchAmount++;
             UIManager.instance.challengeText.text = "(" + currentCatchAmount + " / " + catchGoalAmount + ")";
 
