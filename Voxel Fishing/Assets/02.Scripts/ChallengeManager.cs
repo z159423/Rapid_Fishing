@@ -39,6 +39,7 @@ public class ChallengeManager : MonoBehaviour
 
     [SerializeField] private GameObject targetMarkerPrefab;
     [SerializeField] private Material outlineMat;
+    [SerializeField] private GameObject glowparticlePrefab;
 
     private void Awake()
     {
@@ -333,6 +334,12 @@ public class ChallengeManager : MonoBehaviour
 
                     var copy = Instantiate(FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>().gameObject, FishPool.instance.generatedFishList[i].transform);
                     copy.GetComponent<SkinnedMeshRenderer>().material = ChallengeManager.instance.outlineMat;
+
+                    var glowParticle = Instantiate(ChallengeManager.instance.glowparticlePrefab, copy.transform).GetComponent<ParticleSystem>();
+                    float startSize = FishPool.instance.generatedFishList[i].fishType.boundSize.x + FishPool.instance.generatedFishList[i].fishType.boundSize.y;
+                    
+                    var main = glowParticle.main;
+                    main.startSize = startSize;
 
                     //Utils.ComponentUtil.CopyComponent<SkinnedMeshRenderer>(FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>(), obj);
                     //CopyComponent(FishPool.instance.generatedFishList[i].GetComponentInChildren<SkinnedMeshRenderer>(), obj);

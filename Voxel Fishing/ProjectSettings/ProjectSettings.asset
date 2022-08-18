@@ -16,11 +16,11 @@ PlayerSettings:
   productName: Voxel Fishing
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
   m_ShowUnitySplashScreen: 1
-  m_ShowUnitySplashLogo: 1
+  m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -801,11 +801,11 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;PLAYON_ENABLED;gameanalytics_max_enabled
     Standalone: CROSS_PLATFORM_INPUT
     WebGL: CROSS_PLATFORM_INPUT
     Windows Store Apps: CROSS_PLATFORM_INPUT
-    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT
+    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;PLAYON_ENABLED;gameanalytics_max_enabled
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

@@ -1,0 +1,16 @@
+{
+    "name": "MondayOFF.Ads.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:946d224dad0ef4c9f992b919327f4909"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
