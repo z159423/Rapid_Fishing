@@ -336,7 +336,7 @@ public class ChallengeManager : MonoBehaviour
                     copy.GetComponent<SkinnedMeshRenderer>().material = ChallengeManager.instance.outlineMat;
 
                     var glowParticle = Instantiate(ChallengeManager.instance.glowparticlePrefab, copy.transform).GetComponent<ParticleSystem>();
-                    float startSize = FishPool.instance.generatedFishList[i].fishType.boundSize.x + FishPool.instance.generatedFishList[i].fishType.boundSize.y;
+                    float startSize = FishPool.instance.generatedFishList[i].fishType.boundSize.x + FishPool.instance.generatedFishList[i].fishType.boundSize.y + 1;
                     
                     var main = glowParticle.main;
                     main.startSize = startSize;
