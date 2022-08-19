@@ -12,6 +12,7 @@ public class ChallengeManager : MonoBehaviour
 
 
     public List<fishClass> fishList = new List<fishClass>();
+    public List<GameObject> fishList2 = new List<GameObject>();
 
     public IChallenge currentChallenge = null;
     public Transform fishObjectParent;
@@ -41,9 +42,23 @@ public class ChallengeManager : MonoBehaviour
     [SerializeField] private Material outlineMat;
     [SerializeField] private GameObject glowparticlePrefab;
 
+    public int stageNum = 0;
+
     private void Awake()
     {
         instance = this;
+        if (!PlayerPrefs.HasKey("ClearZero"))
+        {
+            MondayOFF.EventsManager.instance.ClearStage(0);
+            MondayOFF.EventsManager.instance.TryStage(stageNum);
+            PlayerPrefs.SetInt("ClearZero", 1);
+        }
+    }
+
+    public void NextStage()
+    {
+        MondayOFF.EventsManager.instance.ClearStage(stageNum);
+        stageNum++;
     }
 
     private void Update()
@@ -83,13 +98,13 @@ public class ChallengeManager : MonoBehaviour
     private void Start()
     {
         challengeList.Add(new CatchTarget());
-        challengeList.Add(new CatchAnyTarget());
+        //challengeList.Add(new CatchAnyTarget());
 
         //print(challengeList.Count);
 
         GenerateNewChallenge();
 
-        ChallengeManager.instance.outlineMat.DOBlendableColor(new Color32(255, 178, 6, 0),"_Outline_Color", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        ChallengeManager.instance.outlineMat.DOBlendableColor(new Color32(255, 178, 6, 0), "_Outline_Color", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void ShowChallengeSuccessPanel(int reward, GameObject fishObject = null)
@@ -119,6 +134,7 @@ public class ChallengeManager : MonoBehaviour
 
     public void CloseChallengeSuccessPanel()
     {
+        PlayerPrefs.SetInt("ChallengeNum", PlayerPrefs.GetInt("ChallengeNum") + 1);
         FishingHook.instance.GetMoney(currentReward);
 
         Destroy(fishObject);
@@ -228,6 +244,8 @@ public class ChallengeManager : MonoBehaviour
 
             var currentLineLengthUpgrade = Upgrades.instance.lineLengthUpgrade.currentLevel;
 
+            /*
+
             int tier = 1;
 
             if (currentLineLengthUpgrade >= 0 && currentLineLengthUpgrade < 6)
@@ -249,9 +267,38 @@ public class ChallengeManager : MonoBehaviour
             {
                 tier = Random.Range(3, 6);
                 catchAmount = 1;
+            } */
+
+            int targetNum = PlayerPrefs.GetInt("ChallengeNum");
+
+            if (targetNum < 8)
+            {
+                catchAmount = 5;
+            }
+            else if (targetNum > 7 && targetNum < 14)
+            {
+                catchAmount = 4;
+            }
+            else if (targetNum > 13 && targetNum < 23)
+            {
+                catchAmount = 3;
+            }
+            else if (targetNum > 24 && targetNum < 28)
+            {
+                catchAmount = 2;
+            }
+            else if (targetNum > 27 && targetNum < 33)
+            {
+                catchAmount = 1;
+            }
+            else
+            {
+                catchAmount = 1;
             }
 
-            var targetFish = ChallengeManager.instance.fishList[tier - 1].fishList[Random.Range(0, ChallengeManager.instance.fishList[tier - 1].fishList.Count)].prefab;
+            //var targetFish = ChallengeManager.instance.fishList[tier - 1].fishList[Random.Range(0, ChallengeManager.instance.fishList[tier - 1].fishList.Count)].prefab;
+
+            var targetFish = ChallengeManager.instance.fishList2[targetNum];
 
             targetFishNumber = targetFish.GetComponent<Fish>().fishType.fishNumber;
 
@@ -337,7 +384,7 @@ public class ChallengeManager : MonoBehaviour
 
                     var glowParticle = Instantiate(ChallengeManager.instance.glowparticlePrefab, copy.transform).GetComponent<ParticleSystem>();
                     float startSize = FishPool.instance.generatedFishList[i].fishType.boundSize.x + FishPool.instance.generatedFishList[i].fishType.boundSize.y + 1;
-                    
+
                     var main = glowParticle.main;
                     main.startSize = startSize;
 

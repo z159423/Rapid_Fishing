@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using MondayOFF;
 
 public class FishingHook : MonoBehaviour
 {
@@ -84,6 +85,12 @@ public class FishingHook : MonoBehaviour
 
     private void Start() {
         //depthMask.materials[0] = Instantiate(depthMaskMat);
+        MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += Test1;
+    }
+
+    private void Test1(string a, MaxSdkBase.AdInfo aa)
+    {
+
     }
 
     private void Update()
@@ -255,6 +262,7 @@ public class FishingHook : MonoBehaviour
 
         //money TMP Display
 
+        TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
     }
 
     public void UpgradeHookMaxCount(float value)
