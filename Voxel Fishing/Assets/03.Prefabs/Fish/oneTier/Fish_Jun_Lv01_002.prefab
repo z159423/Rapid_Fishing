@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 1874600760911058018}
   - component: {fileID: 3811773398325757327}
   - component: {fileID: 7609265125908852275}
-  - component: {fileID: 928244925173932464}
   - component: {fileID: 2297297810955406615}
   m_Layer: 6
   m_Name: Fish_Jun_Lv01_002
@@ -137,10 +136,10 @@ BoxCollider:
   m_GameObject: {fileID: 1148806939538215121}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1422974, y: 0.6752512, z: 0.25625396}
+  m_Center: {x: 0.07114837, y: -0.0087717045, z: -0.003498271}
 --- !u!114 &3811773398325757327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,19 +185,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!135 &928244925173932464
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148806939538215121}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &2297297810955406615
 Animator:
   serializedVersion: 4

@@ -114,6 +114,8 @@ public class FishingRod : MonoBehaviour
         upgradeButton.SetActive(false);
         depthText.SetActive(true);
         hookRigid.useGravity = true;
+        MondayOFF.EventsManager.instance.TryStage(PlayerPrefs.GetInt("ChallengeNum"));
+
 
         yield return new WaitForSeconds(0.2f);
         Vector2 dir1 = (throwTarget1.position - hookRigid.transform.position).normalized;

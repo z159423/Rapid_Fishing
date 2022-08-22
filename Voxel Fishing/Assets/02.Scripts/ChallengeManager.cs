@@ -49,13 +49,13 @@ public class ChallengeManager : MonoBehaviour
         instance = this;
         if (!PlayerPrefs.HasKey("ClearZero"))
         {
-            MondayOFF.EventsManager.instance.ClearStage(0);
+            //MondayOFF.EventsManager.instance.ClearStage(0);
 
-            MondayOFF.EventsManager.instance.TryStage(stageNum);
+            //MondayOFF.EventsManager.instance.TryStage(stageNum);
             PlayerPrefs.SetInt("ClearZero", 1);
         }
 
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
     }
 
     public void NextStage()
@@ -137,7 +137,8 @@ public class ChallengeManager : MonoBehaviour
 
     public void CloseChallengeSuccessPanel()
     {
-        PlayerPrefs.SetInt("ChallengeNum", PlayerPrefs.GetInt("ChallengeNum") + 1);
+        if(currentChallenge.GetChallengeType() == challengeType.catchTarget)
+            PlayerPrefs.SetInt("ChallengeNum", PlayerPrefs.GetInt("ChallengeNum") + 1);
         FishingHook.instance.GetMoney(currentReward);
 
         Destroy(fishObject);
@@ -162,11 +163,15 @@ public class ChallengeManager : MonoBehaviour
 
         catchAnyTargetImage.SetActive(false);
 
-        currentChallenge = challengeList[Random.Range(0, challengeList.Count)];
+        //currentChallenge = challengeList[Random.Range(0, challengeList.Count)];
+        print("Current Stage : " + PlayerPrefs.GetInt("ChallengeNum"));
+
+        if (PlayerPrefs.GetInt("ChallengeNum") >= fishList2.Count)
+            currentChallenge = new CatchAnyTarget();
+        else
+            currentChallenge = new CatchTarget();
 
         currentChallenge.SetChallengeInit();
-
-
 
         //print(currentChallenge.GetChallengeType());
     }
@@ -235,6 +240,9 @@ public class ChallengeManager : MonoBehaviour
 
             ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
 
+            PlayerPrefs.SetInt("currentCatchCount", currentCatchCount);
+
+            MondayOFF.EventsManager.instance.ClearStage(PlayerPrefs.GetInt("ChallengeNum"));
         }
 
 
@@ -243,7 +251,7 @@ public class ChallengeManager : MonoBehaviour
         {
 
             catchAmount = 0;
-            currentCatchCount = 0;
+            currentCatchCount = PlayerPrefs.GetInt("currentCatchCount");
 
             var currentLineLengthUpgrade = Upgrades.instance.lineLengthUpgrade.currentLevel;
 
@@ -302,24 +310,19 @@ public class ChallengeManager : MonoBehaviour
             //var targetFish = ChallengeManager.instance.fishList[tier - 1].fishList[Random.Range(0, ChallengeManager.instance.fishList[tier - 1].fishList.Count)].prefab;
 
             var targetFish = ChallengeManager.instance.fishList2[targetNum];
-
             targetFishNumber = targetFish.GetComponent<Fish>().fishType.fishNumber;
-
             reward = (targetFish.GetComponent<Fish>().fishType.cost * catchAmount) * 2;
 
-            UIManager.instance.challengeText.text = "(" + 0 + " / " + catchAmount + ")";
+            UIManager.instance.challengeText.text = "(" + currentCatchCount + " / " + catchAmount + ")";
 
             Destroy(fishObject);
 
             fishObject = Instantiate(targetFish, ChallengeManager.instance.fishObjectParent);
-
             fishObject.transform.localPosition = Vector3.zero;
-
             Vector3 size = fishObject.GetComponentInChildren<SkinnedMeshRenderer>().bounds.size;
-
             var fishLights = fishObject.GetComponentsInChildren<Light>();
 
-            for(int i = 0; i < fishLights.Length; i++)
+            for (int i = 0; i < fishLights.Length; i++)
             {
                 fishLights[i].enabled = false;
             }
@@ -354,6 +357,8 @@ public class ChallengeManager : MonoBehaviour
             {
                 UIManager.instance.challengeText.text = "(" + currentCatchCount + " / " + catchAmount + ")";
             }
+
+            PlayerPrefs.SetInt("currentCatchCount", currentCatchCount);
         }
 
         public void GenerateTargetMarker()
@@ -437,6 +442,7 @@ public class ChallengeManager : MonoBehaviour
 
         public void ChallengeSuccess()
         {
+            PlayerPrefs.DeleteKey("catchGoalAmount_Any");
             ChallengeManager.instance.ShowChallengeSuccessPanel(reward);
         }
 
@@ -446,26 +452,44 @@ public class ChallengeManager : MonoBehaviour
 
             var currentLineLengthUpgrade = Upgrades.instance.lineLengthUpgrade.currentLevel;
 
-            if (currentLineLengthUpgrade >= 0 && currentLineLengthUpgrade < 6)
+            if (PlayerPrefs.HasKey("currentCatchCount_Any"))
             {
-                catchGoalAmount = Random.Range(5, 11);
+                currentCatchAmount = PlayerPrefs.GetInt("currentCatchCount");
             }
-            else if (currentLineLengthUpgrade >= 6 && currentLineLengthUpgrade < 11)
+            else
             {
-                catchGoalAmount = Random.Range(10, 16);
+                currentCatchAmount = 0;
             }
-            else if (currentLineLengthUpgrade >= 11 && currentLineLengthUpgrade < 16)
+
+            if (PlayerPrefs.HasKey("catchGoalAmount_Any"))
             {
-                catchGoalAmount = Random.Range(15, 21);
+                catchGoalAmount = PlayerPrefs.GetInt("catchGoalAmount_Any");
             }
-            else if (currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
+            else
             {
-                catchGoalAmount = Random.Range(20, 25);
+                if (currentLineLengthUpgrade >= 0 && currentLineLengthUpgrade < 6)
+                {
+                    catchGoalAmount = Random.Range(5, 11);
+                }
+                else if (currentLineLengthUpgrade >= 6 && currentLineLengthUpgrade < 11)
+                {
+                    catchGoalAmount = Random.Range(10, 16);
+                }
+                else if (currentLineLengthUpgrade >= 11 && currentLineLengthUpgrade < 16)
+                {
+                    catchGoalAmount = Random.Range(15, 21);
+                }
+                else if (currentLineLengthUpgrade >= 16 && currentLineLengthUpgrade < 21)
+                {
+                    catchGoalAmount = Random.Range(20, 25);
+                }
+
+                PlayerPrefs.SetInt("catchGoalAmount_Any", catchGoalAmount);
             }
 
             reward = catchGoalAmount * 45;
 
-            UIManager.instance.challengeText.text = "(" + 0 + " / " + catchGoalAmount + ")";
+            UIManager.instance.challengeText.text = "(" + currentCatchAmount + " / " + catchGoalAmount + ")";
         }
 
         public challengeType GetChallengeType()
@@ -480,6 +504,8 @@ public class ChallengeManager : MonoBehaviour
             UIManager.instance.challengeText.text = "(" + currentCatchAmount + " / " + catchGoalAmount + ")";
 
             CheckingChallengeClear();
+
+            PlayerPrefs.SetInt("currentCatchCount_Any", currentCatchAmount);
         }
     }
 }
