@@ -50,9 +50,12 @@ public class ChallengeManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("ClearZero"))
         {
             MondayOFF.EventsManager.instance.ClearStage(0);
+
             MondayOFF.EventsManager.instance.TryStage(stageNum);
             PlayerPrefs.SetInt("ClearZero", 1);
         }
+
+        //PlayerPrefs.DeleteAll();
     }
 
     public void NextStage()
@@ -287,7 +290,7 @@ public class ChallengeManager : MonoBehaviour
             {
                 catchAmount = 2;
             }
-            else if (targetNum > 27 && targetNum < 33)
+            else if (targetNum > 29 && targetNum < 33)
             {
                 catchAmount = 1;
             }
@@ -313,6 +316,13 @@ public class ChallengeManager : MonoBehaviour
             fishObject.transform.localPosition = Vector3.zero;
 
             Vector3 size = fishObject.GetComponentInChildren<SkinnedMeshRenderer>().bounds.size;
+
+            var fishLights = fishObject.GetComponentsInChildren<Light>();
+
+            for(int i = 0; i < fishLights.Length; i++)
+            {
+                fishLights[i].enabled = false;
+            }
 
             if (size.x > 0.8f)
             {

@@ -33,7 +33,6 @@ public class EnviromentEditor : MonoBehaviour
     {
         if (hook.position.y < 0)
         {
-
             float oceancolorValue = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
             oceancolorValue = Mathf.Clamp(oceancolorValue, 30f / 255f, 1);
 
@@ -58,6 +57,10 @@ public class EnviromentEditor : MonoBehaviour
 
             //OceanSurface.color = new Color(OceanSurface.color.r, OceanSurface.color.g, OceanSurface.color.b, (210 + Mathf.Abs((int)(hook.position.y))) / 255f);
             OceanSurface.color = new Color(OceanSurface.color.r, OceanSurface.color.g, OceanSurface.color.b, ((190f + Mathf.Abs(hook.position.y)) / 255f));
+        }
+        else
+        {
+
         }
     }
 }

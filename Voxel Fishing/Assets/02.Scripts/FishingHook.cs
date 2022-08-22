@@ -47,7 +47,7 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private SpriteRenderer OceanSurface;
     [SerializeField] private MeshRenderer depthMask;
     [SerializeField] private Material depthMaskMat;
-    
+
 
     [SerializeField] private Light sunLights;
     [SerializeField] private Light hookLight;
@@ -83,7 +83,8 @@ public class FishingHook : MonoBehaviour
         instance = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         //depthMask.materials[0] = Instantiate(depthMaskMat);
         MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += Test1;
     }
@@ -179,27 +180,34 @@ public class FishingHook : MonoBehaviour
 
             hookedFish.Add(fish);
 
-            Transform tempTrans = hookedTransforms[Random.Range(0, hookedTransforms.Length)];
 
+            Transform tempTrans = hookedTransforms[Random.Range(0, hookedTransforms.Length)];
             fish.Hooked(tempTrans);
 
-            //currentHookedCount += fish.fishType.tier;
             currentHookedCount++;
 
             catchRingParticle.Play();
 
+            //찌에 걸린 수만큼 텍스트 변경
             if (currentHookedCount >= maxHookableCount)
             {
                 fullHooked = true;
                 HookedCount.text = "MAX!";
             }
-            //HookedCount.text = "X" + currentHookedCount.ToString() + " (MAX!)";
             else
-                //HookedCount.text = "X" + currentHookedCount.ToString();
                 HookedCount.text = "(" + currentHookedCount.ToString() + " / " + maxHookableCount + ")";
+
+
+            //찌에 걸린 물고기들 콜라이더 비활성화
+            var fishColliders = fish.GetComponentsInChildren<Collider>();
+            for (int i = 0; i < fishColliders.Length; i++)
+            {
+                fishColliders[i].enabled = false;
+            }
         }
     }
 
+    //찌에 걸린 모든 물고기 판매
     public void SellFish()
     {
         rigid.velocity = rigid.velocity * 0.5f;
@@ -224,6 +232,13 @@ public class FishingHook : MonoBehaviour
             //Destroy(hookedFish[i].gameObject);
 
             GetMoney(hookedFish[i].fishType.cost);
+
+            //콜라이더 다시 활성화
+            var fishColliders = hookedFish[i].GetComponentsInChildren<Collider>();
+            for (int j = 0; j < fishColliders.Length; j++)
+            {
+                fishColliders[j].enabled = true;
+            }
         }
 
         ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
@@ -255,14 +270,10 @@ public class FishingHook : MonoBehaviour
         fishingRodSkinned.SetBlendShapeWeight(1, 0);
 
         playerModel.rotation = Quaternion.Euler(0, 90, 0);
-
-        //CinemachineController.instance.ChangeFollow(CinemachineController.instance.playerTrans);
-        //CinemachineController.instance.ChnageOffset(CinemachineController.instance.playerOffset);
         CinemachineController.instance.FollowPlayer();
 
-        //money TMP Display
-
-        TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
+        if (hookedFish.Count > 0)
+            TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
     }
 
     public void UpgradeHookMaxCount(float value)
