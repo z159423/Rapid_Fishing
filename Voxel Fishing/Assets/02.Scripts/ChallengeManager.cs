@@ -46,16 +46,23 @@ public class ChallengeManager : MonoBehaviour
 
     private void Awake()
     {
+PlayerPrefs.DeleteAll();
+
         instance = this;
         if (!PlayerPrefs.HasKey("ClearZero"))
         {
-            //MondayOFF.EventsManager.instance.ClearStage(0);
+            MondayOFF.EventsManager.instance.ClearStage(0);
 
             //MondayOFF.EventsManager.instance.TryStage(stageNum);
             PlayerPrefs.SetInt("ClearZero", 1);
         }
 
-        PlayerPrefs.DeleteAll();
+        if (!PlayerPrefs.HasKey("ChallengeNum"))
+        {
+            PlayerPrefs.SetInt("ChallengeNum", 1);
+        }
+
+        
     }
 
     public void NextStage()
@@ -137,7 +144,7 @@ public class ChallengeManager : MonoBehaviour
 
     public void CloseChallengeSuccessPanel()
     {
-        if(currentChallenge.GetChallengeType() == challengeType.catchTarget)
+        if (currentChallenge.GetChallengeType() == challengeType.catchTarget)
             PlayerPrefs.SetInt("ChallengeNum", PlayerPrefs.GetInt("ChallengeNum") + 1);
         FishingHook.instance.GetMoney(currentReward);
 
@@ -164,14 +171,16 @@ public class ChallengeManager : MonoBehaviour
         catchAnyTargetImage.SetActive(false);
 
         //currentChallenge = challengeList[Random.Range(0, challengeList.Count)];
-        print("Current Stage : " + PlayerPrefs.GetInt("ChallengeNum"));
 
-        if (PlayerPrefs.GetInt("ChallengeNum") >= fishList2.Count)
+
+        if (PlayerPrefs.GetInt("ChallengeNum") > fishList2.Count)
             currentChallenge = new CatchAnyTarget();
         else
             currentChallenge = new CatchTarget();
 
         currentChallenge.SetChallengeInit();
+
+        print("Current Stage : " + PlayerPrefs.GetInt("ChallengeNum"));
 
         //print(currentChallenge.GetChallengeType());
     }
@@ -279,8 +288,8 @@ public class ChallengeManager : MonoBehaviour
                 tier = Random.Range(3, 6);
                 catchAmount = 1;
             } */
-
             int targetNum = PlayerPrefs.GetInt("ChallengeNum");
+
 
             if (targetNum < 8)
             {
@@ -309,7 +318,7 @@ public class ChallengeManager : MonoBehaviour
 
             //var targetFish = ChallengeManager.instance.fishList[tier - 1].fishList[Random.Range(0, ChallengeManager.instance.fishList[tier - 1].fishList.Count)].prefab;
 
-            var targetFish = ChallengeManager.instance.fishList2[targetNum];
+            var targetFish = ChallengeManager.instance.fishList2[targetNum - 1];
             targetFishNumber = targetFish.GetComponent<Fish>().fishType.fishNumber;
             reward = (targetFish.GetComponent<Fish>().fishType.cost * catchAmount) * 2;
 

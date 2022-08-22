@@ -74,7 +74,7 @@ public class FishingHook : MonoBehaviour
     public bool fullHooked = false;
     public bool inTheOcean = false;
 
-    //    private LightingSettings lightingSettings = new LightingSettings();
+    //private LightingSettings lightingSettings = new LightingSettings();
 
     public int money = 0;
 
@@ -113,7 +113,6 @@ public class FishingHook : MonoBehaviour
             depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
 
             /*
-
             float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
             value = Mathf.Clamp(value, 30f / 255f, 1);
 
@@ -139,16 +138,10 @@ public class FishingHook : MonoBehaviour
         }
         else
         {
-
             depthText.text = "0 M";
-
         }
     }
 
-    private void LateUpdate()
-    {
-        //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -243,6 +236,9 @@ public class FishingHook : MonoBehaviour
 
         ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
 
+        if (hookedFish.Count > 0)
+            TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
+
         currentHookedCount = 0;
         hookedFish.Clear();
 
@@ -272,8 +268,7 @@ public class FishingHook : MonoBehaviour
         playerModel.rotation = Quaternion.Euler(0, 90, 0);
         CinemachineController.instance.FollowPlayer();
 
-        if (hookedFish.Count > 0)
-            TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
+        
     }
 
     public void UpgradeHookMaxCount(float value)

@@ -14,16 +14,17 @@ public class OceanTrigger : MonoBehaviour
 
     [SerializeField] private FishingHook hook;
     [SerializeField] private FishingRod rod;
-    
+
 
 
     private void OnTriggerEnter(Collider other)
     {
+        /*
         if (other.CompareTag("FishingHook") && rod.isStart)
         {
             //other.GetComponent<Rigidbody>().drag = 6.5f;
-            
-            if(FishingLogic.instance.pulling == false)
+
+            if (FishingLogic.instance.pulling == false)
                 touchToPullButton.SetActive(true);
 
             FishingLogic.instance.enablePulling = true;
@@ -40,7 +41,7 @@ public class OceanTrigger : MonoBehaviour
         if (other.CompareTag("FishingHook"))
         {
             hook.inTheOcean = true;
-        }
+        } */
 
         if (other.TryGetComponent<Fish>(out Fish fish))
         {
@@ -51,6 +52,27 @@ public class OceanTrigger : MonoBehaviour
         if (FishingLogic.instance.pulling)
         {
             rigid.useGravity = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("FishingHook") && rod.isStart && !FishingLogic.instance.enablePulling)
+        {
+            if (FishingLogic.instance.pulling == false)
+                touchToPullButton.SetActive(true);
+
+            FishingLogic.instance.enablePulling = true;
+
+            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90, 0, 0));
+
+            bubbleParticle.Play();
+
+            Destroy(particle, 5f);
+
+            hook.targetHookZoomOffset = 7f;
+
+            hook.inTheOcean = true;
         }
     }
 
@@ -84,6 +106,6 @@ public class OceanTrigger : MonoBehaviour
             fish.GetComponent<Rigidbody>().useGravity = true;
         }
 
-        
+
     }
 }

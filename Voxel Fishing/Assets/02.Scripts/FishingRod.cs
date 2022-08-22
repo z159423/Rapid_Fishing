@@ -116,7 +116,6 @@ public class FishingRod : MonoBehaviour
         hookRigid.useGravity = true;
         MondayOFF.EventsManager.instance.TryStage(PlayerPrefs.GetInt("ChallengeNum"));
 
-
         yield return new WaitForSeconds(0.2f);
         Vector2 dir1 = (throwTarget1.position - hookRigid.transform.position).normalized;
 
@@ -134,7 +133,7 @@ public class FishingRod : MonoBehaviour
         hookRigid.isKinematic = false;
         hookRigid.drag = 0.5f;
         hookRigid.AddForce((dir2) * 900);
-        isStart = true;
+        //isStart = true;
 
         //yield return new WaitForSeconds(1);
         //fishingHook.targetHookZoomOffset = 0;
