@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 2629730334577452217}
   - component: {fileID: 8671778129360295924}
   - component: {fileID: -1606521052193904321}
+  - component: {fileID: 2022649984988504562}
   m_Layer: 6
   m_Name: Fish_Jun_Lv01_013
   m_TagString: Untagged
@@ -229,8 +230,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.64428663, z: 1}
-  m_Center: {x: 0, y: 0.177857, z: 0}
+  m_Size: {x: 1.7396226, y: 0.3910581, z: 0.32702595}
+  m_Center: {x: -0.051538434, y: 0.05124254, z: -0.011714506}
 --- !u!114 &2629730334577452217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +248,7 @@ MonoBehaviour:
     cost: 40
     tier: 2
     fishNumber: 12
+    boundSize: {x: 1, y: 1, z: 1}
   fishData: {fileID: 0}
   sensingRadius: 2
   moveSpeed: 1.5
@@ -295,3 +297,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &2022649984988504562
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323525995122521276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0745417, y: 0.42489615, z: 0.30716205}
+  m_Center: {x: -0.03727068, y: 0.47489986, z: -0.011748129}

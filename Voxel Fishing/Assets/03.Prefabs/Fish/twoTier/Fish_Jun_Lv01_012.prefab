@@ -243,8 +243,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1475375, y: 0.3147386, z: 0.59768844}
-  m_Center: {x: 0.07376835, y: 0.018082123, z: 0.009226778}
+  m_Size: {x: 1.4234976, y: 0.28620946, z: 0.59768844}
+  m_Center: {x: -0.06421072, y: 0.0038175073, z: 0.009226778}
 --- !u!114 &5771174441957118744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
     cost: 35
     tier: 2
     fishNumber: 11
+    boundSize: {x: 1, y: 1, z: 1}
   fishData: {fileID: 0}
   sensingRadius: 2
   moveSpeed: 1.5

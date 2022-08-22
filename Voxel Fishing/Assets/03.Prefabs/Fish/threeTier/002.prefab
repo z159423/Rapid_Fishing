@@ -487,8 +487,7 @@ GameObject:
   - component: {fileID: 2368800924661621725}
   - component: {fileID: 8144934400606931447}
   - component: {fileID: 1809532671227747674}
-  - component: {fileID: 4086550110072973308}
-  - component: {fileID: 890435282471550583}
+  - component: {fileID: 5936799558716418014}
   m_Layer: 6
   m_Name: 002
   m_TagString: Untagged
@@ -549,6 +548,7 @@ MonoBehaviour:
     cost: 70
     tier: 3
     fishNumber: 15
+    boundSize: {x: 1, y: 1, z: 1}
   fishData: {fileID: 0}
   sensingRadius: 2
   moveSpeed: 1.5
@@ -577,8 +577,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &4086550110072973308
-SphereCollider:
+--- !u!65 &5936799558716418014
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -588,18 +588,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.77145576
-  m_Center: {x: 0, y: -0.67378044, z: 0}
---- !u!135 &890435282471550583
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9039946679127581469}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.882746
-  m_Center: {x: -0.09355903, y: 1.385231, z: 0}
+  m_Size: {x: 1.8, y: 4, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}

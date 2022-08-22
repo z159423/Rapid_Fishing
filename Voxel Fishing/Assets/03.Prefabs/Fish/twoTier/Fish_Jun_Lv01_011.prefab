@@ -325,9 +325,6 @@ GameObject:
   - component: {fileID: 8135500212856710818}
   - component: {fileID: 6727594573857165281}
   - component: {fileID: 4691408444407357910}
-  - component: {fileID: 887721437185227578}
-  - component: {fileID: 5365024685962659848}
-  - component: {fileID: 8154969885879730166}
   - component: {fileID: -778817319454369952}
   m_Layer: 6
   m_Name: Fish_Jun_Lv01_011
@@ -362,10 +359,10 @@ BoxCollider:
   m_GameObject: {fileID: 9110134314545277946}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.4540523, y: 0.65218896, z: 0.20827644}
+  m_Center: {x: 0.11678285, y: 0.03236777, z: 0.019152548}
 --- !u!114 &6727594573857165281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,45 +408,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!135 &887721437185227578
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9110134314545277946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.39966354
-  m_Center: {x: 0.14735623, y: 0.07526338, z: 0}
---- !u!135 &5365024685962659848
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9110134314545277946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.34156546
-  m_Center: {x: -0.33820552, y: 0, z: 0}
---- !u!135 &8154969885879730166
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9110134314545277946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2735403
-  m_Center: {x: 0.56110877, y: 0.035766494, z: 0}
 --- !u!95 &-778817319454369952
 Animator:
   serializedVersion: 4
