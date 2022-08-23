@@ -131,6 +131,11 @@ public class FishingHook : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
