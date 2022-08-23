@@ -30,7 +30,7 @@ namespace MondayOFF {
 
             // Disable logger
             Debug.Log("[EVERYDAY] Disable logger");
-            UnityEngine.Debug.unityLogger.logEnabled = true;
+            UnityEngine.Debug.unityLogger.logEnabled = false;
 
             // Singular
             SingularSDK.SetCustomUserId(Identifier.CustomUserID);

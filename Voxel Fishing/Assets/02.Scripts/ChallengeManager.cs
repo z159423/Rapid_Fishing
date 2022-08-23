@@ -46,8 +46,6 @@ public class ChallengeManager : MonoBehaviour
 
     private void Awake()
     {
-PlayerPrefs.DeleteAll();
-
         instance = this;
         if (!PlayerPrefs.HasKey("ClearZero"))
         {

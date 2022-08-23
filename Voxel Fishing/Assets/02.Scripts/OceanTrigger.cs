@@ -42,6 +42,12 @@ public class OceanTrigger : MonoBehaviour
         {
             hook.inTheOcean = true;
         } */
+        if (other.CompareTag("FishingHook") && rod.isStart)
+        {
+            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90, 0, 0));
+            bubbleParticle.Play();
+            Destroy(particle, 5f);
+        }
 
         if (other.TryGetComponent<Fish>(out Fish fish))
         {
@@ -63,12 +69,6 @@ public class OceanTrigger : MonoBehaviour
                 touchToPullButton.SetActive(true);
 
             FishingLogic.instance.enablePulling = true;
-
-            var particle = Instantiate(waterSplashParticle, other.transform.position, Quaternion.Euler(-90, 0, 0));
-
-            bubbleParticle.Play();
-
-            Destroy(particle, 5f);
 
             hook.targetHookZoomOffset = 7f;
 

@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369b692235b6e41d4b868eb0d722f3fe, type: 3}
   m_Name: AdUnitIDs
   m_EditorClassIdentifier: 
-  iOS_has_IS: 1
-  iOS_IS_AdUnitID: asd
-  iOS_has_RV: 1
+  iOS_has_IS: 0
+  iOS_IS_AdUnitID: 
+  iOS_has_RV: 0
   iOS_RV_AdUnitID: 
-  iOS_has_BN: 1
-  iOS_BN_AdUnitID: asd
+  iOS_has_BN: 0
+  iOS_BN_AdUnitID: 
   AOS_has_IS: 1
-  AOS_IS_AdUnitID: asd
+  AOS_IS_AdUnitID: fdsfa
   AOS_has_RV: 1
-  AOS_RV_AdUnitID: 
+  AOS_RV_AdUnitID: fsfa
   AOS_has_BN: 1
-  AOS_BN_AdUnitID: asd
+  AOS_BN_AdUnitID: fdsfas
   has_PlayOn: 0
   AOS_PlayOnGameKey: 
   iOS_PlayOnGameKey: 
