@@ -60,8 +60,6 @@ public class ChallengeManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("ChallengeNum", 1);
         }
-
-        
     }
 
     public void NextStage()

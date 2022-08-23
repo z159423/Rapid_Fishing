@@ -18,12 +18,12 @@ MonoBehaviour:
   iOS_RV_AdUnitID: 
   iOS_has_BN: 0
   iOS_BN_AdUnitID: 
-  AOS_has_IS: 0
-  AOS_IS_AdUnitID: 
-  AOS_has_RV: 0
-  AOS_RV_AdUnitID: 
-  AOS_has_BN: 0
-  AOS_BN_AdUnitID: 
+  AOS_has_IS: 1
+  AOS_IS_AdUnitID: afas
+  AOS_has_RV: 1
+  AOS_RV_AdUnitID: fdsfa
+  AOS_has_BN: 1
+  AOS_BN_AdUnitID: dsfasf
   has_PlayOn: 0
   AOS_PlayOnGameKey: 
   iOS_PlayOnGameKey: 

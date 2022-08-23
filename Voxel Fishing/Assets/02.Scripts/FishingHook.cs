@@ -83,18 +83,6 @@ public class FishingHook : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
-    {
-        //depthMask.materials[0] = Instantiate(depthMaskMat);
-
-        MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += Test1;
-    }
-
-    private void Test1(string a, MaxSdkBase.AdInfo aa)
-    {
-
-    }
-
     private void Update()
     {
 
@@ -236,9 +224,6 @@ public class FishingHook : MonoBehaviour
         }
 
         ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
-
-        if (hookedFish.Count > 0)
-            TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
 
         currentHookedCount = 0;
         hookedFish.Clear();

@@ -20,6 +20,14 @@ public class TimeInterstitialShower : MonoBehaviour {
         return false;
     }
 
+    public bool CheckTime() {
+        // Check time
+        if ((interval < Time.realtimeSinceStartup - lastShown)) {
+            return true;
+        }
+        return false;
+    }
+
     public void ResetTime() {
         lastShown = Time.realtimeSinceStartup;
     }

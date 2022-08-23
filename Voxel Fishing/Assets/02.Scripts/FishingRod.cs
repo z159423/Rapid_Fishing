@@ -100,8 +100,14 @@ public class FishingRod : MonoBehaviour
                 //hookRigid.AddForce(-dir * currentPullingForece * Time.deltaTime * 300);
             }
         }
-
     }
+
+    private void Start()
+    {
+        MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnAdHide;
+    }
+
+
 
     public IEnumerator ReleaseHook()
     {
@@ -144,11 +150,30 @@ public class FishingRod : MonoBehaviour
     public void ReloadHook()
     {
         isStart = false;
-        startButton.SetActive(true);
         FishingLogic.instance.pulling = false;
         rodAnimator.SetTrigger("Reload");
 
         fishingHook.SellFish();
+
+        //광고 interval 시간을 체크해서 시간이 지났으면 전면광고 송출 안지났으면 TouchToStart 활성화
+        if (TimeInterstitialShower.instance.CheckTime())
+            StartCoroutine(StartIsAd());
+        else
+        {
+            startButton.SetActive(true);
+        }
+    }
+
+    IEnumerator StartIsAd()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
+    }
+
+    private void OnAdHide(string a, MaxSdkBase.AdInfo aa)
+    {
+        startButton.SetActive(true);
     }
 
     public void UpgradeLineLength(float value)
