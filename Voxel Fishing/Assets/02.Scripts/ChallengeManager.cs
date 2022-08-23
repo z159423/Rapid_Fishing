@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using MondayOFF;
 
 public class ChallengeManager : MonoBehaviour
 {

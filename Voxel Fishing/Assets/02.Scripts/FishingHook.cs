@@ -86,6 +86,7 @@ public class FishingHook : MonoBehaviour
     private void Start()
     {
         //depthMask.materials[0] = Instantiate(depthMaskMat);
+
         MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += Test1;
     }
 
