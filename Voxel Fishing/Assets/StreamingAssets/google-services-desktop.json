@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "695772857517",
+    "project_id": "rapid-fishing",
+    "storage_bucket": "rapid-fishing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695772857517:android:9d3d89199f5106d98c7224",
+        "android_client_info": {
+          "package_name": "com.mondayoff.rapid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695772857517-9i5gngdaorb417dpaulvj4c27guc9ap3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4P82bHTWOM3zUg5XCfQEH-P1J_t-GDhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695772857517-9i5gngdaorb417dpaulvj4c27guc9ap3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "695772857517-sbrpnml9r17ndbnuvthucnd2v7s29lbo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mondayoff.rapid"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

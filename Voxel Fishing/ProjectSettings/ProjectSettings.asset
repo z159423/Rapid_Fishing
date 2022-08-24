@@ -8,16 +8,16 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: mondayoff
+  companyName: MondayOFF
   productName: Rapid Fishing
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
-  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 0
@@ -155,8 +155,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.mondayoff.RapidFishing
-    iPhone: com.mondayoff.RapidFishing
+    Android: com.mondayoff.rapid
+    iPhone: com.mondayoff.rapid
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -164,7 +164,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 24
-  AndroidTargetSdkVersion: 30
+  AndroidTargetSdkVersion: 31
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -226,12 +226,12 @@ PlayerSettings:
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
   iosCopyPluginsCodeInsteadOfSymlink: 0
-  appleDeveloperTeamID: 
+  appleDeveloperTeamID: NSR93K7Q22
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
   iOSManualSigningProvisioningProfileType: 0
   tvOSManualSigningProvisioningProfileType: 0
-  appleEnableAutomaticSigning: 0
+  appleEnableAutomaticSigning: 1
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
@@ -270,7 +270,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: c1ed5107511cb45d29c0d33c0ea96891, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: iPhone
     m_Icons:
@@ -802,11 +809,11 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;PLAYON_ENABLED;gameanalytics_max_enabled
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
     Standalone: CROSS_PLATFORM_INPUT
     WebGL: CROSS_PLATFORM_INPUT
     Windows Store Apps: CROSS_PLATFORM_INPUT
-    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;PLAYON_ENABLED;gameanalytics_max_enabled
+    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -898,11 +905,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: b3facc43-d6db-4f43-b078-1f17d9ea957e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Rapid Fishing
+  organizationId: mondayoff
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

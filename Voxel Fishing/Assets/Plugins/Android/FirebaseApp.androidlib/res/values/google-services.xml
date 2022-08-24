@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">695772857517</string>
+  <string name="google_storage_bucket" translatable="false">rapid-fishing.appspot.com</string>
+  <string name="project_id" translatable="false">rapid-fishing</string>
+  <string name="google_api_key" translatable="false">AIzaSyD4P82bHTWOM3zUg5XCfQEH-P1J_t-GDhA</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD4P82bHTWOM3zUg5XCfQEH-P1J_t-GDhA</string>
+  <string name="google_app_id" translatable="false">1:695772857517:android:9d3d89199f5106d98c7224</string>
+  <string name="default_web_client_id" translatable="false">695772857517-9i5gngdaorb417dpaulvj4c27guc9ap3.apps.googleusercontent.com</string>
+</resources>

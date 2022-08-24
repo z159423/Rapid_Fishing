@@ -99,7 +99,6 @@ namespace MondayOFF {
                 Debug.LogException(e);
             }
 
-            FirebaseAnalytics.SetUserId(Identifier.CustomUserID);
             FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventAppOpen);
         }
 
