@@ -9,21 +9,21 @@ public class TimeInterstitialShower : MonoBehaviour {
         interval = newInterval;
     }
 
-    /// <summary>
-    /// Show Interstitial Ad if an interval has passed.
-    /// </summary>
-    public bool CheckTimeAndShowInterstitial() {
+    public bool CheckTime() {
         // Check timer interval
         if ((interval < Time.realtimeSinceStartup - lastShown)) {
-            return MondayOFF.AdsManager.instance.ShowInterstitial();
+            return true;
         }
         return false;
     }
 
-    public bool CheckTime() {
-        // Check time
+    /// <summary>
+    /// Show Interstitial Ad if an interval has passed.
+    /// </summary>
+    public bool CheckTimeAndShowInterstitial() {
+        // Check timer intervalß
         if ((interval < Time.realtimeSinceStartup - lastShown)) {
-            return true;
+            return MondayOFF.AdsManager.instance.ShowInterstitial();
         }
         return false;
     }

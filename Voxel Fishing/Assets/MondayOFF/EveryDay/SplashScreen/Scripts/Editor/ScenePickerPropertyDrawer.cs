@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ScenePickerAttribute))]
 public class ScenePickerPropertyDrawer : PropertyDrawer {
     string[] options = new string[]
@@ -34,3 +35,4 @@ public class ScenePickerPropertyDrawer : PropertyDrawer {
         }
     }
 }
+#endif

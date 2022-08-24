@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class FishingRod : MonoBehaviour
@@ -9,7 +10,8 @@ public class FishingRod : MonoBehaviour
 
     [SerializeField] private Transform pivot = null;
 
-    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject touchToStartPanel;
+    [SerializeField] private Button startButton;
     [SerializeField] private Animator rodAnimator;
     [SerializeField] private FishingHook fishingHook;
     [SerializeField] private FixedTouchField touchField;
@@ -155,25 +157,35 @@ public class FishingRod : MonoBehaviour
 
         fishingHook.SellFish();
 
+        touchToStartPanel.SetActive(false);
+        startButton.enabled = false;
+
         //광고 interval 시간을 체크해서 시간이 지났으면 전면광고 송출 안지났으면 TouchToStart 활성화
         if (TimeInterstitialShower.instance.CheckTime())
+        {
             StartCoroutine(StartIsAd());
+        }
         else
         {
-            startButton.SetActive(true);
+            startButton.enabled = true;
+            touchToStartPanel.SetActive(true);
         }
     }
 
     IEnumerator StartIsAd()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
+
+        startButton.enabled = true;
+        touchToStartPanel.SetActive(true);
     }
 
     private void OnAdHide(string a, MaxSdkBase.AdInfo aa)
     {
-        startButton.SetActive(true);
+        //startButton.enabled = true;
+        //touchToStartPanel.SetActive(true);
     }
 
     public void UpgradeLineLength(float value)

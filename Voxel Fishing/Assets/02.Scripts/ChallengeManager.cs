@@ -85,6 +85,16 @@ public class ChallengeManager : MonoBehaviour
         {
             FishingHook.instance.GetMoney(1000);
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetValues();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ResetResolution();
+        }
     }
 
     [System.Serializable]
@@ -182,6 +192,24 @@ public class ChallengeManager : MonoBehaviour
         //print(currentChallenge.GetChallengeType());
     }
 
+    public void ResetValues()
+    {
+
+        PlayerPrefs.SetInt("ChallengeNum", 1);
+        PlayerPrefs.SetInt("currentCatchCount", 0);
+
+        currentChallenge.DeleteParticle();
+
+        GenerateNewChallenge();
+
+        FishingHook.instance.GetMoney(-FishingHook.instance.money);
+    }
+
+    public void ResetResolution()
+    {
+        //Screen.SetResolution(900, 1800, false);
+    }
+
     public abstract class Challenge
     {
         public challengeType ChallengeType;
@@ -195,6 +223,8 @@ public class ChallengeManager : MonoBehaviour
         public bool CheckingChallengeClear();
 
         public void ChallengeSuccess();
+
+        public void DeleteParticle();
     }
 
     public void ChallengeChange()
@@ -417,6 +447,17 @@ public class ChallengeManager : MonoBehaviour
                 }
             }
         }
+
+        public void DeleteParticle()
+        {
+            for (int i = 0; i < targetMarkerList.Count; i++)
+            {
+                Destroy(targetMarkerList[i]);
+            }
+
+            targetMarkerList.Clear();
+        }
+
     }
 
     [System.Serializable]
@@ -512,6 +553,11 @@ public class ChallengeManager : MonoBehaviour
             CheckingChallengeClear();
 
             PlayerPrefs.SetInt("currentCatchCount_Any", currentCatchAmount);
+        }
+
+        public void DeleteParticle()
+        {
+
         }
     }
 }
