@@ -40,21 +40,23 @@ public class RopeBridge : MonoBehaviour
 
         distOfStartToEnd = (distOfStartToEnd / segmentLength) * lineLengthMultifly;
 
-        if (distOfStartToEnd < 1)
-        {
-            lineLengthMultifly = 0.8f;
-        }
-        else if (distOfStartToEnd > 1 && distOfStartToEnd < 2)
-        {
-            lineLengthMultifly = 0.9f;
-        }
-        else if (distOfStartToEnd > 2)
-        {
-            lineLengthMultifly = 1f;
-        }
+        // if (distOfStartToEnd < 1)
+        // {
+        //     lineLengthMultifly = 0.8f;
+        // }
+        // else if (distOfStartToEnd > 1 && distOfStartToEnd < 2)
+        // {
+        //     lineLengthMultifly = 0.9f;
+        // }
+        // else if (distOfStartToEnd > 2)
+        // {
+        //     lineLengthMultifly = 1f;
+        // }
+
+        lineLengthMultifly = 0.8f + (distOfStartToEnd * 0.1f);
+        lineLengthMultifly = Mathf.Clamp(lineLengthMultifly, 0.8f, 1f);
 
         ropeSegLen = distOfStartToEnd;
-        //print(distOfStartToEnd);
         this.DrawRope();
     }
 
