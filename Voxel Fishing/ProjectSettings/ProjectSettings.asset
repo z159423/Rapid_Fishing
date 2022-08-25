@@ -162,7 +162,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 31
   AndroidPreferredInstallLocation: 1
@@ -250,7 +250,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Desktop/MondayOFF_Keystore.keystore'
+  AndroidKeystoreName: "/Users/bangseunghwan/Documents/\u110E\u116E\u11AF\u1109\u1175
+    \u1100\u116A\u11AB\u1105\u1167\u11AB/MondayOFF_Keystore.keystore"
   AndroidKeyaliasName: mondayoff
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -809,11 +810,11 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
     Standalone: CROSS_PLATFORM_INPUT
     WebGL: CROSS_PLATFORM_INPUT
     Windows Store Apps: CROSS_PLATFORM_INPUT
-    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED
+    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
