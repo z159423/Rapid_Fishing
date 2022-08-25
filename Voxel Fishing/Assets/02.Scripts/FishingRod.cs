@@ -11,7 +11,6 @@ public class FishingRod : MonoBehaviour
     [SerializeField] private Transform pivot = null;
 
     [SerializeField] private GameObject touchToStartPanel;
-    [SerializeField] private Button startButton;
     [SerializeField] private Animator rodAnimator;
     [SerializeField] private FishingHook fishingHook;
     [SerializeField] private FixedTouchField touchField;
@@ -156,19 +155,22 @@ public class FishingRod : MonoBehaviour
         rodAnimator.SetTrigger("Reload");
 
         fishingHook.SellFish();
-
-        touchToStartPanel.SetActive(false);
-        startButton.enabled = false;
-
+        
         //광고 interval 시간을 체크해서 시간이 지났으면 전면광고 송출 안지났으면 TouchToStart 활성화
         if (TimeInterstitialShower.instance.CheckTime())
         {
-            StartCoroutine(StartIsAd());
+            if (MondayOFF.AdsManager.instance.IsInterstitialReady())
+            {
+                StartCoroutine(StartIsAd());
+            }
+            else
+            {
+                TapToStartUIOnOff();
+            }
         }
         else
         {
-            startButton.enabled = true;
-            touchToStartPanel.SetActive(true);
+            TapToStartUIOnOff();
         }
     }
 
@@ -178,8 +180,13 @@ public class FishingRod : MonoBehaviour
 
         TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
 
-        startButton.enabled = true;
-        touchToStartPanel.SetActive(true);
+        TapToStartUIOnOff();
+    }
+
+    private void TapToStartUIOnOff()
+    {
+        if(!ChallengeManager.instance.challengeSuccessPanelOn)
+            touchToStartPanel.SetActive(!touchToStartPanel.activeSelf);
     }
 
     private void OnAdHide(string a, MaxSdkBase.AdInfo aa)

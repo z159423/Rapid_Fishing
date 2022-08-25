@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 0.2
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -809,11 +809,11 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED
     Standalone: CROSS_PLATFORM_INPUT
     WebGL: CROSS_PLATFORM_INPUT
     Windows Store Apps: CROSS_PLATFORM_INPUT
-    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
+    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

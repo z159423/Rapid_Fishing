@@ -45,6 +45,8 @@ public class ChallengeManager : MonoBehaviour
 
     public int stageNum = 0;
 
+    public bool challengeSuccessPanelOn = false;
+
     private void Awake()
     {
         instance = this;
@@ -146,6 +148,8 @@ public class ChallengeManager : MonoBehaviour
 
         challengeSuccessPanel.SetActive(true);
 
+        challengeSuccessPanelOn = true;
+
         //Time.timeScale = 0.5f;
     }
 
@@ -164,6 +168,8 @@ public class ChallengeManager : MonoBehaviour
         challengeSuccessPanel.SetActive(false);
 
         GenerateNewChallenge();
+
+        challengeSuccessPanelOn = false;
 
         //Time.timeScale = 1;
     }
