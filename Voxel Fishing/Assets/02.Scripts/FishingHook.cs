@@ -86,6 +86,11 @@ public class FishingHook : MonoBehaviour
     private void Update()
     {
 
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (FishingLogic.instance.enablePulling)
         {
             float dis = Vector3.Distance(startPoint.position, hook.position);
@@ -129,10 +134,7 @@ public class FishingHook : MonoBehaviour
         {
             depthText.text = "0 M";
         }
-    }
-
-    private void FixedUpdate()
-    {
+        
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 

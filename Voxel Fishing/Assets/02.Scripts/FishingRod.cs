@@ -42,7 +42,7 @@ public class FishingRod : MonoBehaviour
     public bool isStart = false;
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         float dis = Vector3.Distance(pivot.position, hookRigid.position);
         Vector3 dir = (hookRigid.transform.position - new Vector3(pivot.position.x, pivot.position.y, 0)).normalized;
