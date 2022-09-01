@@ -28,30 +28,31 @@ namespace MondayOFF.EditorUtil {
         }
 
         internal static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths) {
+            DidReloadScripts();
+
             // PURCHASING
             if (UnityEditor.Purchasing.PurchasingSettings.enabled) {
-                UseBuiltInJson(RequiresUGS());
                 DefinePurchasing(true);
             } else {
                 DefinePurchasing(false);
-                UseBuiltInJson(false);
             }
-
-            DidReloadScripts();
         }
 
         [UnityEditor.Callbacks.DidReloadScripts(0)]
         internal static void DidReloadScripts() {
+            // Json.Net 
+            CheckBuiltInJson();
+
             // FIREBASE
             // Assembly integrated
             System.Reflection.Assembly firebaseAssembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(assembly => assembly.GetName().Name == "Firebase.App");
             // Configfiles exist
-            bool hasConfigFile = File.Exists(Path.Combine( Application.dataPath, 
-            #if UNITY_IOS
+            bool hasConfigFile = File.Exists(Path.Combine(Application.dataPath,
+#if UNITY_IOS
 "GoogleServices-Info.plist"
-            #else
+#else
 "google-services.json"
-            #endif
+#endif
             ));
 
             if (firebaseAssembly != null && hasConfigFile) {
@@ -71,6 +72,7 @@ namespace MondayOFF.EditorUtil {
         }
 
         private static bool RequiresUGS() {
+            // Unity Gaming Services must be initialized for Unity Purchasing 4.2+
             DirectoryInfo directory = Directory.GetParent(Application.dataPath);
             var packagePath = Path.Combine(Path.Combine(directory.ToString(), "Packages"), "manifest.json");
             var packageContent = File.ReadAllText(packagePath);
@@ -86,7 +88,13 @@ namespace MondayOFF.EditorUtil {
             return (v >= new System.Version("4.2"));
         }
 
-        private static void UseBuiltInJson(bool useBuiltIn) {
+        private static void CheckBuiltInJson() {
+            // Some Unity packages have newtonsoft-json as their dependencies. Json.Net installed with Singular conflicts with it!
+            DirectoryInfo directory = Directory.GetParent(Application.dataPath);
+            var packagePath = Path.Combine(Path.Combine(directory.ToString(), "Packages"), "packages-lock.json");
+            var packageContent = File.ReadAllText(packagePath);
+            bool useBuiltIn = packageContent.Contains("nuget.newtonsoft-json");
+
             var jsonDotNetGUIDs = AssetDatabase.FindAssets("t:asmdef JsonDotNet");
             if (jsonDotNetGUIDs.Length <= 0) {
                 Debug.LogWarning("Failed to find JsonDotNet.asmdef");
@@ -182,6 +190,7 @@ namespace MondayOFF.EditorUtil {
 
                 if (hasChanged) {
                     PlayerSettings.SetScriptingDefineSymbolsForGroup(currentGroup, string.Join(";", defines.ToArray()));
+                    CompilationPipeline.RequestScriptCompilation();
                 }
             }
         }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using MondayOFF;
+#if MOFF_PURCHASING 
 using MondayOFF.IAP;
-
+#endif
 public class AdTestScript : MonoBehaviour {
     public void OnClickIS() {
         var isSuccess = TimeInterstitialShower.instance?.CheckTimeAndShowInterstitial();

@@ -139,7 +139,7 @@ public class FishingHook : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent<Fish>(out Fish fish) && currentHookedCount < maxHookableCount && touchField.Pressed)
         {

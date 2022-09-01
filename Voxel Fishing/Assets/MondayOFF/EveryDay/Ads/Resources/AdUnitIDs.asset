@@ -21,7 +21,7 @@ MonoBehaviour:
   AOS_has_IS: 1
   AOS_IS_AdUnitID: 694d3c2d1c7da238
   AOS_has_RV: 0
-  AOS_RV_AdUnitID: asdfa
+  AOS_RV_AdUnitID: 
   AOS_has_BN: 1
   AOS_BN_AdUnitID: 833024f8530297c6
   has_PlayOn: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
   iOS_PlayOnGameKey: 
   iOS_store_id: 
   shouldShowLogoAfterInterstitial: 0
-  interstitialCount: -1
+  interstitialDisplayCount: -1
   playOnLogoAnchor: 0
   playOnLogoOffset: {x: 0, y: 150}
   playOnLogoSize: 64

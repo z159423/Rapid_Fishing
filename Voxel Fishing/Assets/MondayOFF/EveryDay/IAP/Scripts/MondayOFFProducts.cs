@@ -1,6 +1,6 @@
-#if MOFF_PURCHASING
 using UnityEngine;
 
+#if MOFF_PURCHASING
 namespace MondayOFF {
     // [CreateAssetMenu(menuName = "products", fileName = "Products", order = 10)]
     public class MondayOFFProducts : ScriptableObject {
@@ -30,4 +30,8 @@ namespace MondayOFF {
     }
 }
 
+#else
+namespace MondayOFF {
+    public class MondayOFFProducts : ScriptableObject { }
+}
 #endif

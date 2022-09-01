@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
+
 namespace MondayOFF {
+#if PLAYON_ENABLED //&& !UNITY_EDITOR
     public partial class AdsManager : MonoBehaviour {
-#if PLAYON_ENABLED
         AdUnit _adUnit = default;
         int _adCount = 0;
 
         public bool CustomShowAudioAd() {
-#if UNITY_EDITOR
-            return false;
-#endif
+            if (_adUnitIDs.shouldShowLogoAfterInterstitial) {
+                return false;
+            }
+            return ShowAudioAd();
+        }
+
+        public void CloseAudioAd() {
+            _adUnit.CloseAd();
+        }
+
+        private bool ShowAudioAd() {
             if (PlayOnSDK.IsInitialized() && _adUnit.IsAdAvailable()) {
                 _adUnit.ShowAd();
                 return true;
@@ -17,27 +26,16 @@ namespace MondayOFF {
             return false;
         }
 
-        public void CustomCloseAudioAd() {
-#if UNITY_EDITOR
-            return;
-#endif
-            _adUnit.CloseAd();
-        }
-
         private void InitializePlayOnSDK() {
-#if UNITY_EDITOR
-            return;
-#endif
-
             PlayOnSDK.OnInitializationFinished += OnPlayOnInitialized;
 
             _adUnit = new AdUnit(PlayOnSDK.AdUnitType.AudioLogoAd);
-            
+
             PlayOnSDK.Initialize(_adUnitIDs.playOnKey
 #if UNITY_IOS
               , _adUnitIDs.storeID
 #endif
-         );
+            );
         }
 
         private void OnPlayOnInitialized() {
@@ -49,9 +47,9 @@ namespace MondayOFF {
                 PlayOnSDK.SetIABUSPrivacyString(AdsManager.privacyString);
             }
 
-            if (_adUnitIDs.shouldShowLogoAfterInterstitial && _adUnitIDs.interstitialCount > 0) {
+            if (_adUnitIDs.shouldShowLogoAfterInterstitial && _adUnitIDs.interstitialDisplayCount > 0) {
                 MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += (_, __) => {
-                    if (_adCount++ % _adUnitIDs.interstitialCount == 0) {
+                    if (_adCount++ % _adUnitIDs.interstitialDisplayCount == 0) {
                         CustomShowAudioAd();
                     }
                 };
@@ -62,12 +60,12 @@ namespace MondayOFF {
         }
 
         private void OnApplicationPause(bool pauseStatus) {
-#if UNITY_EDITOR
-            return;
-#endif
             PlayOnSDK.onApplicationPause(pauseStatus);
         }
-
-#endif
     }
+#else
+    public partial class AdsManager : MonoBehaviour {
+        private void InitializePlayOnSDK() { }
+    }
+#endif
 }
