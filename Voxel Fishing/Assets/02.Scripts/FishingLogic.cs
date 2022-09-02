@@ -47,7 +47,7 @@ public class FishingLogic : MonoBehaviour
             }
         }
 
-        catchSlider.value += catchBarMoveSpeed * Time.deltaTime;
+        //catchSlider.value += catchBarMoveSpeed * Time.deltaTime;
     }
 
     public void FishingStart()

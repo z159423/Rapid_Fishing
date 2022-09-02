@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Threading;
 
 using Newtonsoft.Json;
-#if UNITY_5_3_OR_NEWER && UNITY_PURCHASING
+#if UNITY_5_3_OR_NEWER && MOFF_PURCHASING
 using UnityEngine.Purchasing;
 #endif
 
@@ -72,7 +72,7 @@ public class SingularSDK : MonoBehaviour {
     static AndroidJavaClass jclass;
     static AndroidJavaObject activity;
     static AndroidJavaClass jniSingularUnityBridge;
-    
+
 
     static bool status = false;
 #endif
@@ -970,7 +970,7 @@ public class SingularSDK : MonoBehaviour {
         return null;
     }
 
-#if UNITY_5_3_OR_NEWER && UNITY_PURCHASING
+#if UNITY_5_3_OR_NEWER && MOFF_PURCHASING
 
     public static void InAppPurchase(IEnumerable<Product> products, Dictionary<string, object> attributes, bool isRestored = false) {
         InAppPurchase("__iap__", products, attributes, isRestored);
@@ -1321,8 +1321,7 @@ public class SingularSDK : MonoBehaviour {
 #if UNITY_IOS
         LimitDataSharing_(limitDataSharingValue);
 #elif UNITY_ANDROID
-        if (singular != null)
-        {
+        if (singular != null) {
             singular.CallStatic("limitDataSharing", limitDataSharingValue);
         }
 #endif
@@ -1337,8 +1336,7 @@ public class SingularSDK : MonoBehaviour {
         return GetLimitDataSharing_();
 #endif
 #if UNITY_ANDROID
-        if (singular != null)
-        {
+        if (singular != null) {
             return singular.CallStatic<bool>("getLimitDataSharing");
         }
 #endif

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd63d146545254068a1f00d3dcd90cdf, type: 3}
   m_Name: Products
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: MondayOFF.IAP:MondayOFF:MondayOFFProducts
   products:
-  - productID: some_product
+  - productID: stuff
     productType: 0

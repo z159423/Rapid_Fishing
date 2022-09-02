@@ -337,6 +337,7 @@ m_ResolvedPackages:
     - 2.6.11
     - 2.6.14
     - 2.6.15
+    - 2.6.17
     - 2.7.1
     - 2.7.2
     - 2.7.3
@@ -353,13 +354,17 @@ m_ResolvedPackages:
     - 2.8.3
     - 2.8.4
     - 2.8.6
+    - 2.8.9
     - 2.9.0-pre.1
     - 2.9.0-pre.6
+    - 2.9.1
     compatible:
     - 2.8.6
+    - 2.8.9
     - 2.9.0-pre.1
     - 2.9.0-pre.6
-    verified: 2.8.6
+    - 2.9.1
+    verified: 2.8.9
   dependencies: []
   resolvedDependencies: []
   keywords:

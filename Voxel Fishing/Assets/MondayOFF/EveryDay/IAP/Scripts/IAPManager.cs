@@ -4,9 +4,8 @@
 **************************************/
 
 using UnityEngine;
-using System.Collections.Generic;
-
 #if MOFF_PURCHASING 
+using System.Collections.Generic;
 using UnityEngine.Purchasing;
 #if UGS_ENABLED
 using Unity.Services.Core;
@@ -199,55 +198,16 @@ namespace MondayOFF.IAP {
         }
     }
 }
+
 #else
 
 namespace MondayOFF.IAP {
     public class IAPManager : MonoBehaviour {
-
-        public static IAPManager instance = default;
-        [SerializeField] GameObject pannelLoading;
-        Dictionary<string, System.Action> onPurchaseDict = new Dictionary<string, System.Action>();
-        public void ActiveLoading() {
-            if (pannelLoading != null) {
-                pannelLoading.SetActive(true);
-            }
-        }
-
-        public void HideLoading() {
-            if (pannelLoading != null) {
-                pannelLoading.SetActive(false);
-            }
-        }
-
-        public void RegisterProducts(string productID, System.Action onPurchase) {
-            Debug.Log("[IAPManager] Register purchase callback for " + productID);
-
-            if (!onPurchaseDict.ContainsKey(productID)) {
-                onPurchaseDict.Add(productID, onPurchase);
-            } else {
-                onPurchaseDict[productID] = onPurchase;
-            }
-        }
-
-        public void PurchaseProduct(string productID) {
-            Debug.Log("[IAPManager] Purchase item: " + productID);
-            if (onPurchaseDict.TryGetValue(productID, out System.Action onPurchase)) {
-                onPurchase?.Invoke();
-            }
-        }
-
-        public void RestorePurchase() {
-            Debug.Log("[IAPManager] Restore Purchase");
-        }
-
         private void Awake() {
-            if (instance != null) {
-                Debug.Assert(false, "[IAPManager] Duplicate IAP Manager found");
-                DestroyImmediate(this);
-                return;
-            }
-            instance = this;
+            Debug.Log("[IAPManager] Purchasing is NOT enabled.");
+            DestroyImmediate(this);
         }
     }
 }
+
 #endif
