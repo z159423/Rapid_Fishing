@@ -810,11 +810,11 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
     Standalone: CROSS_PLATFORM_INPUT
     WebGL: CROSS_PLATFORM_INPUT
     Windows Store Apps: CROSS_PLATFORM_INPUT
-    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED
+    iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT;gameanalytics_max_enabled;PLAYON_ENABLED;FIREBASE_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
