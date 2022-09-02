@@ -9,6 +9,7 @@ namespace MondayOFF {
             MaxSdk.SetDoNotSell(false);
 
             // FB
+            Facebook.Unity.FB.Mobile.SetDataProcessingOptions(new string[] { });
             AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
 
             // US privacy string

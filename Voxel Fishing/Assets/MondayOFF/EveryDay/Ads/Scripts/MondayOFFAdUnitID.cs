@@ -86,7 +86,7 @@ namespace MondayOFF {
         [DrawIf("has_PlayOn", "Auto show Logo Ad")]
         public bool shouldShowLogoAfterInterstitial = false;
         [DrawIf("shouldShowLogoAfterInterstitial", "After N Interstitials")]
-        public int interstitialCount = -1;
+        public int interstitialDisplayCount = -1;
 
 
         [Tooltip("Anchor position of logo ad")]

@@ -1,8 +1,13 @@
-using System;
 #if UNITY_IOS
 using System.Net.Http;
 #endif
+#if UNITY_ANDROID
+using System.Collections.Generic;
+using System.Linq;
+#endif
+using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.Build;
@@ -54,8 +59,9 @@ namespace MondayOFF {
                 }
             }
 
+#if PLAYON_ENABLED
             ValidatePlayOn(adUnitID);
-
+#endif
         }
 
         private string GetAppIdFromAppLovinSettings(string property) {
@@ -87,27 +93,58 @@ namespace MondayOFF {
             return guids.Length > 0 ? AssetDatabase.GUIDToAssetPath(guids[0]) : defaultPath;
         }
 
-
-        /*********************************************************************
-            It tests validity of PlayOn keys
-                1. Checks if game key is UUID with regex.
-                2. (iOS only) Get Appstore ID using bundle ID and match it
-        **********************************************************************/
-        // [MenuItem("MondayOFF/Validate PlayOn Key", false, 100)]
         public static void ValidatePlayOn(MondayOFFAdUnitID adUnitID) {
 #if PLAYON_ENABLED
-            /*
-            Tested with Like a Pizza(iOS)
-            Bundle ID: com.mondayoff.pizza
-            PlayOn Key: 3e983bd9-090e-4139-b3a5-7c50ee131b2d
-            Appstore ID: 1621988938
-            */
-
             if (adUnitID.hasPlayOn) {
+
+#if UNITY_ANDROID
+                /*********************************************************************
+                   Patch mainTamplate.gradle to use exoplayer 2.16.0
+               **********************************************************************/
+                const string DependenciesToken = @".*\*\*DEPS\*\*.*";
+                string[] strictExoPlayerList = {
+                    @"// Force exoplayer version to 2.16.0 for PlayOnSDK",
+                    @"    implementation(""com.google.android.exoplayer:exoplayer"") {",
+                    @"        version {",
+                    @"            strictly(""2.16.0"")",
+                    @"        }",
+                    @"    }"
+                };
+
+                string mainTemplatePath = Path.Combine(Application.dataPath, $"Plugins{Path.DirectorySeparatorChar}Android{Path.DirectorySeparatorChar}mainTemplate.gradle");
+
+                List<string> lines = File.ReadAllLines(mainTemplatePath).ToList();
+
+                var exoplayerRegex = new Regex(strictExoPlayerList[0]);
+                var dependenciesToken = new Regex(DependenciesToken);
+                for (int i = 0; i < lines.Count; ++i) {
+                    var line = lines[i];
+                    if (exoplayerRegex.IsMatch(line)) {
+                        // already contains strict version
+                        Debug.Log("mainTemplate.gradle is already using exoplayer 2.16.0");
+                        goto PATCH_COMPLETED;
+                    } else if (dependenciesToken.IsMatch(line)) {
+                        lines.InsertRange(i, strictExoPlayerList);
+                        File.WriteAllLines(mainTemplatePath, lines);
+                        Debug.Log("Patched mainTemplate.gradle to use exoplayer 2.16.0");
+                        goto PATCH_COMPLETED;
+                    }
+                }
+
+                throw new UnityEditor.Build.BuildFailedException($"mainTemplate.gradle does not exist or has invalid format!");
+
+            PATCH_COMPLETED:
+#endif
+                /*********************************************************************
+                    It tests validity of PlayOn keys
+                        1. Checks if game key is UUID with regex.
+                        2. (iOS only) Get Appstore ID using bundle ID and match it
+                **********************************************************************/
+
                 bool isValid = true;
 
                 string playOnKey = adUnitID.playOnKey;
-                System.Text.RegularExpressions.Regex uuidRegex = new System.Text.RegularExpressions.Regex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}");
+                Regex uuidRegex = new Regex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}");
                 isValid &= uuidRegex.IsMatch(playOnKey);
                 Debug.Log("PlayOn Key passed: " + isValid + " (" + playOnKey + ")");
 #if UNITY_IOS
@@ -117,7 +154,6 @@ namespace MondayOFF {
 
                     using (var client = new HttpClient()) {
                         var bundleID = Application.identifier;
-                        // bundleID = "com.mondayoff.pizza";
                         var getRequest = new HttpRequestMessage(HttpMethod.Get, $"http://itunes.apple.com/lookup?bundleId={bundleID}");
 
                         var task = System.Threading.Tasks.Task.Run(() => client.SendAsync(getRequest));
@@ -129,8 +165,12 @@ namespace MondayOFF {
                             var content = readTask.Result;
                             // ! DANGER! 50 is an arbitary number 
                             if (content.Length < 50) {
-                                throw new UnityEditor.Build.BuildFailedException("This app is NOT publishined on Apple AppStore! Try diabling 'has PlayOn' in AdUnits.\nIf the app is already published, please check bundle ID");
+                                if (EditorUtility.DisplayDialog("Incorrect Key or StoreID enterd for PlayOn!", "Try turning off 'has PlayOn' in AdUnits.", "Ok")) {
+                                    UnityEditor.Selection.activeObject = adUnitID;
+                                }
+                                throw new UnityEditor.Build.BuildFailedException("This app is NOT publishined on Apple AppStore! Try turning off 'has PlayOn' in AdUnits.\nIf the app is already published, please check bundle ID");
                             }
+                            
                             if (content.Contains($":{storeID},")) {
                                 hasValidStoreID = true;
                             } else {
@@ -152,7 +192,10 @@ namespace MondayOFF {
                 }
 #endif
                 if (!isValid) {
-                    throw new UnityEditor.Build.BuildFailedException("Incorrect Key or StoreID enterd for PlayOn!  Try diabling 'has PlayOn' in AdUnits.");
+                    if (EditorUtility.DisplayDialog("Incorrect Key or StoreID enterd for PlayOn!", "Try turning off 'has PlayOn' in AdUnits.", "Ok")) {
+                        UnityEditor.Selection.activeObject = adUnitID;
+                    }
+                    throw new UnityEditor.Build.BuildFailedException("Incorrect Key or StoreID enterd for PlayOn!  Try turning off 'has PlayOn' in AdUnits.");
                 }
             }
 #endif

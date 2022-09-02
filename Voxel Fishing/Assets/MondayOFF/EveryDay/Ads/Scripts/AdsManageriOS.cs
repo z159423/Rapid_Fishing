@@ -12,9 +12,12 @@ namespace MondayOFF {
 
             // FB
             AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled(consentStatus);
+            Facebook.Unity.FB.Mobile.SetAdvertiserTrackingEnabled(consentStatus);
             if (consentStatus) {
+                Facebook.Unity.FB.Mobile.SetDataProcessingOptions(new string[] { });
                 AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
             } else {
+                Facebook.Unity.FB.Mobile.SetDataProcessingOptions(new string[] { "LDU" }, 0, 0);
                 AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { "LDU" }, 0, 0);
             }
 
@@ -44,7 +47,7 @@ namespace MondayOFF {
 
 /*
 
-US PRIVACY STUFF
+US PRIVACY STRING
 
 
 String Component    Expected Values Definition

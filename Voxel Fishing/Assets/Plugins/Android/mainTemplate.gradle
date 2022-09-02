@@ -34,7 +34,6 @@
 apply plugin: 'com.android.library'
 **APPLY_PLUGINS**
 
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
@@ -50,16 +49,16 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.+' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/InMobi/Editor/Dependencies.xml:6
     implementation 'com.android.support:support-v4:25.3.1' // Facebook.Unity.Editor.AndroidSupportLibraryResolver.addSupportLibraryDependency
     implementation 'com.applovin.mediation:adcolony-adapter:4.8.0.2' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/AdColony/Editor/Dependencies.xml:4
-    implementation 'com.applovin.mediation:bytedance-adapter:4.5.0.7.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/ByteDance/Editor/Dependencies.xml:8
+    implementation 'com.applovin.mediation:bytedance-adapter:4.5.0.9.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/ByteDance/Editor/Dependencies.xml:8
     implementation 'com.applovin.mediation:facebook-adapter:[6.11.0.5]' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Facebook/Editor/Dependencies.xml:8
     implementation 'com.applovin.mediation:fyber-adapter:8.1.5.1' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Fyber/Editor/Dependencies.xml:4
     implementation 'com.applovin.mediation:google-adapter:[21.1.0.2]' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Google/Editor/Dependencies.xml:5
     implementation 'com.applovin.mediation:inmobi-adapter:10.0.9.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/InMobi/Editor/Dependencies.xml:4
-    implementation 'com.applovin.mediation:ironsource-adapter:7.2.4.0.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/IronSource/Editor/Dependencies.xml:8
-    implementation 'com.applovin.mediation:mintegral-adapter:16.2.11.2' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Mintegral/Editor/Dependencies.xml:8
+    implementation 'com.applovin.mediation:ironsource-adapter:7.2.4.1.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/IronSource/Editor/Dependencies.xml:8
+    implementation 'com.applovin.mediation:mintegral-adapter:16.2.21.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Mintegral/Editor/Dependencies.xml:8
     implementation 'com.applovin.mediation:tapjoy-adapter:12.10.0.2' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Tapjoy/Editor/Dependencies.xml:8
     implementation 'com.applovin.mediation:unityads-adapter:4.3.0.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/UnityAds/Editor/Dependencies.xml:4
-    implementation 'com.applovin.mediation:verve-adapter:2.15.0.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Verve/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:verve-adapter:2.15.1.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Verve/Editor/Dependencies.xml:4
     implementation 'com.applovin.mediation:vungle-adapter:6.12.0.0' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/Vungle/Editor/Dependencies.xml:4
     implementation 'com.applovin:applovin-sdk:11.4.4' // Assets/MondayOFF/ThirdParties/MaxSdk/AppLovin/Editor/Dependencies.xml:4
     implementation 'com.facebook.android:facebook-applinks:[11.0, 12)' // Assets/MondayOFF/ThirdParties/FacebookSDK/Plugins/Editor/Dependencies.xml:6
@@ -82,12 +81,6 @@ dependencies {
     implementation 'com.parse.bolts:bolts-android:1.4.0' // Assets/MondayOFF/ThirdParties/FacebookSDK/Plugins/Editor/Dependencies.xml:4
     implementation 'com.squareup.picasso:picasso:2.71828' // Assets/MondayOFF/ThirdParties/MaxSdk/Mediation/InMobi/Editor/Dependencies.xml:5
 // Android Resolver Dependencies End
-
-implementation("com.google.android.exoplayer:exoplayer") {
-    version {
-        strictly("2.16.0")
-      }
-    }
 **DEPS**}
 
 // Android Resolver Exclusions Start

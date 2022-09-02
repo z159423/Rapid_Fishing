@@ -126,11 +126,9 @@ namespace MondayOFF {
 
             adLoadingFuncs[(loadingOrder >> 4) & 0b11].Invoke();
 
-#if PLAYON_ENABLED
             if (_adUnitIDs.hasPlayOn) {
                 InitializePlayOnSDK();
             }
-#endif
         }
 
         private void ValidateAdUnitIDObject() {
