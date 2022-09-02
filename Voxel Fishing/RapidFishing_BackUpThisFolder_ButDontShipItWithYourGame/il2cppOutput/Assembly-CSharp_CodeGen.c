@@ -272,8 +272,8 @@ extern void FishingHook_Awake_mB37F0BFDD571FEE902DE2091C61EF86294AD179F (void);
 extern void FishingHook_Update_mC45CB55AC98941C005F095EE49BEDECACC1B7135 (void);
 // 0x00000085 System.Void FishingHook::FixedUpdate()
 extern void FishingHook_FixedUpdate_mE33A8503482CF10B28F2AD0A90EA4603C505B151 (void);
-// 0x00000086 System.Void FishingHook::OnTriggerEnter(UnityEngine.Collider)
-extern void FishingHook_OnTriggerEnter_m569142FFFC2A272DB35C2CEAF1104C1ACEBBB411 (void);
+// 0x00000086 System.Void FishingHook::OnTriggerStay(UnityEngine.Collider)
+extern void FishingHook_OnTriggerStay_m9B595F568AD7A1107CB49869D5B47F53627B13EE (void);
 // 0x00000087 System.Void FishingHook::SellFish()
 extern void FishingHook_SellFish_m8F990FA6FFFBC23065CC4E5726539D0DDC712A22 (void);
 // 0x00000088 System.Void FishingHook::UpgradeHookMaxCount(System.Single)
@@ -2636,7 +2636,7 @@ static Il2CppMethodPointer s_methodPointers[1254] =
 	FishingHook_Awake_mB37F0BFDD571FEE902DE2091C61EF86294AD179F,
 	FishingHook_Update_mC45CB55AC98941C005F095EE49BEDECACC1B7135,
 	FishingHook_FixedUpdate_mE33A8503482CF10B28F2AD0A90EA4603C505B151,
-	FishingHook_OnTriggerEnter_m569142FFFC2A272DB35C2CEAF1104C1ACEBBB411,
+	FishingHook_OnTriggerStay_m9B595F568AD7A1107CB49869D5B47F53627B13EE,
 	FishingHook_SellFish_m8F990FA6FFFBC23065CC4E5726539D0DDC712A22,
 	FishingHook_UpgradeHookMaxCount_m5F4FF472F79E0FF70CE3D821ED7859E4903CD181,
 	FishingHook_GetMoney_m26DCC52D16551A2E037204587DE246B924FA757C,

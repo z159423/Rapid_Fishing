@@ -13704,8 +13704,8 @@ IL_0108:
 		return;
 	}
 }
-// System.Void FishingHook::OnTriggerEnter(UnityEngine.Collider)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FishingHook_OnTriggerEnter_m569142FFFC2A272DB35C2CEAF1104C1ACEBBB411 (FishingHook_tB90B68BE53B3F05D603DC6049584E1BD361944D5* __this, Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* ___other0, const RuntimeMethod* method) 
+// System.Void FishingHook::OnTriggerStay(UnityEngine.Collider)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FishingHook_OnTriggerStay_m9B595F568AD7A1107CB49869D5B47F53627B13EE (FishingHook_tB90B68BE53B3F05D603DC6049584E1BD361944D5* __this, Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* ___other0, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)

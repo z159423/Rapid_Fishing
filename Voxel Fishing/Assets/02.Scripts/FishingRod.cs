@@ -74,7 +74,7 @@ public class FishingRod : MonoBehaviour
             }
         }
 
-        if (FishingLogic.instance.pulling && touchField.Pressed)
+        if (FishingLogic.instance.pulling)
         {
             //float dis = Vector3.Distance(pivot.position, hookRigid.position);
 
@@ -82,7 +82,7 @@ public class FishingRod : MonoBehaviour
             {
                 ReloadHook();
             }
-            else
+            else if(touchField.Pressed)
             {
                 //Vector3 dir = (hookRigid.transform.position - pivot.position).normalized;
                 currentPullingForece = Mathf.Lerp(currentPullingForece, maxPullingForce, pullingSpeed * Time.deltaTime);
