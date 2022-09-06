@@ -7,15 +7,19 @@
     },
     {
       "FullName": "Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-09-02T07:11:58.413073Z"
+      "LastWriteTime": "2022-09-02T08:28:24.000603Z"
     },
     {
       "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "LastWriteTime": "2022-07-19T01:21:07Z"
     },
     {
+      "FullName": "netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
+      "LastWriteTime": "2022-07-19T01:21:07Z"
+    },
+    {
       "FullName": "Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-09-02T07:11:58.132421Z"
+      "LastWriteTime": "2022-09-02T08:28:23.988341Z"
     },
     {
       "FullName": "mscorlib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -23,7 +27,7 @@
     },
     {
       "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-09-02T07:11:58.123423Z"
+      "LastWriteTime": "2022-09-02T08:28:23.999597Z"
     }
   ],
   "Functions": [
@@ -36,7 +40,8 @@
         0,
         1,
         2,
-        3
+        3,
+        4
       ]
     },
     {
@@ -48,7 +53,8 @@
         0,
         1,
         2,
-        3
+        3,
+        4
       ]
     },
     {
@@ -59,7 +65,9 @@
       "AssemblyDependencyIndices": [
         0,
         1,
+        5,
         2,
+        4,
         3
       ]
     },
@@ -71,8 +79,9 @@
       "AssemblyDependencyIndices": [
         0,
         1,
-        3,
-        2
+        2,
+        4,
+        3
       ]
     },
     {
@@ -83,7 +92,8 @@
       "AssemblyDependencyIndices": [
         0,
         1,
-        2
+        2,
+        3
       ]
     },
     {
@@ -94,8 +104,8 @@
       "AssemblyDependencyIndices": [
         0,
         1,
-        4,
         2,
+        4,
         3
       ]
     },
@@ -108,6 +118,7 @@
         0,
         1,
         2,
+        4,
         3
       ]
     },
@@ -120,7 +131,8 @@
         0,
         1,
         2,
-        3
+        3,
+        4
       ]
     },
     {
@@ -142,7 +154,8 @@
       "AssemblyDependencyIndices": [
         0,
         1,
-        2
+        2,
+        3
       ]
     },
     {
@@ -151,7 +164,8 @@
       "ModuleHash": "d66adb998ed37c163a580ab7e26f5ed6",
       "LinkName": "CDCA4A5193BE5947",
       "AssemblyDependencyIndices": [
-        5,
+        6,
+        3,
         2
       ]
     },
@@ -161,7 +175,8 @@
       "ModuleHash": "f7aae49cd2a0b3a6897054879a93795b",
       "LinkName": "801E9A000BB37B05",
       "AssemblyDependencyIndices": [
-        5,
+        6,
+        3,
         2
       ]
     }
