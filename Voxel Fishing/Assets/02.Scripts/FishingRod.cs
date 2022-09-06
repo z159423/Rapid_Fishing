@@ -39,6 +39,11 @@ public class FishingRod : MonoBehaviour
     public float pullingSpeed = 1f;
 
     [Space]
+
+    private int currentpullCount = 0;
+    public int playAdsPullCount = 5;
+
+    [Space]
     public bool isStart = false;
 
 
@@ -155,9 +160,11 @@ public class FishingRod : MonoBehaviour
         rodAnimator.SetTrigger("Reload");
 
         fishingHook.SellFish();
+
+        currentpullCount++;
         
         //광고 interval 시간을 체크해서 시간이 지났으면 전면광고 송출 안지났으면 TouchToStart 활성화
-        if (TimeInterstitialShower.instance.CheckTime())
+        if (TimeInterstitialShower.instance.CheckTime() && currentpullCount >= playAdsPullCount)
         {
             if (MondayOFF.AdsManager.instance.IsInterstitialReady())
             {
@@ -179,6 +186,8 @@ public class FishingRod : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
+
+        currentpullCount = 0;
 
         TapToStartUIOnOff();
     }
