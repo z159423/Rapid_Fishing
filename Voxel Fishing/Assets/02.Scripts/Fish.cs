@@ -210,6 +210,8 @@ public class Fish : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(1, changePositionTime));
         }
     }
+
+    
 }
 
 [System.Serializable]
