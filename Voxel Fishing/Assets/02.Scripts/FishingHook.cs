@@ -83,14 +83,8 @@ public class FishingHook : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        print(Time.deltaTime);
-    }
-
     private void FixedUpdate()
     {
-        print(Time.deltaTime);
         if (FishingLogic.instance.enablePulling)
         {
             float dis = Vector3.Distance(startPoint.position, hook.position);

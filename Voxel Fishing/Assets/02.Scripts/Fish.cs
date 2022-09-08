@@ -43,7 +43,6 @@ public class Fish : MonoBehaviour
 
     private void Start()
     {
-
         if (rigid == null)
             rigid = GetComponent<Rigidbody>();
 
@@ -211,6 +210,10 @@ public class Fish : MonoBehaviour
         }
     }
 
+    public IEnumerator Stuggling()
+    {
+        yield return null;
+    }
     
 }
 

@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public Transform challengeTarget;
     public TextMeshProUGUI challengeText;
+    public TextMeshProUGUI versionText;
+
 
     [Space]
     [Header("촬영모드")]
@@ -23,6 +25,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        versionText.text = "version : " + Application.version;
     }
 
     private void Update() {
