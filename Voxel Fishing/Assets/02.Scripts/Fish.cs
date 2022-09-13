@@ -161,7 +161,7 @@ public class Fish : MonoBehaviour
         FishingLogic.instance.biteBate = true;
     }
 
-    public void Hooked(Transform hook)
+    public virtual void Hooked(Transform hook)
     {
         hooked = true;
 
@@ -175,6 +175,9 @@ public class Fish : MonoBehaviour
         GetComponent<Collider>().isTrigger = true;
 
         Vibration.Vibrate((long)100);
+
+        if (GetComponent<ChestMover>() != null)
+            GetComponent<ChestMover>().chest.deleteConnect();
 
     }
 
@@ -213,6 +216,11 @@ public class Fish : MonoBehaviour
     public IEnumerator Stuggling()
     {
         yield return null;
+    }
+
+    public virtual void SellFish()
+    {
+        
     }
     
 }

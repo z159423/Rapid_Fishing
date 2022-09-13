@@ -11,6 +11,13 @@ public class FishPool : MonoBehaviour
     public FishList fourTierFishList = new FishList();
     public FishList fiveTierFishList = new FishList();
 
+    public FishList chestList_one = new FishList();
+    public FishList chestList_two = new FishList();
+    public FishList chestList_three = new FishList();
+
+    public FishList chestMover = new FishList();
+    
+
     [Space]
 
     [SerializeField] private Transform poolParent;
@@ -53,7 +60,39 @@ public class FishPool : MonoBehaviour
                 break;
         }
 
+        if (fish.GetComponent<Chest>() != null)
+        {
+            var chest = fish.GetComponent<Chest>();
+
+            switch (chest.chestTier)
+            {
+                case 1:
+                    chestList_one.EnqueueFish(fish.gameObject);
+                    break;
+
+                case 2:
+                    chestList_two.EnqueueFish(fish.gameObject);
+                    break;
+
+                case 3:
+                    chestList_three.EnqueueFish(fish.gameObject);
+                    break;
+
+            }
+
+            if (chest.chestMover.gameObject.activeSelf && !FishingHook.instance.hookedFish.Contains(chest.chestMover))
+                chestMover.EnqueueFish(chest.chestMover.gameObject);
+
+            DequeueChest(chest.chestTier, poolParent);
+        }
+
+        if(fish.GetComponent<ChestMover>() != null)
+        {
+            chestMover.EnqueueFish(fish.gameObject);
+        }
+
         DequeueFish(fish.fishType.tier, poolParent);
+
     }
 
     public void DequeueFish(int tier, Transform poolParent)
@@ -82,6 +121,49 @@ public class FishPool : MonoBehaviour
                 fiveTierFishList.DequeueFish(poolParent);
                 break;
         }
+    }
+
+    public void DequeueChest(int tier, Transform poolParent)
+    {
+        GameObject chest = null;
+        switch (tier)
+        {
+            case 1:
+                chest = chestList_one.DequeueFish(poolParent);
+                break;
+
+            case 2:
+                chest = chestList_two.DequeueFish(poolParent);
+                break;
+
+            case 3:
+                chest = chestList_three.DequeueFish(poolParent);
+                break;
+        }
+
+        chest.GetComponent<Chest>().chestMover = chestMover.DequeueFish(poolParent).GetComponent<Fish>();
+        chest.transform.position = chest.GetComponent<Chest>().chestMover.transform.position;
+        chest.GetComponentInChildren<RopeBridge>().StartPoint = chest.transform;
+        chest.GetComponentInChildren<RopeBridge>().EndPoint = chest.GetComponent<Chest>().chestMover.transform;
+        chest.GetComponent<Chest>().chestMover.GetComponent<ChestMover>().chest = chest.GetComponent<Chest>();
+        chest.GetComponent<Chest>().line.enabled = true;
+
+        switch (tier)
+        {
+            case 1:
+                chest.GetComponent<Chest>().chestMover.usingMapDataNumber = 13;
+                break;
+
+            case 2:
+                chest.GetComponent<Chest>().chestMover.usingMapDataNumber = 2;
+                break;
+
+            case 3:
+                chest.GetComponent<Chest>().chestMover.usingMapDataNumber = 3;
+                break;
+        }
+
+        
     }
 
 }
