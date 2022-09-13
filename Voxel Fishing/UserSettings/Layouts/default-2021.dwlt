@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 159
-    y: 387
-    width: 641
-    height: 602
+    x: -1651
+    y: 563
+    width: 1228
+    height: 573
   m_ShowMode: 0
-  m_Title: Build Settings
+  m_Title: Android Logcat
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 640, y: 601}
+  m_MinSize: {x: 100, y: 121}
   m_MaxSize: {x: 4000, y: 4021}
   m_Maximized: 0
 --- !u!114 &2
@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 2240
     height: 1122
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Hierarchy
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -58,17 +58,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: BuildPlayerWindow
+  m_Name: AndroidLogcatConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 641
-    height: 602
-  m_MinSize: {x: 640, y: 601}
-  m_MaxSize: {x: 4000, y: 4021}
+    width: 1228
+    height: 573
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -92,12 +92,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 641
-    height: 602
-  m_MinSize: {x: 640, y: 601}
+    width: 1228
+    height: 573
+  m_MinSize: {x: 100, y: 121}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 58686
+  controlID: 4015
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 77
+  controlID: 118
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 78
+  controlID: 119
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 263
+  controlID: 120
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 79
+  controlID: 215
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -444,47 +444,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 12043, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 11500000, guid: ac9b4e439aace6446a0642ca97e8f43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 640, y: 580}
+  m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Build Settings
+    m_Text: Android Logcat
     m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 159
-    y: 387
-    width: 641
-    height: 581
+    x: -1651
+    y: 563
+    width: 1228
+    height: 552
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 
-    m_RenameOverlay:
-      m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
-      m_EditFieldRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      m_UserData: 0
-      m_IsWaitingForDelay: 0
-      m_IsRenaming: 0
-      m_OriginalEventType: 11
-      m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 0}
-    m_SearchString: 
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1614,23 +1592,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 9c0a0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0a51f4ffec51f4fff278f4ff3479f4ffdc7ef4ff0aa8f4fffaacf4ffe0adf4ff2ad2f4ff6cd2f4ff88d4f4ff70d5f4ff3afcf4ff8cfcf4ff101df5fff01df5ff3a42f5ff7c42f5ff8e46f5ff7447f5ffbe6bf5ff006cf5ffbc6ef5ffa26ff5ffec93f5ff2e94f5ff909af5ff7a9bf5ff4cc2f5ffc2c2f5ff84f2f5ff4c13f6ff6014f6ff226cf6ff746df6ffb294f6ffc695f6ffd0bff6fff8e8f6ff0eeaf6ff2c0ff7ffb2def7ffbc09f8ff4e33f8ff0235f8ff3a5ef8ffdecef8fff2cff8ff16e2f8ff76f0f8ffd2f8f8ffc2fbf8ff68fdf8ff162af9ff2a2bf9ff3054f9ffd655f9ff427bf9ff6aacf9ff7eadf9ff42d6f9ffe8d7f9ffde20faff7287faff3489faff84c2faff3a15fbff2642fbff60a2fbff06a4fbff4ae4fbff5ee5fbff2c75fcffacc6fcff7ec8fcff600afdff1c35fdff26b9fdffccf3fdff74f5fdffd41efeff6c0fffff0a7effff48d5ffff12fbffff10a500009eb0000032b2000078b20000c460020092690200f86a0200c0c902008ecc0200eacc020034cd02001e100300ac1a0300383a03008a870300449c0300bec5030076fe0300d2fe03009613040062280400a032040006800400548a0400f6c1040064c3040080ca0400b2cd04003e180500701b05007c220500ae2505006cae050024bb07002ecf0700
+      m_ExpandedIDs: 1455fdff349efdff78c7fdffccfefdffaefffdfff823feff3a24feff3a26feff1c27feff664bfeffa84bfeffaa4efeff8c4ffeffd673feff1874feff6c76feff4e77feff989bfeffda9bfeff3aa0feff22a1feff6cc5feffaec5feffb4c7feffa0c8feffaeeffefff8effeff5857ffff7c7cffff947dffffbaa2ffffd2a3ffff1cc8ffff62ecffff78edffff12fbffff7e3c01009e3c0100ac3c0100b43c0100fc3e0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: MondayOFF
+        m_OriginalName: MondayOFF
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 81972
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 11}
       m_SearchString: 
@@ -1867,7 +1845,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 3.661069, y: 1061, z: 19.5}
     speed: 2
-    m_Value: {x: 720, y: 1480, z: 0}
+    m_Value: {x: 3.661069, y: 1061, z: 19.5}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1916,11 +1894,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.010192131, y: -0.0051358854, z: -0.000051597082, w: 0.999942}
     speed: 2
-    m_Value: {x: -0.23000954, y: 0.02888048, z: 0.0068329056, w: 0.97273576}
+    m_Value: {x: -0.010192058, y: -0.0051358487, z: -0.000051596715, w: 0.99993485}
   m_Size:
-    m_Target: 2.249258
+    m_Target: 2.245884
     speed: 2
-    m_Value: 1645.8433
+    m_Value: 2.245884
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -3989,7 +3967,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 511790
+  m_LastSelectedObjectID: 81972
 --- !u!114 &29
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -4031,36 +4009,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/MondayOFF/EveryDay/Core/Editor
+    - Assets/MondayOFF/EveryDay/Ads/Resources
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 55
   m_LastFolders:
-  - Assets/MondayOFF/EveryDay/Core/Editor
+  - Assets/MondayOFF/EveryDay/Ads/Resources
   m_LastFoldersGridSize: 55
   m_LastProjectPath: /Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 750.35004}
-    m_SelectedIDs: 14650600
-    m_LastClickedID: 419092
-    m_ExpandedIDs: 00000000c6890000c8890000ca890000cc890000ce890000d0890000d2890000d4890000d6890000d8890000da890000dc890000de890000e0890000e2890000108a0000468a0000948a0000f48a0000ae83020000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 846.75073}
+    m_SelectedIDs: 5a750000
+    m_LastClickedID: 30042
+    m_ExpandedIDs: 00000000a2720000a4720000a6720000a8720000aa720000ac720000ae720000b0720000b2720000b4720000b6720000b8720000ba720000bc720000be720000c0720000c2720000c4720000c6720000c872000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 02.Scripts
-      m_OriginalName: 02.Scripts
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 35326
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 15}
     m_SearchString: 
@@ -4074,7 +4052,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 231.5}
     m_SelectedIDs: 68190000
     m_LastClickedID: 6504
-    m_ExpandedIDs: 00000000c6890000c8890000ca890000cc890000ce890000d0890000d2890000d4890000d6890000d8890000da890000dc890000de890000e0890000e2890000
+    m_ExpandedIDs: 00000000a2720000a4720000a6720000a8720000aa720000ac720000ae720000b0720000b2720000b4720000b6720000b8720000ba720000bc720000be720000c0720000c2720000c4720000c6720000c8720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4214,7 +4192,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 170.28229}
     m_SelectedIDs: 3c740000
     m_LastClickedID: 29756
-    m_ExpandedIDs: 00000000c6890000c8890000ca890000cc890000ce890000d0890000d2890000d4890000d6890000d8890000da890000dc890000de890000e0890000e2890000
+    m_ExpandedIDs: 00000000a2720000a4720000a6720000a8720000aa720000ac720000ae720000b0720000b2720000b4720000b6720000b8720000ba720000bc720000be720000c0720000c2720000c4720000c6720000c8720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4242,7 +4220,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c6890000c8890000ca890000cc890000ce890000d0890000d2890000d4890000d6890000d8890000da890000dc890000de890000e0890000e2890000
+    m_ExpandedIDs: 00000000a2720000a4720000a6720000a8720000aa720000ac720000ae720000b0720000b2720000b4720000b6720000b8720000ba720000bc720000be720000c0720000c2720000c4720000c6720000c8720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
