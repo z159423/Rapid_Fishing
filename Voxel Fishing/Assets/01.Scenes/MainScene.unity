@@ -15789,7 +15789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378293123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.46, y: 6.31, z: 0.003066063}
+  m_LocalPosition: {x: 9.12, y: 5.33, z: 0.003066063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25368,7 +25368,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4864865, y: 1}
+    m_SensorSize: {x: 0.46205357, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -43119,8 +43119,9 @@ MonoBehaviour:
   hookLight: {fileID: 1369345410}
   challengeLight: {fileID: 86677723}
   catchRingParticle: {fileID: 377117317}
-  fishSkinPoint1: {fileID: 0}
-  fishSkinPoint2: {fileID: 0}
+  fishSkinPrefab: {fileID: 2322427416615744069, guid: eb372473cc5d74765adb38437c2dd5d5, type: 3}
+  fishSkinPoint1: {fileID: 1860905566}
+  fishSkinPoint2: {fileID: 378293124}
   oceanSpriteValueMultifly: 2.5
   targetHookZoomOffset: 0
   minDrag: 1
@@ -44436,7 +44437,7 @@ MonoBehaviour:
     upgradeValue: 4.3
     upgradeNeedyCost: 30
     upgradeCostIncreaseValue: 50
-    upgradeCostIncreaseValueMultifly: 1.2
+    upgradeCostIncreaseValueMultifly: 1.15
     levelText: {fileID: 1011159375}
     needyCostText: {fileID: 2037501314}
     cover: {fileID: 698327370}
@@ -44447,6 +44448,7 @@ MonoBehaviour:
     upgradeValue: 1
     upgradeNeedyCost: 50
     upgradeCostIncreaseValue: 80
+    upgradeCostIncreaseValueMultifly: 1.35
     levelText: {fileID: 1837395121}
     needyCostText: {fileID: 1439599493}
     cover: {fileID: 1829873437}
@@ -44457,6 +44459,7 @@ MonoBehaviour:
     upgradeValue: 0.007
     upgradeNeedyCost: 40
     upgradeCostIncreaseValue: 60
+    upgradeCostIncreaseValueMultifly: 1.3
     levelText: {fileID: 709499874}
     needyCostText: {fileID: 1881745244}
     cover: {fileID: 1111938209}
@@ -62868,8 +62871,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -74210,7 +74213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860905565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.46, y: 4.87, z: 0.003066063}
+  m_LocalPosition: {x: 9.07, y: 3.6299996, z: 0.003066063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74458,8 +74461,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -75511,7 +75514,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4864865, y: 1}
+    m_SensorSize: {x: 0.46205357, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -77261,8 +77264,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

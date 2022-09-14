@@ -57,8 +57,11 @@ public class FishingHook : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private GameObject fishSkinPrefab;
     [SerializeField] private Transform fishSkinPoint1;
     [SerializeField] private Transform fishSkinPoint2;
+
+    [Space]
 
     public float oceanSpriteValueMultifly = 1f;
 
@@ -216,7 +219,16 @@ public class FishingHook : MonoBehaviour
 
         for (int i = 0; i < hookedFish.Count; i++)
         {
-            fishSkins.Enqueue(Instantiate(hookedFish[i].gameObject, new Vector3(0, 10000, 0), Quaternion.identity));
+            var fishSkin = Instantiate(fishSkinPrefab, new Vector3(0, 10000, 0), Quaternion.identity);
+            fishSkin.GetComponent<MeshRenderer>().materials = hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().materials;
+            fishSkin.GetComponent<MeshFilter>().mesh = hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh;
+
+            fishSkin.transform.localScale = hookedFish[i].transform.localScale * 4f * hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().transform.localScale.x;
+            fishSkin.transform.Rotate(hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().transform.localRotation.eulerAngles);
+            fishSkin.transform.Rotate(new Vector3(0, 180, 0));
+
+            fishSkins.Enqueue(fishSkin);
+
 
             ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType);
 
@@ -260,7 +272,7 @@ public class FishingHook : MonoBehaviour
 
                 fishSkin.transform.position = fishSkinPoint1.position;
 
-                fishSkin.transform.DOMoveY(3f, 1.5f).OnComplete(() => Destroy(fishSkin));
+                fishSkin.transform.DOMoveY(fishSkinPoint2.position.y, 1f).SetEase(Ease.Linear).OnComplete(() => Destroy(fishSkin));
 
                 text.GetComponent<TextMeshProUGUI>().text = "+" + moneyQueue.Dequeue().ToString();
 
