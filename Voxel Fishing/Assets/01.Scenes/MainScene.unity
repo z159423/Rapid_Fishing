@@ -8739,7 +8739,7 @@ PrefabInstance:
       objectReference: {fileID: 239296895}
     - target: {fileID: 7129605173503859262, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
       propertyPath: segmentLength
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
@@ -44401,8 +44401,9 @@ MonoBehaviour:
     currentLevel: 0
     maxLevel: 20
     upgradeValue: 4.3
-    upgradeNeedyCost: 20
-    upgradeCostIncreaseValue: 40
+    upgradeNeedyCost: 30
+    upgradeCostIncreaseValue: 50
+    upgradeCostIncreaseValueMultifly: 1.2
     levelText: {fileID: 1011159375}
     needyCostText: {fileID: 2037501314}
     cover: {fileID: 698327370}
@@ -44421,7 +44422,7 @@ MonoBehaviour:
     currentLevel: 0
     maxLevel: 10
     upgradeValue: 0.007
-    upgradeNeedyCost: 30
+    upgradeNeedyCost: 40
     upgradeCostIncreaseValue: 60
     levelText: {fileID: 709499874}
     needyCostText: {fileID: 1881745244}
@@ -46997,7 +46998,7 @@ PrefabInstance:
       objectReference: {fileID: 1014910701}
     - target: {fileID: 7129605173503859262, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
       propertyPath: segmentLength
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
@@ -64435,7 +64436,7 @@ PrefabInstance:
       objectReference: {fileID: 1536829356}
     - target: {fileID: 7129605173503859262, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
       propertyPath: segmentLength
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7966052372627678368, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
       propertyPath: m_LocalPosition.x

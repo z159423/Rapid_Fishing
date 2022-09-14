@@ -64,6 +64,15 @@ public class FishPool : MonoBehaviour
         {
             var chest = fish.GetComponent<Chest>();
 
+            if(chest.chestMover != null)
+            {
+                if (chest.chestMover.gameObject.activeSelf && !FishingHook.instance.hookedFish.Contains(chest.chestMover))
+                {
+                    chestMover.EnqueueFish(chest.chestMover.gameObject);
+                }
+            }
+            
+
             switch (chest.chestTier)
             {
                 case 1:
@@ -80,8 +89,6 @@ public class FishPool : MonoBehaviour
 
             }
 
-            if (chest.chestMover.gameObject.activeSelf && !FishingHook.instance.hookedFish.Contains(chest.chestMover))
-                chestMover.EnqueueFish(chest.chestMover.gameObject);
 
             DequeueChest(chest.chestTier, poolParent);
         }

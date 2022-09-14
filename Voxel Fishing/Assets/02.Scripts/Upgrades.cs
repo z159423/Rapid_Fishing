@@ -281,6 +281,7 @@ public class Upgrades : MonoBehaviour
         public float upgradeValue = 4.3f;
         public int upgradeNeedyCost = 20;
         public int upgradeCostIncreaseValue = 40;
+        public float upgradeCostIncreaseValueMultifly = 1f;
 
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI needyCostText;
@@ -305,6 +306,8 @@ public class Upgrades : MonoBehaviour
         public void ChangeUpgradeCost()
         {
             upgradeNeedyCost += upgradeCostIncreaseValue;
+
+            upgradeNeedyCost = Mathf.RoundToInt(upgradeNeedyCost * upgradeCostIncreaseValueMultifly) / 10 * 10;
         }
 
         public void CheckingCover()

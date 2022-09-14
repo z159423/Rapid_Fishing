@@ -54,7 +54,8 @@ public class Chest : Fish
 
     public void deleteConnect()
     {
-        chestMover = null;
+        //chestMover = null;
         line.enabled = false;
+        rigid2.velocity = Vector3.zero;
     }
 }
