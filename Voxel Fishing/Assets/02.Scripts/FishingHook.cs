@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using MondayOFF;
+using DG.Tweening;
 
 public class FishingHook : MonoBehaviour
 {
@@ -53,6 +54,12 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private Light hookLight;
     [SerializeField] private Light challengeLight;
     [SerializeField] private ParticleSystem catchRingParticle;
+
+    [Space]
+
+    [SerializeField] private Transform fishSkinPoint1;
+    [SerializeField] private Transform fishSkinPoint2;
+
     public float oceanSpriteValueMultifly = 1f;
 
 
@@ -205,8 +212,12 @@ public class FishingHook : MonoBehaviour
         rigid.useGravity = true;
         fullHooked = false;
 
+        Queue<GameObject> fishSkins = new Queue<GameObject>();
+
         for (int i = 0; i < hookedFish.Count; i++)
         {
+            fishSkins.Enqueue(Instantiate(hookedFish[i].gameObject, new Vector3(0, 10000, 0), Quaternion.identity));
+
             ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType);
 
             moneyQueue.Enqueue(hookedFish[i].fishType.cost);
@@ -241,6 +252,15 @@ public class FishingHook : MonoBehaviour
 
                 text.transform.localPosition = new Vector3(Random.Range(moneyTextSpawnMinOffset.x, moneyTextSpawnMaxOffset.x), Random.Range(moneyTextSpawnMinOffset.y, moneyTextSpawnMaxOffset.y), 0);
                 //var text.position = text.position + moneyTextSpawnTransform.position + new Vector3(Random.Range(moneyTextSpawnMinOffset.x, moneyTextSpawnMaxOffset.x), Random.Range(moneyTextSpawnMinOffset.y, moneyTextSpawnMaxOffset.y)
+
+                var fishSkin = fishSkins.Dequeue();
+
+                Destroy(fishSkin.GetComponent<Fish>());
+                Destroy(fishSkin.GetComponent<Collider>());
+
+                fishSkin.transform.position = fishSkinPoint1.position;
+
+                fishSkin.transform.DOMoveY(3f, 1.5f).OnComplete(() => Destroy(fishSkin));
 
                 text.GetComponent<TextMeshProUGUI>().text = "+" + moneyQueue.Dequeue().ToString();
 

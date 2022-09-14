@@ -85,7 +85,6 @@ public class Upgrades : MonoBehaviour
         lineLengthUpgrade.CheckingCover();
         hookMaxUpgrade.CheckingCover();
         hookMoveSpeedUpgrade.CheckingCover();
-
     }
 
     //최대 후킹수 업그레이드
@@ -150,6 +149,21 @@ public class Upgrades : MonoBehaviour
     public void UpgradeValue()
     {
 
+    }
+
+    public void ResetUpgrades()
+    {
+        //lineLengthUpgrade.currentLevel = 0;
+        //hookMaxUpgrade.currentLevel = 0;
+        //hookMoveSpeedUpgrade.currentLevel = 0;
+
+        lineLengthUpgrade.ChangeCurrentLevel(0);
+        hookMaxUpgrade.ChangeCurrentLevel(0);
+        hookMoveSpeedUpgrade.ChangeCurrentLevel(0);
+
+        lineLengthUpgrade.CheckingCover();
+        hookMaxUpgrade.CheckingCover();
+        hookMoveSpeedUpgrade.CheckingCover();
     }
 
 
@@ -324,7 +338,7 @@ public class Upgrades : MonoBehaviour
         public void ChangeCurrentLevel(int level)
         {
             currentLevel = level;
-            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+            upgradeNeedyCost = upgradeNeedyCost + Mathf.RoundToInt((upgradeCostIncreaseValue * level) * upgradeCostIncreaseValueMultifly) / 10 * 10;
 
             for(int i = 0; i < level; i++)
             {

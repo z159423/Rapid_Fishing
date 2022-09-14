@@ -91,6 +91,7 @@ public class ChallengeManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ResetValues();
+            //Upgrades.instance.ResetUpgrades();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
