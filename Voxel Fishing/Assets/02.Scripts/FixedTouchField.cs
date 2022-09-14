@@ -37,10 +37,9 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (Pressed)
         {
             //print(PointerId + " " + Input.touches.Length + " " + Input.touches.Length);
-            if (PointerId >= 0 && PointerId < Input.touches.Length)
-            {
-                TouchDist = Input.touches[PointerId].position - PointerOld;
-                PointerOld = Input.touches[PointerId].position;
+
+                TouchDist = new Vector2(Input.mousePosition.x, Input.mousePosition.y) - PointerOld;
+                PointerOld = Input.mousePosition;
 
                 Vector2 pos;
                 if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -79,13 +78,6 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 }
 
                 //print(joystickDir);
-
-            }
-            else
-            {
-                TouchDist = new Vector2(Input.mousePosition.x, Input.mousePosition.y) - PointerOld;
-                PointerOld = Input.mousePosition;
-            }
         }
         else
         {
@@ -96,13 +88,10 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void OnPointerDown(PointerEventData eventData)
     {
         Pressed = true;
-        PointerId = eventData.pointerId;
         PointerOld = eventData.position;
 
         //print(PointerId);
 
-        if (PointerId >= 0 && PointerId < Input.touches.Length)
-        {
             if(logic.enablePulling)
             {
                 logic.StartPull();
@@ -129,7 +118,6 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 //print(pos);
             }
-        }
     }
 
 

@@ -1,6 +1,0 @@
-framework module PlayOnSDK {
-  umbrella header "PlayOnSDK.h"
-
-  export *
-  module * { export * }
-}

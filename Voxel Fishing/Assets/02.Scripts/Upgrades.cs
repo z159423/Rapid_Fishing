@@ -229,6 +229,7 @@ public class Upgrades : MonoBehaviour
         public float upgradeValue = 1;
         public int upgradeNeedyCost = 50;
         public int upgradeCostIncreaseValue = 80;
+        public float upgradeCostIncreaseValueMultifly = 1f;
 
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI needyCostText;
@@ -253,6 +254,8 @@ public class Upgrades : MonoBehaviour
         public void ChangeUpgradeCost()
         {
             upgradeNeedyCost += upgradeCostIncreaseValue;
+
+            upgradeNeedyCost = Mathf.RoundToInt(upgradeNeedyCost * upgradeCostIncreaseValueMultifly) / 10 * 10;
         }
 
         public void CheckingCover()
@@ -269,9 +272,11 @@ public class Upgrades : MonoBehaviour
         public void ChangeCurrentLevel(int level)
         {
             currentLevel = level;
-            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+            upgradeNeedyCost = upgradeNeedyCost + Mathf.RoundToInt((upgradeCostIncreaseValue * level) * upgradeCostIncreaseValueMultifly) / 10 * 10;
 
-            for(int i = 0; i < level; i++)
+            //print(currentLevel + " " + upgradeCostIncreaseValue + " " + upgradeCostIncreaseValueMultifly + " " + upgradeNeedyCost);
+
+            for (int i = 0; i < level; i++)
             {
                 UpgradeStat();
             }
@@ -364,6 +369,7 @@ public class Upgrades : MonoBehaviour
         public float upgradeValue = 0.007f;
         public int upgradeNeedyCost = 30;
         public int upgradeCostIncreaseValue = 60;
+        public float upgradeCostIncreaseValueMultifly = 1f;
 
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI needyCostText;
@@ -388,6 +394,8 @@ public class Upgrades : MonoBehaviour
         public void ChangeUpgradeCost()
         {
             upgradeNeedyCost += upgradeCostIncreaseValue;
+
+            upgradeNeedyCost = Mathf.RoundToInt(upgradeNeedyCost * upgradeCostIncreaseValueMultifly) / 10 * 10;
         }
 
         public void CheckingCover()
@@ -404,9 +412,10 @@ public class Upgrades : MonoBehaviour
         public void ChangeCurrentLevel(int level)
         {
             currentLevel = level;
-            upgradeNeedyCost = upgradeNeedyCost + (upgradeCostIncreaseValue * level);
+            upgradeNeedyCost = upgradeNeedyCost + Mathf.RoundToInt((upgradeCostIncreaseValue * level) * upgradeCostIncreaseValueMultifly) / 10 * 10;
 
-            for(int i = 0; i < level; i++)
+
+            for (int i = 0; i < level; i++)
             {
                 UpgradeStat();
             }
