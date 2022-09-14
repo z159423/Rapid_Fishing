@@ -8729,6 +8729,10 @@ PrefabInstance:
       propertyPath: chestMover
       value: 
       objectReference: {fileID: 1256654225}
+    - target: {fileID: 6540661865815931503, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
+      propertyPath: fishType.cost
+      value: 3000
+      objectReference: {fileID: 0}
     - target: {fileID: 7129605173503859262, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
       propertyPath: EndPoint
       value: 
@@ -15789,7 +15793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378293123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.48, y: 7.05, z: 0.003066063}
+  m_LocalPosition: {x: 8.48, y: 5.23, z: 0.003066063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47024,6 +47028,10 @@ PrefabInstance:
       propertyPath: chestMover
       value: 
       objectReference: {fileID: 727422414}
+    - target: {fileID: 6540661865815931503, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
+      propertyPath: fishType.cost
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7129605173503859262, guid: 1960dd054319d4cfa993627f15c26b31, type: 3}
       propertyPath: EndPoint
       value: 
@@ -49748,7 +49756,7 @@ PrefabInstance:
       objectReference: {fileID: 239296896}
     - target: {fileID: 8244939780329436927, guid: cf08f88c9e9d64c87a664f98263e82da, type: 3}
       propertyPath: usingMapDataNumber
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8456898716817917615, guid: cf08f88c9e9d64c87a664f98263e82da, type: 3}
       propertyPath: m_RootOrder
@@ -74212,7 +74220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860905565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.45, y: 5.17, z: 0.003066063}
+  m_LocalPosition: {x: 8.45, y: 3.57, z: 0.003066063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

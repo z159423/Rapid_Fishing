@@ -177,7 +177,11 @@ public class Fish : MonoBehaviour
         Vibration.Vibrate((long)100);
 
         if (GetComponent<ChestMover>() != null)
+        {
+            GetComponent<ChestMover>().chest.chestMover = null;
             GetComponent<ChestMover>().chest.deleteConnect();
+        }
+
 
     }
 

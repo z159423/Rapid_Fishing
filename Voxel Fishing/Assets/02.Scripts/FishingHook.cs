@@ -224,7 +224,7 @@ public class FishingHook : MonoBehaviour
             fishSkin.GetComponent<MeshFilter>().mesh = hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh;
 
             fishSkin.transform.localScale = hookedFish[i].transform.localScale * 4f * hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().transform.localScale.x;
-            fishSkin.transform.Rotate(hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().transform.localRotation.eulerAngles);
+            fishSkin.transform.Rotate(-hookedFish[i].GetComponentInChildren<SkinnedMeshRenderer>().transform.localRotation.eulerAngles);
             fishSkin.transform.Rotate(new Vector3(0, 180, 0));
 
             fishSkins.Enqueue(fishSkin);
