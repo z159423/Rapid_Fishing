@@ -75,6 +75,10 @@ public class FishingHook : MonoBehaviour
 
     [Space]
 
+    public float fishingHookScaleUpgradeValue = 0.007f;
+
+    [Space]
+
     private int maxHookableCount = 2;
     private int currentHookedCount = 0;
 
@@ -245,6 +249,8 @@ public class FishingHook : MonoBehaviour
             {
                 fishColliders[j].enabled = true;
             }
+
+            hookedFish[i].SellFish();
         }
 
         ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
@@ -293,7 +299,7 @@ public class FishingHook : MonoBehaviour
     public void UpgradeHookMaxCount(float value)
     {
         maxHookableCount += (int)value;
-        transform.localScale = new Vector3(transform.localScale.x + 0.007f, transform.localScale.y + 0.007f, transform.localScale.z + 0.007f);
+        transform.localScale = new Vector3(transform.localScale.x + fishingHookScaleUpgradeValue, transform.localScale.y + fishingHookScaleUpgradeValue, transform.localScale.z + fishingHookScaleUpgradeValue);
     }
 
     public void GetMoney(int money)

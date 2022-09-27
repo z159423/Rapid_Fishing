@@ -73,31 +73,41 @@ public class ChallengeManager : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            GenerateNewChallenge();
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha1))
+        // {
+        //     GenerateNewChallenge();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentChallenge.ChallengeSuccess();
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             FishingHook.instance.GetMoney(1000);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ResetValues();
             //Upgrades.instance.ResetUpgrades();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ResetResolution();
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Upgrades.instance.UpgradeHookMaxCountFree();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            DataManager.instance.ResetSaveData();
+        }     
     }
 
     [System.Serializable]

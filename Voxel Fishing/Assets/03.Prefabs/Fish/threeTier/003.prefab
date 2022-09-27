@@ -305,6 +305,7 @@ MonoBehaviour:
   head: {fileID: 0}
   mapData: {fileID: 11400000, guid: ab99f680a090f4344a8a7188f9a6ca21, type: 2}
   usingMapDataNumber: 2
+  mousePoint: {fileID: 1254624207255808014}
   hooked: 0
 --- !u!54 &8024635925762777546
 Rigidbody:

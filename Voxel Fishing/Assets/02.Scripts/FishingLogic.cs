@@ -17,6 +17,7 @@ public class FishingLogic : MonoBehaviour
     [SerializeField] private ParticleSystem bubbleParticle;
     [SerializeField] private Rigidbody hookRigid;
     [SerializeField] private FishingHook hook;
+    public CharacterJoint joint;
     
 
     private FishingState fishingState;
