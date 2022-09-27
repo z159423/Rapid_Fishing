@@ -40,19 +40,19 @@ public class FishingHook : MonoBehaviour
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private TextMeshProUGUI depthText;
     [SerializeField] private FixedTouchField touchField;
-    [SerializeField] private Animator upgradeNeedleTextAnimator;
+    // [SerializeField] private Animator upgradeNeedleTextAnimator;
 
     [Space]
 
-    [SerializeField] private SpriteRenderer[] Oceans;
-    [SerializeField] private SpriteRenderer OceanSurface;
-    [SerializeField] private MeshRenderer depthMask;
-    [SerializeField] private Material depthMaskMat;
+    // [SerializeField] private SpriteRenderer[] Oceans;
+    // [SerializeField] private SpriteRenderer OceanSurface;
+    // [SerializeField] private MeshRenderer depthMask;
+    // [SerializeField] private Material depthMaskMat;
 
 
-    [SerializeField] private Light sunLights;
-    [SerializeField] private Light hookLight;
-    [SerializeField] private Light challengeLight;
+    // [SerializeField] private Light sunLights;
+    // [SerializeField] private Light hookLight;
+    // [SerializeField] private Light challengeLight;
     [SerializeField] private ParticleSystem catchRingParticle;
 
     [Space]
@@ -63,7 +63,7 @@ public class FishingHook : MonoBehaviour
 
     [Space]
 
-    public float oceanSpriteValueMultifly = 1f;
+    // public float oceanSpriteValueMultifly = 1f;
 
 
     float currentHookZoomSpeed = 0;

@@ -21,6 +21,7 @@ public class EnviromentEditor : MonoBehaviour
     public float minSunLightIntensity = 0.25f;
     public float challengeLightIntensity = 4.5f;
     public float depthMaskTransparentValue = 4.5f;
+    public float ambientLightIntensity = 2.5f;
     // Start is called before the first frame update
     void Start()
     {

@@ -153,6 +153,16 @@ public class FishPool : MonoBehaviour
         chest.GetComponentInChildren<RopeBridge>().StartPoint = chest.transform;
         chest.GetComponentInChildren<RopeBridge>().EndPoint = chest.GetComponent<Chest>().chestMover.transform;
         chest.GetComponent<Chest>().chestMover.GetComponent<ChestMover>().chest = chest.GetComponent<Chest>();
+
+        StartCoroutine(lineOn());
+        chest.transform.localEulerAngles = new Vector3(0, 180, 0);
+
+        IEnumerator lineOn()
+        {
+            yield return new WaitForSeconds(2f);
+            chest.GetComponent<Chest>().line.enabled = true;
+        }
+
         chest.GetComponent<Chest>().line.enabled = true;
 
         switch (tier)
