@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-using MondayOFF;
+//using MondayOFF;
 
 public class ChallengeManager : MonoBehaviour
 {
@@ -52,7 +52,7 @@ public class ChallengeManager : MonoBehaviour
         instance = this;
         if (!PlayerPrefs.HasKey("ClearZero"))
         {
-            MondayOFF.EventsManager.instance.ClearStage(0);
+            //MondayOFF.EventsManager.instance.ClearStage(0);
 
             //MondayOFF.EventsManager.instance.TryStage(stageNum);
             PlayerPrefs.SetInt("ClearZero", 1);
@@ -66,7 +66,7 @@ public class ChallengeManager : MonoBehaviour
 
     public void NextStage()
     {
-        MondayOFF.EventsManager.instance.ClearStage(stageNum);
+        //MondayOFF.EventsManager.instance.ClearStage(stageNum);
         stageNum++;
     }
 
@@ -224,7 +224,7 @@ public class ChallengeManager : MonoBehaviour
 
     public void ResetResolution()
     {
-        //Screen.SetResolution(900, 1800, false);
+        Screen.SetResolution(1242, 2688, false);
     }
 
     public abstract class Challenge
@@ -295,7 +295,7 @@ public class ChallengeManager : MonoBehaviour
 
             PlayerPrefs.SetInt("currentCatchCount", currentCatchCount);
 
-            MondayOFF.EventsManager.instance.ClearStage(PlayerPrefs.GetInt("ChallengeNum"));
+            //MondayOFF.EventsManager.instance.ClearStage(PlayerPrefs.GetInt("ChallengeNum"));
         }
 
 
