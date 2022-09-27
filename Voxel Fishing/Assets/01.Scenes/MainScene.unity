@@ -23367,52 +23367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e321b2a2bf48f4b968d0738af6e5e2df, type: 3}
   m_PrefabInstance: {fileID: 575314276}
   m_PrefabAsset: {fileID: 0}
---- !u!144 &548764491
-CharacterJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548764487}
-  m_ConnectedBody: {fileID: 811697021}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.0032261945, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.11291662, z: 0}
-  serializedVersion: 2
-  m_SwingAxis: {x: 0, y: 1, z: 0}
-  m_TwistLimitSpring:
-    spring: 0
-    damper: 0
-  m_LowTwistLimit:
-    limit: -177
-    bounciness: 0
-    contactDistance: 0
-  m_HighTwistLimit:
-    limit: 177
-    bounciness: 0
-    contactDistance: 0
-  m_SwingLimitSpring:
-    spring: 0
-    damper: 0
-  m_Swing1Limit:
-    limit: 3
-    bounciness: 0
-    contactDistance: 0
-  m_Swing2Limit:
-    limit: 177
-    bounciness: 0
-    contactDistance: 0
-  m_EnableProjection: 0
-  m_ProjectionDistance: 0.1
-  m_ProjectionAngle: 180
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!54 &548764492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42286,6 +42240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 799391611}
+  - component: {fileID: 799391613}
   m_Layer: 10
   m_Name: HookedPos
   m_TagString: Untagged
@@ -42301,13 +42256,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799391610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0315, y: -0.0746, z: 0}
+  m_LocalPosition: {x: -0.0006, y: -0.0726, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 548764488}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &799391613
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799391610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &800836144
 GameObject:
   m_ObjectHideFlags: 0
@@ -42827,6 +42798,7 @@ GameObject:
   - component: {fileID: 811697023}
   - component: {fileID: 811697024}
   - component: {fileID: 811697025}
+  - component: {fileID: 811697026}
   m_Layer: 7
   m_Name: FishingHook
   m_TagString: FishingHook
@@ -42915,6 +42887,7 @@ Transform:
   - {fileID: 1369345409}
   - {fileID: 616491367}
   - {fileID: 1899680050}
+  - {fileID: 1633506735}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43093,9 +43066,6 @@ MonoBehaviour:
   moneyTextSpawnMaxOffset: {x: 50, y: 50}
   hookedTransforms:
   - {fileID: 799391611}
-  - {fileID: 349386060}
-  - {fileID: 2072931432}
-  - {fileID: 52354711}
   fishingRodSkinned: {fileID: 1434371557}
   cinemachineCamera: {fileID: 661421715}
   startPoint: {fileID: 1125638255}
@@ -43105,33 +43075,66 @@ MonoBehaviour:
   upgradeButton: {fileID: 645094288}
   depthText: {fileID: 1180678510}
   touchField: {fileID: 2014385626}
-  upgradeNeedleTextAnimator: {fileID: 361307994}
-  Oceans:
-  - {fileID: 1794136064}
-  - {fileID: 2142001343}
-  - {fileID: 1914469242}
-  - {fileID: 1894700887}
-  - {fileID: 1621881723}
-  OceanSurface: {fileID: 2142001343}
-  depthMask: {fileID: 1443654424}
-  depthMaskMat: {fileID: 2100000, guid: bbf467cf6af00454da9d3af1110e30c1, type: 2}
-  sunLights: {fileID: 705507994}
-  hookLight: {fileID: 1369345410}
-  challengeLight: {fileID: 86677723}
   catchRingParticle: {fileID: 377117317}
   fishSkinPrefab: {fileID: 2322427416615744069, guid: eb372473cc5d74765adb38437c2dd5d5, type: 3}
   fishSkinPoint1: {fileID: 1860905566}
   fishSkinPoint2: {fileID: 378293124}
-  oceanSpriteValueMultifly: 2.5
   targetHookZoomOffset: 0
   minDrag: 1
   maxDrag: 6.5
   dragSpeed: 0.7
+  fishingHookScaleUpgradeValue: 0.008
   moneyText: {fileID: 1048886786}
   HookedCount: {fileID: 309722942}
   fullHooked: 0
   inTheOcean: 0
   money: 0
+--- !u!144 &811697026
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811697016}
+  m_ConnectedBody: {fileID: 548764492}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0.0032261945, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -177
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 177
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 177
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 177
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &818155369
 GameObject:
   m_ObjectHideFlags: 0
@@ -44375,6 +44378,7 @@ MonoBehaviour:
   bubbleParticle: {fileID: 754853127}
   hookRigid: {fileID: 811697021}
   hook: {fileID: 811697025}
+  joint: {fileID: 811697026}
   biteBate: 0
   pulling: 0
   enablePulling: 0
@@ -50177,10 +50181,11 @@ MonoBehaviour:
   hookLight: {fileID: 1369345410}
   challengeLight: {fileID: 86677723}
   oceanSpriteValueMultifly: 2.2
-  sunLightIntensity: 0.01
-  minSunLightIntensity: 0.35
+  sunLightIntensity: 0.008
+  minSunLightIntensity: 0.6
   challengeLightIntensity: 4.5
   depthMaskTransparentValue: 3.5
+  ambientLightIntensity: 2
 --- !u!4 &1269457372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4318161030939222954, guid: c9073e810748e47dd8cd7895fc791572, type: 3}
@@ -65875,6 +65880,101 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce4d87df7b43b49b0895c68cf6a45f31, type: 3}
+--- !u!1 &1633506734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633506735}
+  - component: {fileID: 1633506737}
+  - component: {fileID: 1633506736}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1633506735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633506734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 811697020}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!144 &1633506736
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633506734}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0.0032261945, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 8.431, y: 2.9164839, z: 0}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -177
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 177
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 3
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 177
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!54 &1633506737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633506734}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1643059467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7317397791418568371, guid: b1e8ad065ac2a4ec8aa0bd84f8086406, type: 3}

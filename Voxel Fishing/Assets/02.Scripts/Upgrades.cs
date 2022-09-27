@@ -107,6 +107,25 @@ public class Upgrades : MonoBehaviour
         //hookMaxUpgrade.levelText.text = hookMaxUpgrade.currentLevel.ToString();
     }
 
+    public void UpgradeHookMaxCountFree()
+    {
+        if (hookMaxUpgrade.currentLevel == hookMaxUpgrade.maxLevel)
+            return;
+
+        hookMaxUpgrade.currentLevel++;
+        hook.UpgradeHookMaxCount(hookMaxUpgrade.upgradeValue);
+
+        //FishingHook.instance.UseMoney(hookMaxUpgrade.upgradeNeedyCost);
+
+        hookMaxUpgrade.ChangeUpgradeCost();
+
+        hookMaxUpgrade.SetText();
+
+        OnMoneyChange();
+
+        //hookMaxUpgrade.levelText.text = hookMaxUpgrade.currentLevel.ToString();
+    }
+
 
     //줄 길이 업그레이드
     public void UpgradeLineLength()

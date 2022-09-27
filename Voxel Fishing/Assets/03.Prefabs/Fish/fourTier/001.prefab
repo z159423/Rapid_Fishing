@@ -198,6 +198,7 @@ MonoBehaviour:
   head: {fileID: 0}
   mapData: {fileID: 11400000, guid: ab99f680a090f4344a8a7188f9a6ca21, type: 2}
   usingMapDataNumber: 3
+  mousePoint: {fileID: 1518401004976392291}
   hooked: 0
 --- !u!65 &8780121581882394334
 BoxCollider:
