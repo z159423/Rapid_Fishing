@@ -223,7 +223,7 @@
       "url": "https://packages.unity.com"
     },
     "uk.lunalabs.luna": {
-      "version": "file:../../../../../Downloads/3.12.0/scripts",
+      "version": "file:../../../../Luna Playable/4.1.0/scripts",
       "depth": 0,
       "source": "local",
       "dependencies": {}

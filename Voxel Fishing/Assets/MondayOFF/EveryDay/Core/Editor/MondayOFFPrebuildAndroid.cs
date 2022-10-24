@@ -32,23 +32,23 @@ namespace MondayOFF {
 #endif
     ;
 
-            const string CONTENT = @"
-# Singular
--keep class com.singular.sdk.** { *; }
--keep public class com.android.installreferrer.** { *; }
+//             const string CONTENT = @"
+// # Singular
+// -keep class com.singular.sdk.** { *; }
+// -keep public class com.android.installreferrer.** { *; }
 
-# GameAnalytics
--keep class  com.gameanalytics.sdk { *; }
--keep class  com.gameanalytics.sdk.** { *; }
+// # GameAnalytics
+// -keep class  com.gameanalytics.sdk { *; }
+// -keep class  com.gameanalytics.sdk.** { *; }
  
--keep class  com.gameanalytics.sdk.GAPlatform { *; }
--keep class  com.gameanalytics.sdk.GAPlatform.** { *; }
--keep class android.net.ConnectivityManager.** { *; }
--keep class com.google.android.instantapps.InstantApps { *; }
--keepclassmembers class com.google.android.instantapps.InstantApps { *; }
+// -keep class  com.gameanalytics.sdk.GAPlatform { *; }
+// -keep class  com.gameanalytics.sdk.GAPlatform.** { *; }
+// -keep class android.net.ConnectivityManager.** { *; }
+// -keep class com.google.android.instantapps.InstantApps { *; }
+// -keepclassmembers class com.google.android.instantapps.InstantApps { *; }
 
-# Facebook
--keep class com.facebook.** { *; }";
+// # Facebook
+// -keep class com.facebook.** { *; }";
 
             string androidPath = Path.Combine(Application.dataPath, android_path);
             Directory.CreateDirectory(androidPath);

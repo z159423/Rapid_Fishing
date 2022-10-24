@@ -1,5 +1,5 @@
 {
-    "version": "3.12.0",
+    "version": "4.1.0",
     "projectId": "bbbf5d6b-7dba-4762-ac82-31056fd84bde",
     "applicationID": 0,
     "creativeName": "",
@@ -15,7 +15,10 @@
             "msbuildWin64": "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/MSBuild.exe",
             "externalSources": [],
             "externalJSLibraries": [],
-            "scriptingDefines": []
+            "scriptingDefines": [],
+            "msbuildVersion": "16.10",
+            "monoVersion": "6.12.0.182",
+            "dotnetVersion": "6.0.302"
         },
         "assets": {
             "export": [],
@@ -67,20 +70,47 @@
             "backgroundHexColor": "#914AFA"
         },
         "autoInstantiatePrefabs": true,
-        "removeShadows": false,
+        "enableRealtimeShadows": false,
+        "enableLunaCompilerV2": false,
         "minify": true,
         "forceUncompressed": false,
-        "forceBase64": false,
+        "forceBase64": true,
         "genericCheck": true,
         "disableAntiAliasing": true,
         "forceStableRandomSeed": false,
-        "unusedModules": [],
+        "unusedModules": [
+            {
+                "name": "physics3d",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "physics2d",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "particle-system",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "reflection",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "prefabs",
+                "excluded": false,
+                "forceIncluded": false
+            }
+        ],
         "reaperVersion": 1,
         "disableRuntimeAnalysisForCode": true,
         "disableRuntimeAnalysisForShaders": false,
         "useShadersCache": true,
         "preventUpdatingRAListWhenRAIsDisabled": false,
-        "useDevEnv": true,
+        "bakeReferenceAmbientProbe": false,
         "unusedClasses": [],
         "unusedMethods": [],
         "stubberDataList": [],
@@ -115,6 +145,46 @@
                         "script": "",
                         "ext": "",
                         "name": "Resources/unity_builtin_extra/Default-Particle"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/ONE Mobile POP OTF SDF.asset"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/ONE Mobile POP OTF SDF_OutLine.asset"
                     }
                 ]
             },
