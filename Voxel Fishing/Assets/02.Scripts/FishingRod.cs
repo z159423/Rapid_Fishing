@@ -108,11 +108,6 @@ public class FishingRod : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnAdHide;
-    }
-
 
 
     public IEnumerator ReleaseHook()
@@ -126,7 +121,6 @@ public class FishingRod : MonoBehaviour
         upgradeButton.SetActive(false);
         depthText.SetActive(true);
         hookRigid.useGravity = true;
-        MondayOFF.EventsManager.instance.TryStage(PlayerPrefs.GetInt("ChallengeNum"));
 
         yield return new WaitForSeconds(0.2f);
         Vector2 dir1 = (throwTarget1.position - hookRigid.transform.position).normalized;
@@ -164,28 +158,12 @@ public class FishingRod : MonoBehaviour
         currentpullCount++;
         
         //광고 interval 시간을 체크해서 시간이 지났으면 전면광고 송출 안지났으면 TouchToStart 활성화
-        if (TimeInterstitialShower.instance.CheckTime() && currentpullCount >= playAdsPullCount)
-        {
-            if (MondayOFF.AdsManager.instance.IsInterstitialReady())
-            {
-                StartCoroutine(StartIsAd());
-            }
-            else
-            {
-                TapToStartUIOnOff();
-            }
-        }
-        else
-        {
             TapToStartUIOnOff();
-        }
     }
 
     IEnumerator StartIsAd()
     {
         yield return new WaitForSeconds(2f);
-
-        TimeInterstitialShower.instance.CheckTimeAndShowInterstitial();
 
         currentpullCount = 0;
 
@@ -196,12 +174,6 @@ public class FishingRod : MonoBehaviour
     {
         if(!ChallengeManager.instance.challengeSuccessPanelOn)
             touchToStartPanel.SetActive(!touchToStartPanel.activeSelf);
-    }
-
-    private void OnAdHide(string a, MaxSdkBase.AdInfo aa)
-    {
-        //startButton.enabled = true;
-        //touchToStartPanel.SetActive(true);
     }
 
     public void UpgradeLineLength(float value)

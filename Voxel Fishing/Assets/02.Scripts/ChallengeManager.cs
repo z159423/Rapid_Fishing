@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-using MondayOFF;
 
 public class ChallengeManager : MonoBehaviour
 {
@@ -50,13 +49,6 @@ public class ChallengeManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        if (!PlayerPrefs.HasKey("ClearZero"))
-        {
-            MondayOFF.EventsManager.instance.ClearStage(0);
-
-            //MondayOFF.EventsManager.instance.TryStage(stageNum);
-            PlayerPrefs.SetInt("ClearZero", 1);
-        }
 
         if (!PlayerPrefs.HasKey("ChallengeNum"))
         {
@@ -66,7 +58,6 @@ public class ChallengeManager : MonoBehaviour
 
     public void NextStage()
     {
-        MondayOFF.EventsManager.instance.ClearStage(stageNum);
         stageNum++;
     }
 
@@ -294,8 +285,6 @@ public class ChallengeManager : MonoBehaviour
             ChallengeManager.instance.ShowChallengeSuccessPanel(reward, fishObject);
 
             PlayerPrefs.SetInt("currentCatchCount", currentCatchCount);
-
-            MondayOFF.EventsManager.instance.ClearStage(PlayerPrefs.GetInt("ChallengeNum"));
         }
 
 

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Maps : MonoBehaviour
 {
     public List<mapData> mapDataList = new List<mapData>();
 
 
-    public static Map instance;
+    public static Maps instance;
 
     private void Awake() {
         instance = this;

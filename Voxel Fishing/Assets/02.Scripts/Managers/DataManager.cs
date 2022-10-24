@@ -50,36 +50,36 @@ public class DataManager : MonoBehaviour
     {
         string filePath = Application.persistentDataPath + gameDataFileName;
 
-        if (File.Exists(filePath))
-        {
-            print("세이브 파일 불러오기 성공" + filePath);
-            string FromJsonData = File.ReadAllText(filePath);
-            _gameData = JsonUtility.FromJson<GameData>(FromJsonData);
+        //if (File.Exists(filePath))
+        //{
+        //    print("세이브 파일 불러오기 성공" + filePath);
+        //    string FromJsonData = File.ReadAllText(filePath);
+        //    _gameData = JsonUtility.FromJson<GameData>(FromJsonData);
 
-            print("money : " + _gameData.money);
+        //    print("money : " + _gameData.money);
 
-            print("Needle : " + _gameData.needleUpgrade);
-            print("Line : " + _gameData.lineUpgrade);
-            print("Reel : " + _gameData.reelUpgrade);
+        //    print("Needle : " + _gameData.needleUpgrade);
+        //    print("Line : " + _gameData.lineUpgrade);
+        //    print("Reel : " + _gameData.reelUpgrade);
 
-            FishingHook.instance.ChangeMoney(_gameData.money);
+        //    FishingHook.instance.ChangeMoney(_gameData.money);
 
-            Upgrades.instance.hookMaxUpgrade.ChangeCurrentLevel(_gameData.needleUpgrade);
-            Upgrades.instance.lineLengthUpgrade.ChangeCurrentLevel(_gameData.lineUpgrade);
-            Upgrades.instance.hookMoveSpeedUpgrade.ChangeCurrentLevel(_gameData.reelUpgrade);
+        //    Upgrades.instance.hookMaxUpgrade.ChangeCurrentLevel(_gameData.needleUpgrade);
+        //    Upgrades.instance.lineLengthUpgrade.ChangeCurrentLevel(_gameData.lineUpgrade);
+        //    Upgrades.instance.hookMoveSpeedUpgrade.ChangeCurrentLevel(_gameData.reelUpgrade);
 
-            soundSlider.value = _gameData.sound;
-            soundSlider.onValueChanged.Invoke(0);
+        //    soundSlider.value = _gameData.sound;
+        //    soundSlider.onValueChanged.Invoke(0);
 
-            hapticSlider.value = _gameData.haptic;
-            hapticSlider.onValueChanged.Invoke(0);
+        //    hapticSlider.value = _gameData.haptic;
+        //    hapticSlider.onValueChanged.Invoke(0);
             
-        }
-        else
-        {
-            print("세이브 파일이 없어 새로운 데이터 생성");
-            _gameData = new GameData();
-        }
+        //}
+        //else
+        //{
+        //    print("세이브 파일이 없어 새로운 데이터 생성");
+        //    _gameData = new GameData();
+        //}
     }
 
     public void SaveGameData()
@@ -95,7 +95,7 @@ public class DataManager : MonoBehaviour
         string ToJsonData = JsonUtility.ToJson(gameData);
         string filePath = Application.persistentDataPath + gameDataFileName;
 
-        File.WriteAllText(filePath, ToJsonData);
+        //File.WriteAllText(filePath, ToJsonData);
 
         print("세이브 파일 저장됨 : " + filePath);
 
@@ -117,7 +117,7 @@ public class DataManager : MonoBehaviour
         string ToJsonData = JsonUtility.ToJson(gameData);
         string filePath = Application.persistentDataPath + gameDataFileName;
 
-        File.WriteAllText(filePath, ToJsonData);
+        //File.WriteAllText(filePath, ToJsonData);
 
         print("세이브 리셋됨");
 

@@ -60,12 +60,6 @@ MonoBehaviour:
     subShaderIndex: 0
     upToDate: 1
     keywords: []
-  - shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
-    passType: 0
-    passId: 0
-    subShaderIndex: 0
-    upToDate: 1
-    keywords: []
   - shader: {fileID: 10761, guid: 0000000000000000f000000000000000, type: 0}
     passType: 0
     passId: 0
@@ -978,6 +972,12 @@ MonoBehaviour:
     subShaderIndex: 1
     upToDate: 1
     keywords: []
+  - shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 1
+    keywords: []
   - shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
     passType: 0
     passId: 0
@@ -1006,10 +1006,69 @@ MonoBehaviour:
     keywords:
     - UNITY_UI_ALPHACLIP
     - UNITY_UI_CLIP_RECT
-  _usedByLunaBuild: []
+  _usedByLunaBuild:
+  - shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+    passType: 13
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords:
+    - _ADDITIONAL_LIGHTS
+  - shader: {fileID: 4800000, guid: b7839dad95683814aa64166edc107ae2, type: 3}
+    passType: 13
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords:
+    - _ADDITIONAL_LIGHTS
+    - _RECEIVE_SHADOWS_OFF
+    - _SURFACE_TYPE_TRANSPARENT
+  - shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords:
+    - UNDERLAY_ON
+  - shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shader: {fileID: -6465566751694194690, guid: b6923e97c18884db79eb77f42d635649, type: 3}
+    passType: 0
+    passId: 2
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shader: {fileID: 10761, guid: 0000000000000000f000000000000000, type: 0}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 23
+  version: 69
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
@@ -1831,96 +1890,6 @@ MonoBehaviour:
     - UNITY_SINGLE_PASS_STEREO
     - STEREO_INSTANCING_ON
     - STEREO_MULTIVIEW_ON
-  - ParsedSubShaders:
-    - Index: 0
-      Passes:
-      - ShaderVariants:
-        - NoShaderVariant: 0
-          VertexProgram: "#version 100\n\nuniform \tvec4 hlslcc_mtx4x4unity_ObjectToWorld[4];\nuniform
-            \tvec4 hlslcc_mtx4x4unity_MatrixVP[4];\nattribute highp vec4 in_POSITION0;\nattribute
-            highp vec2 in_TEXCOORD0;\nvarying highp vec2 vs_TEXCOORD0;\nvarying highp
-            vec3 vs_TEXCOORD1;\nvec4 u_xlat0;\nvec4 u_xlat1;\nvoid main()\n{\n   
-            u_xlat0 = in_POSITION0.yyyy * hlslcc_mtx4x4unity_ObjectToWorld[1];\n   
-            u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[0] * in_POSITION0.xxxx + u_xlat0;\n   
-            u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[2] * in_POSITION0.zzzz + u_xlat0;\n   
-            u_xlat1 = u_xlat0 + hlslcc_mtx4x4unity_ObjectToWorld[3];\n    vs_TEXCOORD1.xyz
-            = hlslcc_mtx4x4unity_ObjectToWorld[3].xyz * in_POSITION0.www + u_xlat0.xyz;\n   
-            u_xlat0 = u_xlat1.yyyy * hlslcc_mtx4x4unity_MatrixVP[1];\n    u_xlat0
-            = hlslcc_mtx4x4unity_MatrixVP[0] * u_xlat1.xxxx + u_xlat0;\n    u_xlat0
-            = hlslcc_mtx4x4unity_MatrixVP[2] * u_xlat1.zzzz + u_xlat0;\n    gl_Position
-            = hlslcc_mtx4x4unity_MatrixVP[3] * u_xlat1.wwww + u_xlat0;\n    vs_TEXCOORD0.xy
-            = in_TEXCOORD0.xy;\n    return;\n}\n\n"
-          FragmentProgram: "#version 100\n\n#ifdef GL_FRAGMENT_PRECISION_HIGH\n   
-            precision highp float;\n#else\n    precision mediump float;\n#endif\nprecision
-            highp int;\nuniform \tvec4 _WorldSpaceLightPos0;\nuniform \tvec3 _SunDiscColor;\nuniform
-            \tfloat _SunDiscExponent;\nuniform \tfloat _SunDiscMultiplier;\nuniform
-            \tvec3 _SunHaloColor;\nuniform \tfloat _SunHaloExponent;\nuniform \tfloat
-            _SunHaloContribution;\nuniform \tvec3 _HorizonLineColor;\nuniform \tfloat
-            _HorizonLineExponent;\nuniform \tfloat _HorizonLineContribution;\nuniform
-            \tvec3 _SkyGradientTop;\nuniform \tvec3 _SkyGradientBottom;\nuniform
-            \tfloat _SkyGradientExponent;\nvarying highp vec3 vs_TEXCOORD1;\n#define
-            SV_Target0 gl_FragData[0]\nvec3 u_xlat0;\nvec3 u_xlat1;\nvec3 u_xlat2;\nvec3
-            u_xlat3;\nfloat u_xlat6;\nfloat u_xlat9;\nvoid main()\n{\n    u_xlat0.x
-            = dot(vs_TEXCOORD1.xyz, vs_TEXCOORD1.xyz);\n    u_xlat0.x = inversesqrt(u_xlat0.x);\n   
-            u_xlat0.xyz = u_xlat0.xxx * vs_TEXCOORD1.xyz;\n    u_xlat9 = min(abs(u_xlat0.y),
-            1.0);\n    u_xlat9 = u_xlat9 * _SunHaloExponent;\n    u_xlat0.x = dot(u_xlat0.xyz,
-            _WorldSpaceLightPos0.xyz);\n    u_xlat0.x = clamp(u_xlat0.x, 0.0, 1.0);\n   
-            u_xlat0.x = log2(u_xlat0.x);\n    u_xlat6 = u_xlat0.x * u_xlat9;\n   
-            u_xlat0.x = u_xlat0.x * _SunDiscExponent;\n    u_xlat0.x = exp2(u_xlat0.x);\n   
-            u_xlat0.x = u_xlat0.x * _SunDiscMultiplier;\n    u_xlat0.x = clamp(u_xlat0.x,
-            0.0, 1.0);\n    u_xlat6 = exp2(u_xlat6);\n    u_xlat9 = u_xlat0.y;\n   
-            u_xlat9 = clamp(u_xlat9, 0.0, 1.0);\n    u_xlat3.x = -abs(u_xlat0.y)
-            + 1.0;\n    u_xlat3.x = log2(u_xlat3.x);\n    u_xlat3.x = u_xlat3.x *
-            _HorizonLineExponent;\n    u_xlat3.x = exp2(u_xlat3.x);\n    u_xlat3.x
-            = min(u_xlat3.x, 1.0);\n    u_xlat1.xyz = u_xlat3.xxx * _HorizonLineColor.xyz;\n   
-            u_xlat1.xyz = u_xlat1.xyz * vec3(_HorizonLineContribution);\n    u_xlat3.x
-            = (-u_xlat9) + 1.0;\n    u_xlat3.x = log2(u_xlat3.x);\n    u_xlat9 =
-            u_xlat3.x * 50.0;\n    u_xlat3.x = u_xlat3.x * _SkyGradientExponent;\n   
-            u_xlat3.x = exp2(u_xlat3.x);\n    u_xlat9 = exp2(u_xlat9);\n    u_xlat9
-            = (-u_xlat9) + 1.0;\n    u_xlat6 = u_xlat9 * u_xlat6;\n    u_xlat6 =
-            min(u_xlat6, 1.0);\n    u_xlat2.xyz = vec3(_SunHaloColor.x, _SunHaloColor.y,
-            _SunHaloColor.z) * vec3(vec3(_SunHaloContribution, _SunHaloContribution,
-            _SunHaloContribution));\n    u_xlat1.xyz = u_xlat2.xyz * vec3(u_xlat6)
-            + u_xlat1.xyz;\n    u_xlat2.xyz = (-vec3(_SkyGradientTop.x, _SkyGradientTop.y,
-            _SkyGradientTop.z)) + _SkyGradientBottom.xyz;\n    u_xlat3.xyz = u_xlat3.xxx
-            * u_xlat2.xyz + vec3(_SkyGradientTop.x, _SkyGradientTop.y, _SkyGradientTop.z);\n   
-            u_xlat3.xyz = u_xlat3.xyz + u_xlat1.xyz;\n    u_xlat3.xyz = clamp(u_xlat3.xyz,
-            0.0, 1.0);\n    u_xlat1.xyz = (-u_xlat3.xyz) + _SunDiscColor.xyz;\n   
-            u_xlat0.xyz = u_xlat0.xxx * u_xlat1.xyz + u_xlat3.xyz;\n    SV_Target0.xyz
-            = u_xlat0.xyz;\n    SV_Target0.w = 1.0;\n    return;\n}\n\n"
-          LOD: 100
-          readDepth: 0
-          Index: 0
-          PassId: 0
-          SubShaderIndex: 0
-          Keywords: []
-          Tags:
-          - Key: QUEUE
-            Value: Background
-          - Key: RENDERTYPE
-            Value: Background
-        definedKeywords:
-        - STEREO_CUBEMAP_RENDER_ON
-        - STEREO_INSTANCING_ON
-        - STEREO_MULTIVIEW_ON
-        - UNITY_SINGLE_PASS_STEREO
-        keywordGroups: []
-        HasDepthReader: 0
-        Id: 0
-        SubShaderIndex: 0
-        SerializedObjectId: 0
-        Tags:
-        - Key: QUEUE
-          Value: Background
-        - Key: RENDERTYPE
-          Value: Background
-        UsePass: 0
-      SerializedPassCount: 1
-      UsePass: 0
-    Shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
-    ShaderPath: Assets/09.Assets/Customizable Skybox/Stylized Sky/Shaders/Stylized
-      Sky.shader
-    ShaderDefinedKeywords: []
   - ParsedSubShaders:
     - Index: 0
       Passes:
@@ -19935,6 +19904,96 @@ MonoBehaviour:
     - DOTS_INSTANCING_ON
     - __
     - INSTANCING_ON
+  - ParsedSubShaders:
+    - Index: 0
+      Passes:
+      - ShaderVariants:
+        - NoShaderVariant: 0
+          VertexProgram: "#version 100\n\nuniform \tvec4 hlslcc_mtx4x4unity_ObjectToWorld[4];\nuniform
+            \tvec4 hlslcc_mtx4x4unity_MatrixVP[4];\nattribute highp vec4 in_POSITION0;\nattribute
+            highp vec2 in_TEXCOORD0;\nvarying highp vec2 vs_TEXCOORD0;\nvarying highp
+            vec3 vs_TEXCOORD1;\nvec4 u_xlat0;\nvec4 u_xlat1;\nvoid main()\n{\n   
+            u_xlat0 = in_POSITION0.yyyy * hlslcc_mtx4x4unity_ObjectToWorld[1];\n   
+            u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[0] * in_POSITION0.xxxx + u_xlat0;\n   
+            u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[2] * in_POSITION0.zzzz + u_xlat0;\n   
+            u_xlat1 = u_xlat0 + hlslcc_mtx4x4unity_ObjectToWorld[3];\n    vs_TEXCOORD1.xyz
+            = hlslcc_mtx4x4unity_ObjectToWorld[3].xyz * in_POSITION0.www + u_xlat0.xyz;\n   
+            u_xlat0 = u_xlat1.yyyy * hlslcc_mtx4x4unity_MatrixVP[1];\n    u_xlat0
+            = hlslcc_mtx4x4unity_MatrixVP[0] * u_xlat1.xxxx + u_xlat0;\n    u_xlat0
+            = hlslcc_mtx4x4unity_MatrixVP[2] * u_xlat1.zzzz + u_xlat0;\n    gl_Position
+            = hlslcc_mtx4x4unity_MatrixVP[3] * u_xlat1.wwww + u_xlat0;\n    vs_TEXCOORD0.xy
+            = in_TEXCOORD0.xy;\n    return;\n}\n\n"
+          FragmentProgram: "#version 100\n\n#ifdef GL_FRAGMENT_PRECISION_HIGH\n   
+            precision highp float;\n#else\n    precision mediump float;\n#endif\nprecision
+            highp int;\nuniform \tvec4 _WorldSpaceLightPos0;\nuniform \tvec3 _SunDiscColor;\nuniform
+            \tfloat _SunDiscExponent;\nuniform \tfloat _SunDiscMultiplier;\nuniform
+            \tvec3 _SunHaloColor;\nuniform \tfloat _SunHaloExponent;\nuniform \tfloat
+            _SunHaloContribution;\nuniform \tvec3 _HorizonLineColor;\nuniform \tfloat
+            _HorizonLineExponent;\nuniform \tfloat _HorizonLineContribution;\nuniform
+            \tvec3 _SkyGradientTop;\nuniform \tvec3 _SkyGradientBottom;\nuniform
+            \tfloat _SkyGradientExponent;\nvarying highp vec3 vs_TEXCOORD1;\n#define
+            SV_Target0 gl_FragData[0]\nvec3 u_xlat0;\nvec3 u_xlat1;\nvec3 u_xlat2;\nvec3
+            u_xlat3;\nfloat u_xlat6;\nfloat u_xlat9;\nvoid main()\n{\n    u_xlat0.x
+            = dot(vs_TEXCOORD1.xyz, vs_TEXCOORD1.xyz);\n    u_xlat0.x = inversesqrt(u_xlat0.x);\n   
+            u_xlat0.xyz = u_xlat0.xxx * vs_TEXCOORD1.xyz;\n    u_xlat9 = min(abs(u_xlat0.y),
+            1.0);\n    u_xlat9 = u_xlat9 * _SunHaloExponent;\n    u_xlat0.x = dot(u_xlat0.xyz,
+            _WorldSpaceLightPos0.xyz);\n    u_xlat0.x = clamp(u_xlat0.x, 0.0, 1.0);\n   
+            u_xlat0.x = log2(u_xlat0.x);\n    u_xlat6 = u_xlat0.x * u_xlat9;\n   
+            u_xlat0.x = u_xlat0.x * _SunDiscExponent;\n    u_xlat0.x = exp2(u_xlat0.x);\n   
+            u_xlat0.x = u_xlat0.x * _SunDiscMultiplier;\n    u_xlat0.x = clamp(u_xlat0.x,
+            0.0, 1.0);\n    u_xlat6 = exp2(u_xlat6);\n    u_xlat9 = u_xlat0.y;\n   
+            u_xlat9 = clamp(u_xlat9, 0.0, 1.0);\n    u_xlat3.x = -abs(u_xlat0.y)
+            + 1.0;\n    u_xlat3.x = log2(u_xlat3.x);\n    u_xlat3.x = u_xlat3.x *
+            _HorizonLineExponent;\n    u_xlat3.x = exp2(u_xlat3.x);\n    u_xlat3.x
+            = min(u_xlat3.x, 1.0);\n    u_xlat1.xyz = u_xlat3.xxx * _HorizonLineColor.xyz;\n   
+            u_xlat1.xyz = u_xlat1.xyz * vec3(_HorizonLineContribution);\n    u_xlat3.x
+            = (-u_xlat9) + 1.0;\n    u_xlat3.x = log2(u_xlat3.x);\n    u_xlat9 =
+            u_xlat3.x * 50.0;\n    u_xlat3.x = u_xlat3.x * _SkyGradientExponent;\n   
+            u_xlat3.x = exp2(u_xlat3.x);\n    u_xlat9 = exp2(u_xlat9);\n    u_xlat9
+            = (-u_xlat9) + 1.0;\n    u_xlat6 = u_xlat9 * u_xlat6;\n    u_xlat6 =
+            min(u_xlat6, 1.0);\n    u_xlat2.xyz = vec3(_SunHaloColor.x, _SunHaloColor.y,
+            _SunHaloColor.z) * vec3(vec3(_SunHaloContribution, _SunHaloContribution,
+            _SunHaloContribution));\n    u_xlat1.xyz = u_xlat2.xyz * vec3(u_xlat6)
+            + u_xlat1.xyz;\n    u_xlat2.xyz = (-vec3(_SkyGradientTop.x, _SkyGradientTop.y,
+            _SkyGradientTop.z)) + _SkyGradientBottom.xyz;\n    u_xlat3.xyz = u_xlat3.xxx
+            * u_xlat2.xyz + vec3(_SkyGradientTop.x, _SkyGradientTop.y, _SkyGradientTop.z);\n   
+            u_xlat3.xyz = u_xlat3.xyz + u_xlat1.xyz;\n    u_xlat3.xyz = clamp(u_xlat3.xyz,
+            0.0, 1.0);\n    u_xlat1.xyz = (-u_xlat3.xyz) + _SunDiscColor.xyz;\n   
+            u_xlat0.xyz = u_xlat0.xxx * u_xlat1.xyz + u_xlat3.xyz;\n    SV_Target0.xyz
+            = u_xlat0.xyz;\n    SV_Target0.w = 1.0;\n    return;\n}\n\n"
+          LOD: 100
+          readDepth: 0
+          Index: 0
+          PassId: 0
+          SubShaderIndex: 0
+          Keywords: []
+          Tags:
+          - Key: QUEUE
+            Value: Background
+          - Key: RENDERTYPE
+            Value: Background
+        definedKeywords:
+        - STEREO_CUBEMAP_RENDER_ON
+        - STEREO_INSTANCING_ON
+        - STEREO_MULTIVIEW_ON
+        - UNITY_SINGLE_PASS_STEREO
+        keywordGroups: []
+        HasDepthReader: 0
+        Id: 0
+        SubShaderIndex: 0
+        SerializedObjectId: 0
+        Tags:
+        - Key: QUEUE
+          Value: Background
+        - Key: RENDERTYPE
+          Value: Background
+        UsePass: 0
+      SerializedPassCount: 1
+      UsePass: 0
+    Shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
+    ShaderPath: Assets/09.Assets/Customizable Skybox/Stylized Sky/Shaders/Stylized
+      Sky.shader
+    ShaderDefinedKeywords: []
   - ParsedSubShaders:
     - Index: 0
       Passes:
