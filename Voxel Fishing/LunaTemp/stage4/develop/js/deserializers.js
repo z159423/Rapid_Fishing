@@ -3415,7 +3415,7 @@ Deserializers.applicationIdentifier = "com.MondayOFF.Rapid-Fishing";
 
 Deserializers.disableAntiAliasing = true;
 
-Deserializers.buildID = "e1b50e58-89d4-40f3-9428-00cc0e741f0e";
+Deserializers.buildID = "8b7ac7a5-4351-40bb-8852-2b7af0c5051e";
 
 Deserializers.typeNameToIdMap = function(){ var i = 0; return Deserializers.types.reduce( function( res, item ) { res[ item ] = i++; return res; }, {} ) }()
 
