@@ -23,11 +23,15 @@
         "assets": {
             "export": [],
             "excludes": [
+                "Assets/02.Scripts/ChallengeManager.cs",
+                "Assets/02.Scripts/FlockUnit.cs",
                 "**/Editor/"
             ],
             "includes": [
-                "Assets/Resources/DOTweenSettings.asset",
-                "Assets/TextMesh Pro/Resources/TMP Settings.asset"
+                "Assets/04.Models/Fishing Idle@Fishing Cast.fbx",
+                "Assets/04.Models/Fishing Idle@Fishing Idle.fbx",
+                "Assets/TextMesh Pro/Resources/TMP Settings.asset",
+                "Assets/Resources/DOTweenSettings.asset"
             ]
         },
         "scenes": [
@@ -67,7 +71,7 @@
         },
         "preloader": {
             "active": true,
-            "icon": "Assets/Preloader/Fish_Icon_128.png",
+            "icon": "Assets/Preloader/Fish_Icon_64.png",
             "backgroundHexColor": "#914AFA"
         },
         "autoInstantiatePrefabs": true,
@@ -13121,7 +13125,7 @@
                     },
                     {
                         "name": "Clamp",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -13613,7 +13617,7 @@
                     },
                     {
                         "name": "EllipseClampTo",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "TanHalf",
@@ -15053,7 +15057,7 @@
                     },
                     {
                         "name": "spring#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "spring#set",
@@ -18465,7 +18469,7 @@
                     },
                     {
                         "name": "SetAngularConstraint",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetLinearConstraint",
@@ -24395,7 +24399,7 @@
                     },
                     {
                         "name": "ResizeInternalArray",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ResizeInternalArray$1",
@@ -28531,7 +28535,7 @@
                     },
                     {
                         "name": "IsValid#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ParentCamera#get",
@@ -28551,7 +28555,7 @@
                     },
                     {
                         "name": "UpdateCameraState",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "InternalUpdateCameraState",
@@ -31581,7 +31585,7 @@
                     },
                     {
                         "name": "UseMoney",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ChangeMoney",
@@ -31659,7 +31663,7 @@
                     },
                     {
                         "name": "UpgradeLineLength",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32053,7 +32057,7 @@
                     },
                     {
                         "name": "OnClickUpgradeButton",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnMoneyChange",
@@ -32069,7 +32073,7 @@
                     },
                     {
                         "name": "UpgradeLineLength",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "UpgradeHookMoveSpeed",
@@ -32223,7 +32227,7 @@
                     },
                     {
                         "name": "ChangeUpgradeCost",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "CheckingCover",
@@ -33434,6 +33438,16 @@
                         "script": "",
                         "ext": "",
                         "name": "Assets/09.Assets/"
+                    },
+                    {
+                        "maxWidth": 128,
+                        "maxHeight": 128,
+                        "format": "png32",
+                        "compression": "quantSize",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/06.Sprite/soap_bubbles_PNG15.png"
                     }
                 ]
             },
@@ -33441,8 +33455,8 @@
                 "default": {
                     "channels": 1,
                     "startTime": "00:00.000",
-                    "endTime": "00:00.000",
-                    "lengthInSeconds": 0.0,
+                    "endTime": "00:30.000",
+                    "lengthInSeconds": 30.0,
                     "bitrate": 128,
                     "script": "",
                     "ext": ""
@@ -33483,6 +33497,10 @@
                     {
                         "halfPrecision": true,
                         "name": "Assets/09.Assets/"
+                    },
+                    {
+                        "halfPrecision": true,
+                        "name": "Assets/04.Models/Fish_Jun_Lv01_001.fbx"
                     }
                 ]
             },

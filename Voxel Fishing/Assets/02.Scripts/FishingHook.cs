@@ -208,8 +208,8 @@ public class FishingHook : MonoBehaviour
     {
         rigid.velocity = rigid.velocity * 0.5f;
 
-        upgradeButton.SetActive(true);
-        depthText.gameObject.SetActive(false);
+        //upgradeButton.SetActive(true);
+        //depthText.gameObject.SetActive(false);
 
         touchField.HideJoystick();
 
@@ -233,7 +233,7 @@ public class FishingHook : MonoBehaviour
             fishSkins.Enqueue(fishSkin);
 
 
-            ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType);
+            //ChallengeManager.instance.currentChallenge.ChangeChallengeProgress(hookedFish[i].fishType);
 
             moneyQueue.Enqueue(hookedFish[i].fishType.cost);
 
@@ -252,7 +252,7 @@ public class FishingHook : MonoBehaviour
             hookedFish[i].SellFish();
         }
 
-        ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
+        //ChallengeManager.instance.currentChallenge.CheckingChallengeClear();
 
         currentHookedCount = 0;
         hookedFish.Clear();

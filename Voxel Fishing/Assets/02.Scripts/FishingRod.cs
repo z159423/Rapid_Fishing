@@ -172,7 +172,7 @@ public class FishingRod : MonoBehaviour
 
     private void TapToStartUIOnOff()
     {
-        if(!ChallengeManager.instance.challengeSuccessPanelOn)
+        //if(!ChallengeManager.instance.challengeSuccessPanelOn)
             touchToStartPanel.SetActive(!touchToStartPanel.activeSelf);
     }
 

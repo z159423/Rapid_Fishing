@@ -3796,8 +3796,6 @@ if ( TRACE ) { TRACE( "FishingHook#SellFish", this ); }
 
                 var spawnMoneyText = null;
                 this.rigid.velocity = this.rigid.velocity.$clone().clone().scale( 0.5 );
-                this.upgradeButton.SetActive(true);
-                this.depthText.gameObject.SetActive(false);
                 this.touchField.HideJoystick();
                 this.targetHookZoomOffset = 0.0;
                 this.rigid.useGravity = true;
@@ -3811,7 +3809,6 @@ if ( TRACE ) { TRACE( "FishingHook#SellFish", this ); }
                     fishSkin.transform.Rotate$2(this.hookedFish.getItem(i).GetComponentInChildren(UnityEngine.SkinnedMeshRenderer).transform.localRotation.getPositiveEulerAngles());
                     fishSkin.transform.Rotate$2(new pc.Vec3( 0.0, 180.0, 0.0 ));
                     fishSkins.Enqueue(fishSkin);
-                    ChallengeManager.instance.currentChallenge.ChallengeManager$IChallenge$ChangeChallengeProgress(this.hookedFish.getItem(i).fishType);
                     this.moneyQueue.Enqueue(this.hookedFish.getItem(i).fishType.cost);
                     FishPool.instance.EnequeueFish(this.hookedFish.getItem(i));
                     this.GetMoney(this.hookedFish.getItem(i).fishType.cost);
@@ -3821,7 +3818,6 @@ if ( TRACE ) { TRACE( "FishingHook#SellFish", this ); }
                     }
                     this.hookedFish.getItem(i).SellFish();
                 }
-                ChallengeManager.instance.currentChallenge.ChallengeManager$IChallenge$CheckingChallengeClear();
                 this.currentHookedCount = 0;
                 this.hookedFish.clear();
                 this.HookedCount.text = "";
@@ -4287,9 +4283,7 @@ if ( TRACE ) { TRACE( "FishingRod#StartIsAd", this ); }
             TapToStartUIOnOff: function () {
 if ( TRACE ) { TRACE( "FishingRod#TapToStartUIOnOff", this ); }
 
-                if (!ChallengeManager.instance.challengeSuccessPanelOn) {
-                    this.touchToStartPanel.SetActive(!this.touchToStartPanel.activeSelf);
-                }
+                this.touchToStartPanel.SetActive(!this.touchToStartPanel.activeSelf);
             },
             /*FishingRod.TapToStartUIOnOff end.*/
 
