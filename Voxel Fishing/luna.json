@@ -19985,7 +19985,7 @@
                     },
                     {
                         "name": "SetPosition",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetPositions",
@@ -31582,6 +31582,10 @@
                     {
                         "name": "ChangeMoney",
                         "excluded": true
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
                     }
                 ]
             },
@@ -33476,6 +33480,16 @@
                     {
                         "name": "PlayDefaultAnim",
                         "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "LowLineRenderer",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "FixedUpdate",
+                        "excluded": false
                     }
                 ]
             }

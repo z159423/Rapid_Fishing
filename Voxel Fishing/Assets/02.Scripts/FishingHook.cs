@@ -87,6 +87,8 @@ public class FishingHook : MonoBehaviour
     public bool fullHooked = false;
     public bool inTheOcean = false;
 
+    private Cinemachine.CinemachineTransposer cinemachineTransposer;
+
     //private LightingSettings lightingSettings = new LightingSettings();
 
     public int money = 0;
@@ -94,6 +96,11 @@ public class FishingHook : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        cinemachineTransposer = cinemachineCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();
     }
 
     private void FixedUpdate()
@@ -107,11 +114,11 @@ public class FishingHook : MonoBehaviour
 
         currentHookZoomSpeed = Mathf.Lerp(currentHookZoomSpeed, targetHookZoomOffset, .5f * Time.deltaTime);
 
-        cinemachineCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>().m_FollowOffset.z = -10 - (currentHookZoomSpeed);
+        cinemachineTransposer.m_FollowOffset.z = -10 - (currentHookZoomSpeed);
 
-        if (hook.position.y < 0)
-        {
-            depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
+        //if (hook.position.y < 0)
+        //{
+            //depthText.text = Mathf.Abs((int)(hook.position.y)).ToString() + " M";
 
             /*
             float value = (255 + hook.position.y * oceanSpriteValueMultifly) / 255f;
@@ -136,11 +143,11 @@ public class FishingHook : MonoBehaviour
 
             OceanSurface.color = new Color(OceanSurface.color.r, OceanSurface.color.g, OceanSurface.color.b, (210 + Mathf.Abs((int)(hook.position.y))) / 255f);
         */
-        }
-        else
-        {
-            depthText.text = "0 M";
-        }
+        //}
+        //else
+        //{
+            //depthText.text = "0 M";
+        //}
         
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }

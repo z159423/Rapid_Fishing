@@ -53,7 +53,7 @@ public class EnviromentEditor : MonoBehaviour
             sunLights.intensity = 1 + sunLightValue;
             sunLights.intensity = Mathf.Clamp(sunLights.intensity, minSunLightIntensity, 1);
 
-            hookLight.intensity = Mathf.Abs(sunLightValue);
+            //hookLight.intensity = Mathf.Abs(sunLightValue);
             challengeLight.intensity = Mathf.Abs(sunLightValue) * challengeLightIntensity;
 
             //OceanSurface.color = new Color(OceanSurface.color.r, OceanSurface.color.g, OceanSurface.color.b, (210 + Mathf.Abs((int)(hook.position.y))) / 255f);
