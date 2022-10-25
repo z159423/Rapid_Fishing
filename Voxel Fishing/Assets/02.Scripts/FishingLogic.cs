@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class FishingLogic : MonoBehaviour
 {
     [SerializeField] private Animator rodAnimator;
+    [SerializeField] private AnimationController animationController;
     [SerializeField] private Button startButton;
     [SerializeField] private Slider catchSlider;
     [SerializeField] private GameObject catchButton;
@@ -53,7 +54,9 @@ public class FishingLogic : MonoBehaviour
 
     public void FishingStart()
     {
-        rodAnimator.SetTrigger("StartFishing");
+        //rodAnimator.SetTrigger("StartFishing");
+        //animationController.PlayDefaultAnim();
+        rodAnimator.SetBool("Throw", true);
         startButton.gameObject.SetActive(false);
         StartCoroutine(fishingRod.ReleaseHook());
     }

@@ -1214,10 +1214,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.AnimationState",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.AnimatorClipInfo",
                 "excluded": true
             },
@@ -2014,10 +2010,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.Animation",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.Collider2D",
                 "excluded": true
             },
@@ -2531,7 +2523,7 @@
             },
             {
                 "name": "UnityEngine.AnimationState.FadeType",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.AnisotropicFiltering",
@@ -19659,7 +19651,7 @@
                     },
                     {
                         "name": "SetBool$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetBool",
@@ -33324,6 +33316,168 @@
                         "excluded": true
                     }
                 ]
+            },
+            {
+                "className": "UnityEngine.AnimationState",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "length#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "name#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "name#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AddTime",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Rewind",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Stoped",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Fade",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.Animation",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "clip#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "clip#set",
+                        "excluded": false
+                    },
+                    {
+                        "name": "clips#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "clips#set",
+                        "excluded": false
+                    },
+                    {
+                        "name": "wrapMode#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "wrapMode#set",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getItem",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IsPlaying",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetEnumerator",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddClip",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Play",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Play$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "UpdateClipWrapMode",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Stop",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Rewind",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddTime",
+                        "excluded": false
+                    },
+                    {
+                        "name": "TriggerEvents",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Sample",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CrossFade",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "AnimationController",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "PlayThrowAnim",
+                        "excluded": true
+                    },
+                    {
+                        "name": "PlayDefaultAnim",
+                        "excluded": true
+                    }
+                ]
             }
         ],
         "stubberDataList": [],
@@ -33448,6 +33602,36 @@
                         "script": "",
                         "ext": "",
                         "name": "Assets/06.Sprite/soap_bubbles_PNG15.png"
+                    },
+                    {
+                        "maxWidth": 64,
+                        "maxHeight": 64,
+                        "format": "png32",
+                        "compression": "quantSize",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/05.Materials/LV3.png"
+                    },
+                    {
+                        "maxWidth": 64,
+                        "maxHeight": 64,
+                        "format": "png32",
+                        "compression": "quantSize",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/06.Sprite/Setting_Panel/FSW_MUI_00_01_Block_D.png"
+                    },
+                    {
+                        "maxWidth": 64,
+                        "maxHeight": 64,
+                        "format": "png32",
+                        "compression": "quantSize",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/06.Sprite/FSW_UI_Movement_00_Stick_Range.png"
                     }
                 ]
             },
@@ -33472,7 +33656,17 @@
                         "textureHeight": 1024
                     }
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "data": {
+                            "alphabet": " §1234567890-=qwertyuiop[]asdfghjkl;'\\`zxcvbnm,./±!@#$%^&*()_+QWERTYUIOP{}ASDFGHJKL:\"|~ZXCVBNM<>?",
+                            "size": 64,
+                            "textureWidth": 128,
+                            "textureHeight": 128
+                        },
+                        "name": "Assets/ONE Mobile POP OTF.otf"
+                    }
+                ]
             },
             "shader": {
                 "default": {

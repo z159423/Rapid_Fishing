@@ -25,6 +25,10 @@ public class FishingRod : MonoBehaviour
     [SerializeField] private Transform hookObject;
     [SerializeField] private Transform playerObject;
 
+    [Space]
+
+    [SerializeField] private AnimationController animationController;
+
 
     public int hookThrowForce = 400;
 
@@ -151,7 +155,9 @@ public class FishingRod : MonoBehaviour
     {
         isStart = false;
         FishingLogic.instance.pulling = false;
-        rodAnimator.SetTrigger("Reload");
+        //rodAnimator.SetTrigger("Reload");
+        rodAnimator.SetBool("Throw", false);
+        //animationController.PlayThrowAnim();
 
         fishingHook.SellFish();
 
