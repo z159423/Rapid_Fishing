@@ -106,7 +106,7 @@
             },
             {
                 "name": "prefabs",
-                "excluded": false,
+                "excluded": true,
                 "forceIncluded": false
             }
         ],
@@ -14385,7 +14385,7 @@
                     },
                     {
                         "name": "CheckTransformChanged",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetTransformAlignmentMesh",
@@ -17303,7 +17303,7 @@
                     },
                     {
                         "name": "localEulerAngles#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "eulerAngles#get",
@@ -31699,7 +31699,7 @@
                     },
                     {
                         "name": "DequeueChest",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32137,11 +32137,11 @@
                     },
                     {
                         "name": "Hooked",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "deleteConnect",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },

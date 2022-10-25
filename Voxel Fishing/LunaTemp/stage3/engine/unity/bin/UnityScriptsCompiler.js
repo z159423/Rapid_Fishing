@@ -1157,13 +1157,7 @@ if ( TRACE ) { TRACE( "Fish#Hooked", this ); }
                 if (UnityEngine.Component.op_Inequality(this.mousePoint, null)) {
                     this.transform.localPosition = pc.Vec3.ZERO.clone();
                     this.transform.position = this.transform.position.$clone().add( (new pc.Vec3( this.transform.position.x, this.transform.position.y, 0.0 ).sub( new pc.Vec3( this.mousePoint.position.x, this.mousePoint.position.y, 0 ) )) );
-                    this.tempJoint = this.transform.parent.gameObject.AddComponent(UnityEngine.CharacterJoint);
-                    this.tempJoint.lowTwistLimit = FishingLogic.instance.joint.lowTwistLimit.$clone();
-                    this.tempJoint.highTwistLimit = FishingLogic.instance.joint.highTwistLimit.$clone();
-                    this.tempJoint.swing1Limit = FishingLogic.instance.joint.swing1Limit.$clone();
-                    this.tempJoint.swing2Limit = FishingLogic.instance.joint.swing2Limit.$clone();
-                    this.tempJoint.connectedBody = this.rigid;
-                    this.rigid.useGravity = true;
+                    this.rigid.isKinematic = true;
                 } else {
                     this.rigid.useGravity = false;
                     this.rigid.isKinematic = true;
@@ -1273,7 +1267,6 @@ if ( TRACE ) { TRACE( "Fish#Stuggling", this ); }
 if ( TRACE ) { TRACE( "Fish#SellFish", this ); }
 
                 this.rigid.useGravity = false;
-                UnityEngine.Object.Destroy(this.tempJoint);
             },
             /*Fish.SellFish end.*/
 

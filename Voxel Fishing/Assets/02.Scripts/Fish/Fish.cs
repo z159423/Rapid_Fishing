@@ -189,16 +189,16 @@ public class Fish : MonoBehaviour
             transform.position = transform.position + (new Vector3(transform.position.x, transform.position.y, 0) - new Vector3(mousePoint.position.x, mousePoint.position.y));
             //transform.localPosition = transform.position + (new Vector3(transform.position.x, transform.position.y,0) - new Vector3(hook.position.x, hook.position.y));
 
-            tempJoint = transform.parent.gameObject.AddComponent<CharacterJoint>();
-            tempJoint.lowTwistLimit = FishingLogic.instance.joint.lowTwistLimit;
-            tempJoint.highTwistLimit = FishingLogic.instance.joint.highTwistLimit;
-            tempJoint.swing1Limit = FishingLogic.instance.joint.swing1Limit;
-            tempJoint.swing2Limit = FishingLogic.instance.joint.swing2Limit;
+            //tempJoint = transform.parent.gameObject.AddComponent<CharacterJoint>();
+            //tempJoint.lowTwistLimit = FishingLogic.instance.joint.lowTwistLimit;
+            //tempJoint.highTwistLimit = FishingLogic.instance.joint.highTwistLimit;
+            //tempJoint.swing1Limit = FishingLogic.instance.joint.swing1Limit;
+            //tempJoint.swing2Limit = FishingLogic.instance.joint.swing2Limit;
 
-            tempJoint.connectedBody = rigid;
+            //tempJoint.connectedBody = rigid;
 
-            // rigid.isKinematic = true;
-            rigid.useGravity = true;
+            rigid.isKinematic = true;
+            //rigid.useGravity = true;
         }
         else
         {
@@ -255,7 +255,7 @@ public class Fish : MonoBehaviour
     public void SellFish()
     {
         rigid.useGravity = false;
-        Destroy(tempJoint);
+        //Destroy(tempJoint);
     }
 
 }

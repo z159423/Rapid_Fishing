@@ -3113,7 +3113,7 @@ Deserializers.productName = "Rapid Fishing";
 
 Deserializers.lunaInitializationTime = "08/26/2022 07:02:41";
 
-Deserializers.lunaDaysRunning = "59.9";
+Deserializers.lunaDaysRunning = "60.0";
 
 Deserializers.lunaVersion = "4.1.0";
 
@@ -3147,9 +3147,9 @@ Deserializers.isRuntimeAnalysisEnabledForCode = "False";
 
 Deserializers.runtimeAnalysisExcludedClassesCount = "1167";
 
-Deserializers.runtimeAnalysisExcludedMethodsCount = "4524";
+Deserializers.runtimeAnalysisExcludedMethodsCount = "4519";
 
-Deserializers.runtimeAnalysisExcludedModules = "physics2d, reflection";
+Deserializers.runtimeAnalysisExcludedModules = "physics2d, reflection, prefabs";
 
 Deserializers.isRuntimeAnalysisEnabledForShaders = "True";
 
@@ -3161,7 +3161,7 @@ Deserializers.applicationIdentifier = "com.MondayOFF.Rapid-Fishing";
 
 Deserializers.disableAntiAliasing = true;
 
-Deserializers.buildID = "5d9eac72-0301-49e7-b46a-4135335430b3";
+Deserializers.buildID = "326606d4-261c-457a-9ae9-06909292066b";
 
 Deserializers.typeNameToIdMap = function(){ var i = 0; return Deserializers.types.reduce( function( res, item ) { res[ item ] = i++; return res; }, {} ) }()
 

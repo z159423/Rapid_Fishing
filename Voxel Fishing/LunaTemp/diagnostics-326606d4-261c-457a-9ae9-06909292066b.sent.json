@@ -1,12 +1,12 @@
 {
-  "BuildID": "5d9eac72-0301-49e7-b46a-4135335430b3",
+  "BuildID": "326606d4-261c-457a-9ae9-06909292066b",
   "Command": "project:build",
   "ProjectID": "bbbf5d6b-7dba-4762-ac82-31056fd84bde",
-  "ProjectStateHash": "fcd483c46f480b9733c65e7d378474cdc0ede75f6ec737a0d01980d3166cd395",
+  "ProjectStateHash": "5b39d42aef180d50e2fff3e3c4cffbf986e446f2fcafc45d5b0d7d8a8a63cfee",
   "StageCompletedAt": 3,
   "EarliestFatalError": 0,
-  "StartTime": 1666676750885,
-  "EndTime": 1666676797177,
+  "StartTime": 1666680456832,
+  "EndTime": 1666680501746,
   "PlaygroundUserID": 2969,
   "OperatingSystem": "darwin",
   "UnityPackageID": null,
@@ -16,9 +16,9 @@
   "LogCount": 10,
   "Logs": [
     {
-      "LogID": "0e022329-82e0-4d92-9953-a3d12359da25",
+      "LogID": "a829f256-aa78-4547-ac55-98f6ef320f30",
       "Order": 7,
-      "Timestamp": 1666676797444,
+      "Timestamp": 1666680502045,
       "Stage": 3,
       "ErrorType": 1,
       "ErrorCode": "LP3006",
@@ -42,9 +42,9 @@
       "Severity": 0
     },
     {
-      "LogID": "0294cfeb-6076-4377-bf98-a9afde74994f",
+      "LogID": "a4f1e63a-6a22-4c88-bfad-d9ff9a94a7ad",
       "Order": 7,
-      "Timestamp": 1666676797445,
+      "Timestamp": 1666680502046,
       "Stage": 3,
       "ErrorType": 1,
       "ErrorCode": "LP3006",
@@ -68,9 +68,9 @@
       "Severity": 0
     },
     {
-      "LogID": "41f5ce19-8a63-4d26-b4e7-2f97b363d76c",
+      "LogID": "35c9ea7f-4fd7-4c0f-bb7d-11d534807848",
       "Order": 7,
-      "Timestamp": 1666676797445,
+      "Timestamp": 1666680502046,
       "Stage": 3,
       "ErrorType": 3,
       "ErrorCode": "LP3007",
@@ -92,9 +92,9 @@
       "Severity": 0
     },
     {
-      "LogID": "68553b11-5cba-452b-ac0f-46e8a5396abf",
+      "LogID": "d5c0b79c-c151-4c5c-b935-4b041f7a457b",
       "Order": 7,
-      "Timestamp": 1666676797445,
+      "Timestamp": 1666680502046,
       "Stage": 3,
       "ErrorType": 3,
       "ErrorCode": "LP3011",
@@ -112,9 +112,9 @@
       "Severity": 0
     },
     {
-      "LogID": "3d835877-e0fe-4a70-a4e8-b2ea578d9469",
+      "LogID": "b4d8afb7-187d-493c-89fe-f3f9031b0594",
       "Order": 0,
-      "Timestamp": 1666676756194,
+      "Timestamp": 1666680462199,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1014",
@@ -132,15 +132,15 @@
       "Severity": 0
     },
     {
-      "LogID": "a56f3ff2-09bf-4e76-8817-c83584a90716",
+      "LogID": "7a6320d1-1c74-4822-9eae-c6823564b04f",
       "Order": 1,
-      "Timestamp": 1666676756194,
+      "Timestamp": 1666680462199,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1016",
       "Description": "Extensive usage of Rigidbody Component",
       "Details": [
-        "There is extensive usage of the Rigidbody component.\nExcessive usage of any component can be detrimental to performance on lower and in some cases higher end devices, consider reducing the amount the component is used.\nRecommended count: 10, current count 95."
+        "There is extensive usage of the Rigidbody component.\nExcessive usage of any component can be detrimental to performance on lower and in some cases higher end devices, consider reducing the amount the component is used.\nRecommended count: 10, current count 94."
       ],
       "DescriptionValues": [
         "Rigidbody"
@@ -148,7 +148,7 @@
       "DetailsValues": [
         "Rigidbody",
         "10",
-        "95"
+        "94"
       ],
       "LogCount": 1,
       "LinePosition": 0,
@@ -158,9 +158,9 @@
       "Severity": 0
     },
     {
-      "LogID": "130a2665-9f85-490b-b301-dcb35fe7e6e1",
+      "LogID": "48b05dc0-c7db-42a8-b83d-996610f59a60",
       "Order": 2,
-      "Timestamp": 1666676756194,
+      "Timestamp": 1666680462200,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1016",
@@ -184,9 +184,9 @@
       "Severity": 0
     },
     {
-      "LogID": "f010bad1-4a56-474e-b836-6eb0930eceae",
+      "LogID": "725a8ff4-6943-4106-adbb-4ef6def47843",
       "Order": 3,
-      "Timestamp": 1666676756197,
+      "Timestamp": 1666680462203,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1010",
@@ -211,7 +211,6 @@
         "Fish_Jun_Lv01_009",
         "Chest_1",
         "ChestMover_1",
-        "002",
         "ChestMover",
         "Chest_2",
         "Chest_3",
@@ -335,7 +334,7 @@
       ],
       "DescriptionValues": [],
       "DetailsValues": [],
-      "LogCount": 140,
+      "LogCount": 139,
       "LinePosition": 0,
       "FilePath": "",
       "ClassName": "",
@@ -343,9 +342,9 @@
       "Severity": 0
     },
     {
-      "LogID": "6ec145ce-028a-4988-b1f6-1bc9ae14f775",
+      "LogID": "09627fbe-26e2-414f-bc56-6532bed67339",
       "Order": 4,
-      "Timestamp": 1666676756197,
+      "Timestamp": 1666680462203,
       "Stage": 1,
       "ErrorType": 3,
       "ErrorCode": "LP1008",
@@ -373,9 +372,9 @@
       "Severity": 0
     },
     {
-      "LogID": "e09483cd-7024-4116-8264-2012a3636614",
+      "LogID": "413a5f54-2409-4865-8295-d1afd9d92621",
       "Order": 5,
-      "Timestamp": 1666676756197,
+      "Timestamp": 1666680462203,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1005",
