@@ -78,7 +78,7 @@ public class FishingHook : MonoBehaviour
 
     [Space]
 
-    private int maxHookableCount = 2;
+    private int maxHookableCount = 5;
     private int currentHookedCount = 0;
 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -257,6 +257,8 @@ public class FishingHook : MonoBehaviour
             }
 
             hookedFish[i].SellFish();
+
+            LunaChallenge.instance.GetCount();
         }
 
         //ChallengeManager.instance.currentChallenge.CheckingChallengeClear();

@@ -66,9 +66,9 @@ public class OceanTrigger : MonoBehaviour
         if (other.CompareTag("FishingHook") && rod.isStart && !FishingLogic.instance.enablePulling)
         {
             if (FishingLogic.instance.pulling == false)
-                touchToPullButton.SetActive(true);
+                //touchToPullButton.SetActive(true);
 
-            FishingLogic.instance.enablePulling = true;
+            //FishingLogic.instance.enablePulling = true;
 
             hook.targetHookZoomOffset = 7f;
 

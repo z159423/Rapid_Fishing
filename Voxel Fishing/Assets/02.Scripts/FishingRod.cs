@@ -17,6 +17,7 @@ public class FishingRod : MonoBehaviour
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private GameObject depthText;
+    [SerializeField] private GameObject touchToPullPanel;
 
     [Space]
 
@@ -45,7 +46,7 @@ public class FishingRod : MonoBehaviour
     [Space]
 
     private int currentpullCount = 0;
-    public int playAdsPullCount = 5;
+    public int playAdsPullCount = 15;
 
     [Space]
     public bool isStart = false;
@@ -80,6 +81,13 @@ public class FishingRod : MonoBehaviour
             {
                 //print(dis);
                 hookRigid.velocity = (-dir * lineForce);
+
+                if(!FishingLogic.instance.enablePulling)
+                {
+                    FishingLogic.instance.enablePulling = true;
+                    touchToPullPanel.SetActive(!touchToPullPanel.activeSelf);
+                }
+                    
             }
         }
 
@@ -179,6 +187,8 @@ public class FishingRod : MonoBehaviour
     private void TapToStartUIOnOff()
     {
         //if(!ChallengeManager.instance.challengeSuccessPanelOn)
+
+        if(!LunaChallenge.instance.challengeClear)
             touchToStartPanel.SetActive(!touchToStartPanel.activeSelf);
     }
 
