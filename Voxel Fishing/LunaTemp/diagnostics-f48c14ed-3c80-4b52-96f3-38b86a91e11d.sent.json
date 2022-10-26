@@ -1,24 +1,24 @@
 {
-  "BuildID": "bbe806a4-44d2-481c-9455-d300c9905adf",
-  "Command": "project:build",
+  "BuildID": "f48c14ed-3c80-4b52-96f3-38b86a91e11d",
+  "Command": "project:upload",
   "ProjectID": "bbbf5d6b-7dba-4762-ac82-31056fd84bde",
-  "ProjectStateHash": "83c7b37814a278a0ee520805e456cdc1c8ece0051c09ecbac64c4a3efea15989",
+  "ProjectStateHash": "94bc196b4a45739df9eac98c6b342889588691dcb854867dbb7e07784cff6457",
   "StageCompletedAt": 3,
   "EarliestFatalError": 0,
-  "StartTime": 1666767245564,
-  "EndTime": 1666767282628,
+  "StartTime": 1666773382836,
+  "EndTime": 1666773414372,
   "PlaygroundUserID": 2969,
   "OperatingSystem": "darwin",
   "UnityPackageID": null,
-  "TargetPlatform": "develop",
+  "TargetPlatform": "playground",
   "UnityVersion": "2021.3.6f1\r",
   "LunaVersion": "4.1.0",
-  "LogCount": 8,
+  "LogCount": 7,
   "Logs": [
     {
-      "LogID": "5dd8517b-5877-444b-a578-1441e45ea227",
-      "Order": 7,
-      "Timestamp": 1666767282868,
+      "LogID": "5e8481c4-178f-477a-bdec-9a9a1e769bf9",
+      "Order": 6,
+      "Timestamp": 1666773414596,
       "Stage": 3,
       "ErrorType": 3,
       "ErrorCode": "LP3007",
@@ -40,9 +40,9 @@
       "Severity": 0
     },
     {
-      "LogID": "6cd8f6a8-21ea-4a8d-a782-05c391351294",
-      "Order": 7,
-      "Timestamp": 1666767282869,
+      "LogID": "c388b9dc-6aa4-4fcc-8bbd-beadd11c2c50",
+      "Order": 6,
+      "Timestamp": 1666773414597,
       "Stage": 3,
       "ErrorType": 3,
       "ErrorCode": "LP3011",
@@ -60,29 +60,9 @@
       "Severity": 0
     },
     {
-      "LogID": "1f4ded9d-17db-4f47-9ef2-b5ce8ba386c8",
+      "LogID": "631ae814-61c4-4447-875d-61581e5674ee",
       "Order": 0,
-      "Timestamp": 1666767250807,
-      "Stage": 1,
-      "ErrorType": 2,
-      "ErrorCode": "LP1014",
-      "Description": "We recommend running Runtime Analysis to find and remove all unused code",
-      "Details": [
-        "Navigate to the Runtime Analysis > Code tab to enable code stripping"
-      ],
-      "DescriptionValues": [],
-      "DetailsValues": [],
-      "LogCount": 1,
-      "LinePosition": 0,
-      "FilePath": "",
-      "ClassName": "",
-      "MemberName": "",
-      "Severity": 0
-    },
-    {
-      "LogID": "717a3337-cd82-4c11-afbc-64e3ff9973f1",
-      "Order": 1,
-      "Timestamp": 1666767250808,
+      "Timestamp": 1666773387774,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1016",
@@ -106,9 +86,9 @@
       "Severity": 0
     },
     {
-      "LogID": "ad03eda7-1690-4106-98ba-0ca07b19f004",
-      "Order": 2,
-      "Timestamp": 1666767250808,
+      "LogID": "580cccb3-22e9-4323-9a3e-c50cc4bfe3af",
+      "Order": 1,
+      "Timestamp": 1666773387774,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1016",
@@ -132,9 +112,9 @@
       "Severity": 0
     },
     {
-      "LogID": "f001f06e-ffc5-4c79-b9cb-89d6a693f470",
-      "Order": 3,
-      "Timestamp": 1666767250808,
+      "LogID": "e5251815-7d80-453e-ae86-6079d33f4a25",
+      "Order": 2,
+      "Timestamp": 1666773387774,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1010",
@@ -259,9 +239,9 @@
       "Severity": 0
     },
     {
-      "LogID": "7095f792-d8de-4e0b-a85b-ce9645ce04b3",
-      "Order": 4,
-      "Timestamp": 1666767250808,
+      "LogID": "984f03d1-e001-41ba-bf4f-865f61efafdb",
+      "Order": 3,
+      "Timestamp": 1666773387774,
       "Stage": 1,
       "ErrorType": 3,
       "ErrorCode": "LP1008",
@@ -288,23 +268,26 @@
       "Severity": 0
     },
     {
-      "LogID": "56259d9a-5de2-4b2c-a9ff-e9d8b3306ac3",
-      "Order": 5,
-      "Timestamp": 1666767250808,
+      "LogID": "5a7749ec-0446-4ec1-9323-14ca2b620f66",
+      "Order": 4,
+      "Timestamp": 1666773387774,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1005",
-      "Description": "Standard: Tags: \"LIGHTMODE\"=\"SHADOWCASTER\" \"SHADOWSUPPORT\"=\"true\" \"RENDERTYPE\"=\"Opaque\" \"PERFORMANCECHECKS\"=\"False\"\n has problems",
+      "Description": "Unlit/Transparent: Tags: \"QUEUE\"=\"Transparent\" \"IGNOREPROJECTOR\"=\"true\" \"RENDERTYPE\"=\"Transparent\"\n has problems",
       "Details": [
+        "Unlit/Transparent",
         "Standard",
         "Legacy Shaders/VertexLit",
-        "Mobile/VertexLit"
+        "Mobile/VertexLit",
+        "TextMeshPro/Mobile/Distance Field",
+        "TextMeshPro/Sprite"
       ],
       "DescriptionValues": [
-        "Standard: Tags: \"LIGHTMODE\"=\"SHADOWCASTER\" \"SHADOWSUPPORT\"=\"true\" \"RENDERTYPE\"=\"Opaque\" \"PERFORMANCECHECKS\"=\"False\"\n"
+        "Unlit/Transparent: Tags: \"QUEUE\"=\"Transparent\" \"IGNOREPROJECTOR\"=\"true\" \"RENDERTYPE\"=\"Transparent\"\n"
       ],
       "DetailsValues": [],
-      "LogCount": 3,
+      "LogCount": 6,
       "LinePosition": 0,
       "FilePath": "",
       "ClassName": "",

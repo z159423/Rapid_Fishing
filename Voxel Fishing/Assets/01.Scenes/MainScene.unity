@@ -18719,7 +18719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (0 / 15)
+  m_text: (0 / 10)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac04b06d553d04e0fa8b692c971fa6bd, type: 2}
   m_sharedMaterial: {fileID: -462048132355521850, guid: ac04b06d553d04e0fa8b692c971fa6bd, type: 2}
@@ -43726,7 +43726,7 @@ MonoBehaviour:
   challengeSlotObject: {fileID: 740472097}
   tapToStartObject: {fileID: 925896650}
   EndCard: {fileID: 817611427}
-  goalCount: 15
+  goalCount: 10
   currentCount: 0
   challengeClear: 0
 --- !u!4 &1184304394

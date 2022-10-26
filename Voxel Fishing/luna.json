@@ -1,8 +1,8 @@
 {
     "version": "4.1.0",
     "projectId": "bbbf5d6b-7dba-4762-ac82-31056fd84bde",
-    "applicationID": 0,
-    "creativeName": "",
+    "applicationID": 13949,
+    "creativeName": "version-1",
     "pgServer": "EU",
     "unity": {
         "scripts": {
@@ -109,7 +109,7 @@
             }
         ],
         "reaperVersion": 2,
-        "disableRuntimeAnalysisForCode": true,
+        "disableRuntimeAnalysisForCode": false,
         "disableRuntimeAnalysisForShaders": false,
         "useShadersCache": true,
         "preventUpdatingRAListWhenRAIsDisabled": false,
@@ -33497,6 +33497,14 @@
                     },
                     {
                         "name": "ClearChallenge",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPlayNowBtnClick",
                         "excluded": false
                     }
                 ]

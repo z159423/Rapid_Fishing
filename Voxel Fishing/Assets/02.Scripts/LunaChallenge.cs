@@ -36,8 +36,11 @@ public class LunaChallenge : MonoBehaviour
         {
             yield return new WaitForSeconds(30);
             if(!EndCard.activeSelf)
+            {
                 EndCard.SetActive(true);
             Luna.Unity.LifeCycle.GameEnded();
+
+            }
         }
     }
 
@@ -67,9 +70,12 @@ public class LunaChallenge : MonoBehaviour
         {
             yield return new WaitForSeconds(3f);
             if (!EndCard.activeSelf)
+            {
                 EndCard.SetActive(true);
-
             Luna.Unity.LifeCycle.GameEnded();
+
+            }
+
         }
     }
 
