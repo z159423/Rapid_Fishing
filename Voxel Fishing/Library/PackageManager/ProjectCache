@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638021781130000000
+      ticks: 638024307240000000
     m_Hash: 2388959464
   m_LockFileStatus:
     m_FilePath: /Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638021781460000000
+      ticks: 638024307240000000
     m_Hash: 3585722532
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -101,7 +101,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: 'The Addressable Asset System allows the developer to ask for an asset
     via its address. Once an asset (e.g. a prefab) is marked "addressable", it generates
     an address which can be called from anywhere. Wherever the asset resides (local
@@ -215,11 +215,13 @@ m_ResolvedPackages:
     - 1.20.0
     - 1.20.3
     - 1.20.5
+    - 1.21.1
     compatible:
     - 1.19.19
     - 1.20.0
     - 1.20.3
     - 1.20.5
+    - 1.21.1
     verified: 1.19.19
   dependencies:
   - name: com.unity.scriptablebuildpipeline
@@ -260,7 +262,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637819852270000000
   documentationUrl: 
@@ -4206,7 +4208,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: The Scriptable Build Pipeline moves the asset bundle build pipeline
     to C#.  Use the pre-defined build flows, or create your own using the divided
     up APIs.  This system improves build time, fixes incremental build, and provides
@@ -4266,9 +4268,11 @@ m_ResolvedPackages:
     - 1.19.6
     - 1.20.1
     - 1.20.2
+    - 1.21.0
     compatible:
     - 1.20.1
     - 1.20.2
+    - 1.21.0
     verified: 1.20.2
   dependencies: []
   resolvedDependencies: []
@@ -4286,7 +4290,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637874640850000000
   documentationUrl: 
