@@ -227,6 +227,13 @@ public class FishingHook : MonoBehaviour
 
         Queue<GameObject> fishSkins = new Queue<GameObject>();
 
+        if(hookedFish.Count > 0)
+        {
+            var particle = Instantiate(sellParticle, sellParticleParent.position, Quaternion.identity);
+
+            Destroy(particle, 5f);
+        }
+
         for (int i = 0; i < hookedFish.Count; i++)
         {
             var fishSkin = Instantiate(fishSkinPrefab, new Vector3(0, 10000, 0), Quaternion.identity);
@@ -312,10 +319,6 @@ public class FishingHook : MonoBehaviour
 
     public void GetMoney(int money)
     {
-        var particle = Instantiate(sellParticle, sellParticleParent.position, Quaternion.identity);
-
-        Destroy(particle, 5f);
-
         this.money += money;
 
         moneyText.text = this.money.ToString();

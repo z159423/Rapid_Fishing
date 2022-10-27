@@ -3833,6 +3833,10 @@ if ( TRACE ) { TRACE( "FishingHook#SellFish", this ); }
                 this.rigid.useGravity = true;
                 this.fullHooked = false;
                 var fishSkins = new (System.Collections.Generic.Queue$1(UnityEngine.GameObject)).ctor();
+                if (this.hookedFish.Count > 0) {
+                    var particle = UnityEngine.Object.Instantiate$2(UnityEngine.GameObject, this.sellParticle, this.sellParticleParent.position.$clone(), pc.Quat.IDENTITY.clone());
+                    UnityEngine.Object.Destroy$1(particle, 5.0);
+                }
                 for (var i = 0; i < this.hookedFish.Count; i = (i + 1) | 0) {
                     var fishSkin = UnityEngine.Object.Instantiate$2(UnityEngine.GameObject, this.fishSkinPrefab, new pc.Vec3( 0.0, 10000.0, 0.0 ), pc.Quat.IDENTITY.clone());
                     fishSkin.GetComponent(UnityEngine.MeshRenderer).materials = this.hookedFish.getItem(i).GetComponentInChildren(UnityEngine.SkinnedMeshRenderer).materials;
@@ -3933,8 +3937,6 @@ if ( TRACE ) { TRACE( "FishingHook#UpgradeHookMaxCount", this ); }
             GetMoney: function (money) {
 if ( TRACE ) { TRACE( "FishingHook#GetMoney", this ); }
 
-                var particle = UnityEngine.Object.Instantiate$2(UnityEngine.GameObject, this.sellParticle, this.sellParticleParent.position.$clone(), pc.Quat.IDENTITY.clone());
-                UnityEngine.Object.Destroy$1(particle, 5.0);
                 this.money = (this.money + money) | 0;
                 this.moneyText.text = Bridge.toString(this.money);
                 this.OnMoneyChangeEvent.Invoke();

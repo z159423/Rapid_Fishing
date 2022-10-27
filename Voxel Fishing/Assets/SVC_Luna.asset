@@ -1064,7 +1064,7 @@ MonoBehaviour:
     - _EMISSION
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 1027
+  version: 1148
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
