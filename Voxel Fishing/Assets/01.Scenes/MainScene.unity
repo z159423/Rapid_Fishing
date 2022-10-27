@@ -43701,6 +43701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184304394}
   - component: {fileID: 1184304393}
+  - component: {fileID: 1184304395}
   m_Layer: 0
   m_Name: Luna
   m_TagString: Untagged
@@ -43726,6 +43727,7 @@ MonoBehaviour:
   challengeSlotObject: {fileID: 740472097}
   tapToStartObject: {fileID: 925896650}
   EndCard: {fileID: 817611427}
+  lunaDynamic: {fileID: 1184304395}
   goalCount: 10
   currentCount: 0
   challengeClear: 0
@@ -43744,6 +43746,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1184304395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184304392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313029c0e958d40b8bac2bb23e0a3121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeCount: 10
+  stageNum: 0
 --- !u!4 &1186054827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7317397791418568371, guid: b1e8ad065ac2a4ec8aa0bd84f8086406, type: 3}
@@ -65210,6 +65226,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4503057543778001348, guid: 82353a574f711476ab84c273b0d46f1c, type: 3}
   m_PrefabInstance: {fileID: 1520120037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1846368817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1846368818}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1846368818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846368817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.545816, y: -20.087898, z: -5.4550753}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860905565
 GameObject:
   m_ObjectHideFlags: 0

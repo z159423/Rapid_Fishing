@@ -12,6 +12,7 @@ public class LunaChallenge : MonoBehaviour
     [SerializeField] private GameObject challengeSlotObject;
     [SerializeField] private GameObject tapToStartObject;
     [SerializeField] private GameObject EndCard;
+    [SerializeField] private LunaDynamic lunaDynamic;
 
 
     [Space]
@@ -30,6 +31,10 @@ public class LunaChallenge : MonoBehaviour
 
     private void Start()
     {
+        goalCount = lunaDynamic.challengeCount;
+
+        challengeCount.text = "(" + currentCount + " / " + goalCount + ")";
+
         StartCoroutine(ShowEndCard());
 
         IEnumerator ShowEndCard()
@@ -50,7 +55,7 @@ public class LunaChallenge : MonoBehaviour
 
         challengeCount.text = "(" + currentCount + " / " + goalCount + ")";
 
-        if (currentCount >= goalCount)
+        if (currentCount >= goalCount && !challengeClear)
             ClearChallenge();
 
         challengeObject.transform.DOScale(new Vector3(1.8f, 1.8f, 1), 0.15f).SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo);
@@ -58,6 +63,8 @@ public class LunaChallenge : MonoBehaviour
 
     public void ClearChallenge()
     {
+        
+
         challengeClearObject.SetActive(true);
         tapToStartObject.SetActive(false);
         challengeSlotObject.SetActive(false);
@@ -65,6 +72,7 @@ public class LunaChallenge : MonoBehaviour
         challengeClear = true;
 
         StartCoroutine(EndCardShow());
+        Luna.Unity.LifeCycle.GameEnded();
 
         IEnumerator EndCardShow()
         {
@@ -72,11 +80,13 @@ public class LunaChallenge : MonoBehaviour
             if (!EndCard.activeSelf)
             {
                 EndCard.SetActive(true);
-            Luna.Unity.LifeCycle.GameEnded();
 
             }
 
         }
+
+        if(lunaDynamic.goToStore)
+            Luna.Unity.Playable.InstallFullGame();
     }
 
     public void OnPlayNowBtnClick()
