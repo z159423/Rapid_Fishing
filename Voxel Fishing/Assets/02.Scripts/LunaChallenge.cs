@@ -39,12 +39,18 @@ public class LunaChallenge : MonoBehaviour
 
         IEnumerator ShowEndCard()
         {
-            yield return new WaitForSeconds(30);
+            yield return new WaitForSeconds(29);
             if(!EndCard.activeSelf)
             {
                 EndCard.SetActive(true);
-            Luna.Unity.LifeCycle.GameEnded();
+                Luna.Unity.LifeCycle.GameEnded();
 
+            }
+
+            if (lunaDynamic.goToStore)
+            {
+                yield return new WaitForSeconds(1f);
+                Luna.Unity.Playable.InstallFullGame();
             }
         }
     }
@@ -76,17 +82,19 @@ public class LunaChallenge : MonoBehaviour
 
         IEnumerator EndCardShow()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             if (!EndCard.activeSelf)
             {
                 EndCard.SetActive(true);
-
             }
 
+            yield return new WaitForSeconds(1f);
+            if (lunaDynamic.goToStore)
+            {
+                
+                Luna.Unity.Playable.InstallFullGame();
+            }
         }
-
-        if(lunaDynamic.goToStore)
-            Luna.Unity.Playable.InstallFullGame();
     }
 
     public void OnPlayNowBtnClick()

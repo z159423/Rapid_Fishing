@@ -32,8 +32,8 @@ MonoBehaviour:
     minMapSize: {x: 8, y: -1, z: 0}
     maxMapSize: {x: 20, y: -10, z: 0}
   - tier: 7
-    minMapSize: {x: 8, y: -1, z: 0}
-    maxMapSize: {x: 20, y: -10, z: 0}
+    minMapSize: {x: 8, y: -15, z: 0}
+    maxMapSize: {x: 20, y: -25, z: 0}
   - tier: 8
     minMapSize: {x: -47, y: -10, z: 0}
     maxMapSize: {x: 87, y: -25, z: 0}

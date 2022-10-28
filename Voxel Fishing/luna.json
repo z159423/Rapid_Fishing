@@ -6346,6 +6346,10 @@
             {
                 "name": "Upgrades.IUpgrade",
                 "excluded": false
+            },
+            {
+                "name": "LunaStage",
+                "excluded": true
             }
         ],
         "unusedMethods": [
@@ -33595,6 +33599,20 @@
                     },
                     {
                         "name": "ModifyMesh$1",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "LunaDynamic",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Start",
                         "excluded": false
                     }
                 ]
