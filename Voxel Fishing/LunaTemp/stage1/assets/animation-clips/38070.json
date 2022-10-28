@@ -1,0 +1,1 @@
+{"id":"38070","path":"Assets\/03.Prefabs\/floating.anim","assetBundleId":"-1","data":["floating",0,0,1.5,[["","UnityEngine.RectTransform","m_AnchoredPosition.y",[0,-13,0,0,0,4,4,1.5,120,0,0,0,4,4],[]],["","TMPro.TextMeshProUGUI","m_HorizontalAlignment",[0,1,1e9999,1e9999,0,3,3],[]],["","TMPro.TextMeshProUGUI","m_VerticalAlignment",[0,256,1e9999,1e9999,0,3,3],[]]],[],1]}
