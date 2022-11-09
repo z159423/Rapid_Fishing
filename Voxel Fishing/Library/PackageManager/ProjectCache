@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638024550280000000
+      ticks: 638035596340000000
     m_Hash: 2388959464
   m_LockFileStatus:
     m_FilePath: /Users/bangseunghwan/Documents/GitHub/Voxel_Fishing/Voxel Fishing/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638024550280000000
+      ticks: 638035596340000000
     m_Hash: 3585722532
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -289,7 +289,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: cinematography
-  type: 
+  type: asset
   description: "Smart camera tools for passionate creators. \n\nNew starting from
     2.7.1: Are you looking for the Cinemachine menu? It has moved to the GameObject
     menu.\n\nIMPORTANT NOTE: If you are upgrading from the legacy Asset Store version
@@ -361,6 +361,7 @@ m_ResolvedPackages:
     - 2.9.0-pre.6
     - 2.9.1
     - 2.9.2
+    - 3.0.0-pre.3
     compatible:
     - 2.8.6
     - 2.8.9
@@ -401,7 +402,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637891007790000000
   documentationUrl: 
@@ -4105,7 +4106,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Use this package to export code coverage data and reports from your
     automated tests. Additionally, the Code Coverage package offers a Coverage Recording
     feature which allows capturing coverage data on demand, for manual testing or
@@ -4140,6 +4141,7 @@ m_ResolvedPackages:
     - 1.2.0-exp.6
     - 1.2.0-exp.7
     - 1.2.0
+    - 1.2.1
     compatible:
     - 1.0.1
     - 1.1.0
@@ -4152,6 +4154,7 @@ m_ResolvedPackages:
     - 1.2.0-exp.6
     - 1.2.0-exp.7
     - 1.2.0
+    - 1.2.1
     verified: 1.0.1
   dependencies:
   - name: com.unity.test-framework
@@ -4181,7 +4184,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637594767130000000
   documentationUrl: 
