@@ -8,6 +8,7 @@
 
 @interface POBannerView : UIView
 @property (nonatomic, weak) id<POBannerViewDelegate> delegate;
+@property (nonatomic, assign) BOOL shouldResizeImage;
 
 - (instancetype)initWithPosition:(POAdPosition)pos withAd:(POCompanionBanner *)banner ;
 - (void)setFrameAndWebView:(CGRect)frame;

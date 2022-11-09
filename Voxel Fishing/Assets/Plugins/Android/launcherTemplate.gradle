@@ -23,7 +23,6 @@ android {
         }
         versionCode **VERSIONCODE**
         versionName '**VERSIONNAME**'
-
         multiDexEnabled true
     }
 
