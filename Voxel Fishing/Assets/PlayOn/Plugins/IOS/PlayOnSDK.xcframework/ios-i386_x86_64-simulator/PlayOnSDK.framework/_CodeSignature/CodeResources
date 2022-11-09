@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/POAdUnitDelegate.h</key>
 		<data>
-		ToGb/EcPG4wm19vdv8PNnkUUrHA=
+		rXtCywwJtCEMof6gqAD/cgEzER8=
 		</data>
 		<key>Headers/POAdUtilities.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/POBannerView.h</key>
 		<data>
-		tu4/qAdmIO7bfl9d3Ply3llFN1w=
+		eCNGh8pgFOGhE+UFbU20HFQX3V0=
 		</data>
 		<key>Headers/POBannerViewDelegate.h</key>
 		<data>
@@ -62,11 +62,15 @@
 		</data>
 		<key>Headers/PlayOnManager.h</key>
 		<data>
-		45WbN4P0uIJzFMMrAPF5Ws9zsQ8=
+		a4lFfIK+y0qovN1c4Uh2xp7gRyY=
 		</data>
 		<key>Headers/PlayOnManagerDelegate.h</key>
 		<data>
 		5WAf0jQ+eOYaFXMoTsFCCP/+fbA=
+		</data>
+		<key>Headers/PlayOnSDK-Swift.h</key>
+		<data>
+		tRKnxbPeJklX7vovvgVH3UX2TpU=
 		</data>
 		<key>Headers/PlayOnSDK.h</key>
 		<data>
@@ -78,11 +82,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		be2o/b6N+K+VCZWZUtk5AgKsoSo=
+		kI39wHcBSNCC0ozzqXQ1NMJ3IMU=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		fgSoTLya18isQH2vhXgWr4E7DA0=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		N4oARu67P8QFUBwgNdYSd/w2jmk=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		icExoRKHssUbXKLrZ8dm3SxUuy4=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
+		<data>
+		xfukGIHdYNIis9zZWavnAmfB3xY=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/i386-apple-ios-simulator.swiftinterface</key>
+		<data>
+		mNfBNz7yaHJRO2WII3NGxuOerIY=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
+		<data>
+		THkRC6PDHWpP9j+O9BzYCLjxJPc=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		cYiMpD4YU1OWPOxmYg9zFgMQ91A=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		SwMvjcOYlEzau4nBJXrYq9IBp0Q=
+		</data>
+		<key>Modules/PlayOnSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		vx6r0aM4XSurADDlF63HiSuAMl8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		LpOKrsjq7PKL+V74pKWVEROpcmg=
+		FltcjET8Uw9CZ4JGIgckxGuvbic=
 		</data>
 		<key>PrivateHeaders/ClientMetadata.h</key>
 		<data>
@@ -90,7 +130,7 @@
 		</data>
 		<key>PrivateHeaders/PersonalInfo.h</key>
 		<data>
-		VPg0sQ3MsUx276sneLcSl8I77Jg=
+		fsvGRCH+KClEKB5VHoONgTehL2w=
 		</data>
 		<key>close@1x.png</key>
 		<data>
@@ -111,6 +151,10 @@
 		<key>inLevelPopup.png</key>
 		<data>
 		gE5y+7Gey8EDcFkkA1axTQpE62A=
+		</data>
+		<key>mute.aiff</key>
+		<data>
+		xrLmOHGKRkA1PdlxjX8QdhUlYC8=
 		</data>
 		<key>mute@1x.png</key>
 		<data>
@@ -213,11 +257,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ToGb/EcPG4wm19vdv8PNnkUUrHA=
+			rXtCywwJtCEMof6gqAD/cgEzER8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uy9kV8ljxdhqmodRKmufbACeoH6VNfaNHOTMmpQ8hA4=
+			CwgrNTv0na4BM9uPHQeOwJB2xpg9DMAe3inu/xmIL7M=
 			</data>
 		</dict>
 		<key>Headers/POAdUtilities.h</key>
@@ -235,11 +279,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tu4/qAdmIO7bfl9d3Ply3llFN1w=
+			eCNGh8pgFOGhE+UFbU20HFQX3V0=
 			</data>
 			<key>hash2</key>
 			<data>
-			t+dvjpDajeOEX+rqwlfWkPG/26kM5pdRSSDRtx/qG5M=
+			HUTk3BCMamhPv2xR9fvzygZ/2DDv/pPMY7EZqVVEt84=
 			</data>
 		</dict>
 		<key>Headers/POBannerViewDelegate.h</key>
@@ -301,11 +345,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			45WbN4P0uIJzFMMrAPF5Ws9zsQ8=
+			a4lFfIK+y0qovN1c4Uh2xp7gRyY=
 			</data>
 			<key>hash2</key>
 			<data>
-			aPmPxOGLeWi1uozSMJjTIyBxGiyIecMhpACmFD3VP/U=
+			eYeff2m3jiKpcBJKW1i9IKB1tsVdVniPsYkss3WmLwQ=
 			</data>
 		</dict>
 		<key>Headers/PlayOnManagerDelegate.h</key>
@@ -317,6 +361,17 @@
 			<key>hash2</key>
 			<data>
 			ZrJDG1yBfoIL1tq+8z5u3iix1okMG8DCmDnxYq/8Ja0=
+			</data>
+		</dict>
+		<key>Headers/PlayOnSDK-Swift.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tRKnxbPeJklX7vovvgVH3UX2TpU=
+			</data>
+			<key>hash2</key>
+			<data>
+			h8yjDHhU+hmG5XD6s9EMEWDsD8cdAfZTR3GqEbgxItE=
 			</data>
 		</dict>
 		<key>Headers/PlayOnSDK.h</key>
@@ -341,15 +396,114 @@
 			VFrnk28XfwYFmPlIzc4qeY9dllBr+Vj9vKNVrXGlMqw=
 			</data>
 		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fgSoTLya18isQH2vhXgWr4E7DA0=
+			</data>
+			<key>hash2</key>
+			<data>
+			CpIydPBUW5mCKcUuvEpXsZ6YEeOMKfUw910HYOuyJ+8=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			N4oARu67P8QFUBwgNdYSd/w2jmk=
+			</data>
+			<key>hash2</key>
+			<data>
+			frE+q2jgEedOoON2H+wrXAj2WyZa0CQ8NtjxED8cbX4=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			icExoRKHssUbXKLrZ8dm3SxUuy4=
+			</data>
+			<key>hash2</key>
+			<data>
+			g0kjqgWiezByvemcoIwgC89LQ0Xt7OzPb3vK/k4vG6w=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xfukGIHdYNIis9zZWavnAmfB3xY=
+			</data>
+			<key>hash2</key>
+			<data>
+			gSReINk6ZPduvJ/eSgiturZRYXOVBAjquPzIpHy24D4=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/i386-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mNfBNz7yaHJRO2WII3NGxuOerIY=
+			</data>
+			<key>hash2</key>
+			<data>
+			0KeR5B2Esfd5GMMpGWaaWHZeapx/E77pSsJ5XXvjj68=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			THkRC6PDHWpP9j+O9BzYCLjxJPc=
+			</data>
+			<key>hash2</key>
+			<data>
+			I41ZFIOno6JlMhNRUP7qVrlB7MT068p4iMrdwYted0A=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cYiMpD4YU1OWPOxmYg9zFgMQ91A=
+			</data>
+			<key>hash2</key>
+			<data>
+			4nBYzrbmdfRokR2k4Enc/+tyLLBghf9HC969InYkTzI=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SwMvjcOYlEzau4nBJXrYq9IBp0Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			ovYeCJ6dQEgdu+2BiaLdzDycCrl1RQAQCQXgLWq9FD8=
+			</data>
+		</dict>
+		<key>Modules/PlayOnSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vx6r0aM4XSurADDlF63HiSuAMl8=
+			</data>
+			<key>hash2</key>
+			<data>
+			eaAArI/vZOCyvPo7/NG5TtrDosw0tlrJs9182IiMvlU=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LpOKrsjq7PKL+V74pKWVEROpcmg=
+			FltcjET8Uw9CZ4JGIgckxGuvbic=
 			</data>
 			<key>hash2</key>
 			<data>
-			E/j6PN/U7ZCxzGCzdS++zzd4Xmu7L2Yaaw+3oT3I+BM=
+			u8Iy8MQafgQA/QPZgITsYatMHWCMQabBX7p10Qls618=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ClientMetadata.h</key>
@@ -367,11 +521,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VPg0sQ3MsUx276sneLcSl8I77Jg=
+			fsvGRCH+KClEKB5VHoONgTehL2w=
 			</data>
 			<key>hash2</key>
 			<data>
-			kdSW5RDOJBndD066pos+vt4gU0fR++t7LpanApPWExo=
+			NEAIul0xusUlTEZJfBmgajFru80B1FUm2AV2GvXIojw=
 			</data>
 		</dict>
 		<key>close@1x.png</key>
@@ -427,6 +581,17 @@
 			<key>hash2</key>
 			<data>
 			K7kCfjbvSmhE6De2N+xR3eO/bWQ7ZmKDBBp5GYWaqJQ=
+			</data>
+		</dict>
+		<key>mute.aiff</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xrLmOHGKRkA1PdlxjX8QdhUlYC8=
+			</data>
+			<key>hash2</key>
+			<data>
+			WUTtOynoFPERt7tbMpqwDPv3YX9EfZjQDLz1X3hRVww=
 			</data>
 		</dict>
 		<key>mute@1x.png</key>

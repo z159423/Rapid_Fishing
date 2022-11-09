@@ -4,3 +4,8 @@ framework module PlayOnSDK {
   export *
   module * { export * }
 }
+
+module PlayOnSDK.Swift {
+    header "PlayOnSDK-Swift.h"
+    requires objc
+}

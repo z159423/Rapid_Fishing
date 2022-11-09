@@ -1,6 +1,6 @@
 @class POImpressionData;
 
-@protocol POAdUnitDelegate
+@protocol POAdUnitDelegate <NSObject>
 - (void)onAvailabilityChanged:(BOOL)flag;
 - (void)onShow;
 - (void)onClose;

@@ -18,6 +18,49 @@ void _playOnInitialize(const char* appKey, const char* storeId){
     [PlayOnManager.sharedManager initialize:GetStringParam(appKey) withStoreId:GetStringParam(storeId)];
 }
 
+const char* _playOnGetConsentString(){
+    return plsyOnStringCopy([PlayOnManager.sharedManager getConsentString]);
+}
+
+bool _playOnIsGeneralConsentGiven(){
+    return [PlayOnManager.sharedManager isGeneralConsentGiven];
+}
+
+void _playOnClearConsentString(){
+    [PlayOnManager.sharedManager clearConsentString];
+}
+
+void _playOnSetConsentString(const char* consentString){
+    [PlayOnManager.sharedManager setConsentString:GetStringParam(consentString)];
+}
+
+void _playOnSetGdprConsent(bool consent){
+    [PlayOnManager.sharedManager setGdprConsent:consent];
+}
+
+void _playOnSetGdprConsentWithString(bool consent, const char* consentString){
+    [PlayOnManager.sharedManager setGdprConsent:consent withConsentString:GetStringParam(consentString)];
+}
+
+void _playOnSetDoNotSell(bool isApplied){
+    [PlayOnManager.sharedManager setDoNotSell:isApplied];
+}
+
+void _playOnSetDoNotSellWithString(bool isApplied, const char* consentString){
+    [PlayOnManager.sharedManager setDoNotSell:isApplied withConsentString:GetStringParam(consentString)];
+}
+
+void _playOnForceRegulationType(int type){
+    [PlayOnManager.sharedManager forceRegulationType:type];
+}
+
+void _playOnClearForceRegulationType(){
+    [PlayOnManager.sharedManager clearForceRegulationType];
+}
+
+int _playOnGetRegulationType(){
+    return (int)[PlayOnManager.sharedManager getRegulationType];
+}
 
 CFTypeRef _playOnCreateAudioAdUnit(int adType){
     POAdUnit* adUnit = [[POAdUnit alloc] initWithType:adType];
@@ -36,6 +79,7 @@ PlayOnManagerListener* _playOnSetOnInitializationListener(POTypeCallbackClientRe
     [[PlayOnManager sharedManager] setDelegate:newDelegate];
     return newDelegate;
 }
+
 
 bool _playOnIsInitialized(){
     return [PlayOnManager.sharedManager isInitialized];
@@ -126,18 +170,6 @@ NSMutableArray* _playOnCreateMutableArray(){
     return [[NSMutableArray alloc] init];
 }
 
-void _playOnSetGdprConsent(bool consent){
-    [PlayOnManager.sharedManager setGdprConsent:consent];
-}
-
-void _playOnSetIABUSPrivacyString(const char* consentStrin){
-    [PlayOnManager.sharedManager setIABUSPrivacyString:GetStringParam(consentStrin)];
-}
-
-void _playOnClearIABUSPrivacyString(){
-    [PlayOnManager.sharedManager clearIABUSPrivacyString];
-}
-
 void _playOnSetEngineInfo(const char* engineName, const char* engineVersion){
     [PlayOnManager.sharedManager setEngineInfo:GetStringParam(engineName) withVersion:GetStringParam(engineVersion)];
 }
@@ -180,10 +212,6 @@ void _playOnSetIsChildDirected(bool flag){
     [PlayOnManager.sharedManager setIsChildDirected:flag];
 }
 
-bool _playOnGetIsChildDirected(){
-    return [PlayOnManager.sharedManager getIsChildDirected];
-}
-
 const char* _playOnImpressionGetPlacementID(POImpressionData *data){
     return plsyOnStringCopy(data.placementID);
 }
@@ -214,4 +242,16 @@ void _playOnPause(){
 
 void _playOnResume(){
     [PlayOnManager.sharedManager onResume];
+}
+
+float _playOnGetDeviceScale(){
+    return [UIScreen mainScreen].nativeScale;
+}
+
+void _playOnAddAdUnitToRootView(POAdUnit* ad){
+    [[PlayOnManager.unityViewController view] addSubview:ad];
+}
+
+void _playOnRemoveAdUnitFromSuperView(POAdUnit* ad){
+    [ad removeFromSuperview];
 }

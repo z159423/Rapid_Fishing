@@ -33,13 +33,27 @@ public class PlayOnSDK
     [DllImport("__Internal")]
     public static extern bool _playOnIsInitialized();
     [DllImport("__Internal")]
+    public static extern string _playOnGetConsentString();
+    [DllImport("__Internal")]
+    public static extern bool _playOnIsGeneralConsentGiven();
+    [DllImport("__Internal")]
+    public static extern void _playOnClearConsentString();
+    [DllImport("__Internal")]
+    public static extern void _playOnSetConsentString(string consentString);
+    [DllImport("__Internal")]
     public static extern void _playOnSetGdprConsent(bool consent);
     [DllImport("__Internal")]
-    public static extern void _playOnSetIABUSPrivacyString(string consentString);
+    public static extern void _playOnSetGdprConsentWithString(bool consent, string consentString);
     [DllImport("__Internal")]
-    public static extern void _playOnClearIABUSPrivacyString();
+    public static extern void _playOnSetDoNotSell(bool isApplied);
     [DllImport("__Internal")]
-    public static extern bool _playOnGetIsChildDirected();
+    public static extern void _playOnSetDoNotSellWithString(bool isApplied, string consentString);
+    [DllImport("__Internal")]
+    public static extern void _playOnForceRegulationType(int type);
+    [DllImport("__Internal")]
+    public static extern void _playOnClearForceRegulationType();
+    [DllImport("__Internal")]
+    public static extern int _playOnGetRegulationType();
     [DllImport("__Internal")]
     public static extern float _playOnGetDeviceVolumeLevel();
     [DllImport("__Internal")]
@@ -60,9 +74,20 @@ public class PlayOnSDK
     public static extern List<SortedDictionary<String, String>> _playOnGetCustomAttributes();
     [DllImport("__Internal")]
     public static extern List<SortedDictionary<String, String>> _playOnGetCustomAttributes(string key);
+    [DllImport("__Internal")]
+    public static extern float _playOnGetDeviceScale();
+    [DllImport("__Internal")]
+    public static extern void _playOnPause();
+    [DllImport("__Internal")]
+    public static extern void _playOnResume();
 #endif
 
-    public static string SDK_VERSION = "2.0.2";
+#if UNITY_EDITOR
+    private static int _editorDpi = 440;
+    private static LogLevel editorloglevel = LogLevel.Debug;
+#endif
+
+    public static string SDK_VERSION = "2.0.9";
 
     public enum LogLevel
     {
@@ -104,6 +129,13 @@ public class PlayOnSDK
         None
     }
 
+    public enum ConsentType{
+        Undefined,
+        None,
+        Gdpr,
+        Ccpa
+    }
+
     public delegate void PlayOnNoArgsDelegate();
     public delegate void PlayOnStateDelegate(bool flag);
     public delegate void PlayOnImpressionDelegate(AdUnit.ImpressionData data);
@@ -138,7 +170,7 @@ public class PlayOnSDK
         [MonoPInvokeCallback(typeof(PlayOnNoArgsDelegateNative ))]
         public static void OnInitializationNative(IntPtr client){
             PlayOnListener listener = IntPtrToClient(client);
-            listener.OnInitializationFinished();
+            UnityMainThreadDispatcher.Instance().Enqueue( () => listener.OnInitializationFinished() ) ;
         }
 #endif
     }
@@ -172,7 +204,8 @@ public class PlayOnSDK
         _playOnSetEngineInfo("unity", SDK_VERSION);
         _playOnInitialize(apiKey, iosStoreId);
 #else
-	Debug.Log("PlayOnSDK. This Platform is not supported. Dummy Initialization");
+        PlayOnSDK.LogI(LogLevel.Info, "Initialization");
+        OnInitializationFinished();
 #endif
     }
 
@@ -183,15 +216,9 @@ public class PlayOnSDK
 #elif UNITY_IOS && !UNITY_EDITOR
         return _playOnIsInitialized();
 #else
-	Debug.Log("PlayOnSDK. Dummy Initialization. Default value true");
+	    LogI(LogLevel.Info,"Dummy Initialization. Default value true");
         return true;
 #endif
-
-    }
-
-    [Obsolete("Function is out of date. Will be removed soon")]
-    public static void SetTestEnabled(bool flag)
-    {
     }
 
     public static void SetIsChildDirected(bool flag){
@@ -202,16 +229,7 @@ public class PlayOnSDK
 #endif  
     }
 
-     public static bool GetIsChildDirected(){
-#if UNITY_ANDROID && !UNITY_EDITOR
-        return getBridge ().Call<bool>("getIsChildDirected");
-#elif UNITY_IOS && !UNITY_EDITOR
-        return _playOnGetIsChildDirected();
-#else
-        Debug.LogWarning("PlayOnSDK. Editor mode is not supported. Returned value always false");
-        return false;
-#endif
-    }
+
     
     /// <summary>
     /// Returns current device volume in Percentages from 0 to 100
@@ -222,44 +240,120 @@ public class PlayOnSDK
 #elif UNITY_IOS && !UNITY_EDITOR
         return _playOnGetDeviceVolumeLevel();
 #else
-        Debug.LogWarning("PlayOnSDK. Editor mode is not supported. Returned value always 100");
+        PlayOnSDK.LogW(LogLevel.Debug,"Editor mode is not supported. Returned value always 100");
         return 100.0f;
+#endif
+    }
+
+    public static string GetConsentString()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        return getBridge ().Call<string>("getConsentString");
+#elif UNITY_IOS && !UNITY_EDITOR
+        return _playOnGetConsentString();
+#endif
+        return "EditorIsNotSupported";
+    }
+
+    public static bool IsGeneralConsentGiven()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        return getBridge ().Call<bool>("isGeneralConsentGiven");
+#elif UNITY_IOS && !UNITY_EDITOR
+        return _playOnIsGeneralConsentGiven();
+#endif
+        return false;
+    }
+
+    public static void ClearConsentString()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        getBridge ().Call("clearConsentString");
+#elif UNITY_IOS && !UNITY_EDITOR
+        _playOnClearConsentString();
+#endif
+    }
+
+    public static void SetConsentString(string consentString)
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        getBridge ().Call("setConsentString", consentString);
+#elif UNITY_IOS && !UNITY_EDITOR
+        _playOnSetConsentString(consentString);
 #endif
     }
 
     public static void SetGdprConsent(bool consent)
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        getBridge ().Call("setGDPRConsent", consent);
+        getBridge ().Call("setGdprConsent", consent);
 #elif UNITY_IOS && !UNITY_EDITOR
         _playOnSetGdprConsent(consent);
 #endif
     }
 
-    public static void SetIABUSPrivacyString(string consentString)
+    public static void SetGdprConsent(bool consent, string consentString)
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        getBridge ().Call("setIABUSPrivacyString", consentString);
+        getBridge ().Call("setGdprConsent", consent, consentString);
 #elif UNITY_IOS && !UNITY_EDITOR
-        _playOnSetIABUSPrivacyString(consentString);
+        _playOnSetGdprConsentWithString(consent, consentString);
 #endif
     }
 
-    public static void ClearIABUSPrivacyString()
+    public static void SetDoNotSell(bool isApplied)
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        getBridge ().Call("clearIABUSPrivacyString");
+        getBridge ().Call("setDoNotSell", isApplied);
 #elif UNITY_IOS && !UNITY_EDITOR
-        _playOnClearIABUSPrivacyString();
+        _playOnSetDoNotSell(isApplied);
 #endif
+    }
+
+    public static void SetDoNotSell(bool isApplied, string consentString)
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        getBridge ().Call("setDoNotSell", isApplied, consentString);
+#elif UNITY_IOS && !UNITY_EDITOR
+       _playOnSetGdprConsentWithString(isApplied, consentString);
+#endif
+    }
+
+    public static void ForceRegulationType(ConsentType type){
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AndroidJavaClass consentEnum = new AndroidJavaClass ("com.playon.bridge.dto.consent.ConsentType");
+        AndroidJavaObject curType = consentEnum.CallStatic<AndroidJavaObject> ("valueOf", type.ToString ());
+        getBridge ().Call("forceRegulationType", curType);
+#elif UNITY_IOS && !UNITY_EDITOR
+       _playOnForceRegulationType((int)type);
+#endif
+    }
+
+    public static void ClearForceRegulationType(){
+#if UNITY_ANDROID && !UNITY_EDITOR
+        getBridge ().Call("clearForceRegulationType");
+#elif UNITY_IOS && !UNITY_EDITOR
+       _playOnClearForceRegulationType();
+#endif
+    }
+
+    public static ConsentType GetRegulationType()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AndroidJavaObject consentEnum = getBridge().Call<AndroidJavaObject>("getRegulationType");
+        int typeIndex = consentEnum.Call<int> ("ordinal");
+        return (ConsentType)typeIndex;
+#elif UNITY_IOS && !UNITY_EDITOR
+        return (ConsentType)_playOnGetRegulationType();
+#endif
+        LogI(LogLevel.Info, "GetRegulationType returns default value Undefined");
+        return ConsentType.Undefined;
     }
 
     public static void AddCustomAttribute(string key, string value){
 #if UNITY_ANDROID && !UNITY_EDITOR
         getBridge ().Call("addCustomAttribute", key, value);
-#endif
-
-#if UNITY_IOS && !UNITY_EDITOR
+#elif UNITY_IOS && !UNITY_EDITOR
         _playOnAddCustomAttribute(key, value);
 #endif
     }
@@ -308,19 +402,125 @@ public class PlayOnSDK
         getBridge ().Call("setLogLevel", curType);
 #elif UNITY_IOS && !UNITY_EDITOR
         _playOnSetLogLevel((int)level);
-#endif    
+#elif UNITY_EDITOR
+        editorloglevel = level;
+#endif
     }
-
-	public static void requestTrackingAuthorization()
+    
+    public static void LogE(LogLevel type, string message)
+    {
+#if UNITY_EDITOR
+        switch (editorloglevel)
+        {
+            case LogLevel.Debug:
+                Debug.LogError("PlayOnSDK: " +message);
+                break;
+            
+            case LogLevel.Info: 
+                if(type == LogLevel.Info) 
+                    Debug.LogError("PlayOnSDK: " +message);
+                break;
+            
+            case LogLevel.None:
+                break;
+        }
+#endif
+    }
+    
+    public static void LogW(LogLevel type, string message)
+    {
+#if UNITY_EDITOR
+        switch (editorloglevel)
+        {
+            case LogLevel.Debug:
+                Debug.LogWarning("PlayOnSDK: " +message);
+                break;
+            
+            case LogLevel.Info:
+                if(type == LogLevel.Info)
+                    Debug.LogWarning("PlayOnSDK: " +message);
+                break;
+            
+            case LogLevel.None:
+                break;
+        }
+#endif
+    }
+    
+    public static void LogI(LogLevel type, string message)
+    {
+#if UNITY_EDITOR
+        switch (editorloglevel)
+        {
+            case LogLevel.Debug:
+                Debug.Log("PlayOnSDK: " +message);
+                break;
+            
+            case LogLevel.Info:
+                if(type == LogLevel.Info)
+                    Debug.Log("PlayOnSDK: " +message);
+                break;
+            
+            case LogLevel.None:
+                break;
+        }
+#endif
+    }
+    
+	public static void RequestTrackingAuthorization()
 	{
 #if UNITY_IOS && !UNITY_EDITOR
             _playOnRequestTrackingAuthorization();
 #else
-            Debug.Log("PlayOnSDK: Requesting tracking authorization is only supported for iOS platform.");
+            PlayOnSDK.LogI(LogLevel.Info, "RequestTrackingAuthorization() ignonred. Requesting tracking authorization is made only for iOS platform.");
 #endif
-        }
+    }
 
     public delegate void OnApplicationPause(bool isPaused);
-    public static OnApplicationPause onApplicationPause = (isPaused) => { Debug.Log("PlayOnPaused " + isPaused); };
+    public static OnApplicationPause onApplicationPause = (isPaused) => {         
+        if (isPaused) onPause();
+        else onResume(); 
+    };
 
+    public static void SetUnityEditorDPI (int dpi) {
+#if UNITY_EDITOR
+        _editorDpi = dpi;
+#endif
+    }
+
+    public static float GetUnityEditorDPI () {
+#if UNITY_EDITOR
+        return _editorDpi;
+#else
+        return Screen.dpi;
+#endif
+    }
+
+    public static float GetDeviceScale(){
+#if UNITY_ANDROID && !UNITY_EDITOR
+        return GetUnityEditorDPI() / 160f;
+#elif UNITY_IOS && !UNITY_EDITOR
+        return _playOnGetDeviceScale();
+#else
+        return GetUnityEditorDPI() / 160f;
+#endif
+    }
+
+    private static void onPause()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        getBridge ().Call ("OnPause");
+#elif UNITY_IOS && !UNITY_EDITOR
+        _playOnPause();
+#endif
+    }
+
+    private static void onResume()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        getBridge ().Call ("OnResume");
+#elif UNITY_IOS && !UNITY_EDITOR
+        _playOnResume();
+#endif
+    }
 }
