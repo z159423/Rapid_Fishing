@@ -10,7 +10,7 @@
                 "**/Editor/",
                 "**/Luna/RuntimeScripts/"
             ],
-            "useMSBuild": true,
+            "useMSBuild": false,
             "msbuildMac64": "/Library/Frameworks/Mono.framework/Versions/Current/bin/msbuild",
             "msbuildWin64": "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/MSBuild.exe",
             "externalSources": [],
@@ -72,7 +72,7 @@
             "icon": "Assets/Preloader/Fish_Icon_64.png",
             "backgroundHexColor": "#914AFA"
         },
-        "autoInstantiatePrefabs": true,
+        "autoInstantiatePrefabs": false,
         "enableRealtimeShadows": false,
         "enableLunaCompilerV2": true,
         "minify": true,
@@ -108,7 +108,7 @@
                 "forceIncluded": false
             }
         ],
-        "reaperVersion": 2,
+        "reaperVersion": 0,
         "disableRuntimeAnalysisForCode": false,
         "disableRuntimeAnalysisForShaders": false,
         "useShadersCache": true,
